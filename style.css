@@ -1693,7 +1693,7 @@ footer {
 @media (max-width: 640px) {
   .nav-links { display:none; }
   .hamburger { display:flex; }
-  .nav-instagram, .nav-whatsapp, .nav-crstudio { display: none; }
+  .nav-instagram, .nav-crstudio { display: none; }
   .brand-logo { height: 30px; width: 30px; }
   .hero { padding:8rem 1.25rem 4rem; }
   .hero-actions { flex-direction:column; align-items:center; }
