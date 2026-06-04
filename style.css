@@ -338,6 +338,56 @@ header.scrolled {
   border-bottom: none !important;
 }
 
+.mobile-social-row {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+.mobile-social-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.85rem 0.4rem 0.7rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 14px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+}
+
+.mobile-social-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.85);
+}
+
+.msb-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.msb-instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.msb-instagram svg { width: 20px; height: 20px; }
+
+.msb-whatsapp { background: #25D366; }
+.msb-whatsapp svg { width: 18px; height: 18px; }
+
+.msb-crstudio {
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+.msb-crstudio img { width: 100%; height: 100%; object-fit: cover; border-radius: 9px; }
+
 /* ════════════════════════════════════════
    PAGE WRAPPER
 ════════════════════════════════════════ */
@@ -1604,11 +1654,7 @@ footer {
 @media (max-width: 640px) {
   .nav-links { display:none; }
   .hamburger { display:flex; }
-  .nav-brand-btn { width: 28px; height: 28px; border-radius: 8px; }
-  .nav-instagram svg { width: 18px; height: 18px; }
-  .nav-whatsapp svg { width: 16px; height: 16px; }
-  .nav-crstudio img { border-radius: 7px; }
-  .nav-actions { gap: 0.35rem; }
+  .nav-instagram, .nav-whatsapp, .nav-crstudio { display: none; }
   .brand-logo { height: 30px; width: 30px; }
   .hero { padding:8rem 1.25rem 4rem; }
   .hero-actions { flex-direction:column; align-items:center; }
