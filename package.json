@@ -1,0 +1,9 @@
+{
+  "name": "clips-revolution-website",
+  "version": "1.0.0",
+  "description": "clips.Revolution — Main Website",
+  "scripts": {
+    "start": "npx serve . --listen 3001 --single",
+    "dev": "npx serve . --listen 3001 --single"
+  }
+}
