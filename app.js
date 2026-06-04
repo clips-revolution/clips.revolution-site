@@ -322,21 +322,17 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
       card.classList.add(posClass(normalizeOffset(i - active)));
     });
     dots.forEach((dot, i) => dot.classList.toggle('vcf-dot-active', i === active));
-    cards.forEach(card => {
-      const video = card.querySelector('video');
-      if (!video) return;
-      if (card.classList.contains('vcf-active')) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-        const showPreviewFrame = () => { if (video.currentTime < 0.1) video.currentTime = 0.5; };
-        if (video.readyState >= 2) {
-          showPreviewFrame();
+    if (!vcfIsInit) {
+      cards.forEach(card => {
+        const video = card.querySelector('video');
+        if (!video) return;
+        if (card.classList.contains('vcf-active')) {
+          video.play().catch(() => {});
         } else {
-          video.addEventListener('canplay', showPreviewFrame, { once: true });
+          video.pause();
         }
-      }
-    });
+      });
+    }
     if (instant) requestAnimationFrame(() => cards.forEach(c => (c.style.transition = '')));
   }
 
@@ -363,7 +359,17 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
     if (Math.abs(dx) > 48) goTo(active + (dx > 0 ? 1 : -1));
   }, { passive: true });
 
+  let vcfIsInit = true;
   update(true);
+  // Let autoplay render a frame on all cards, then pause non-active
+  requestAnimationFrame(() => {
+    vcfIsInit = false;
+    cards.forEach(card => {
+      if (!card.classList.contains('vcf-active')) {
+        card.querySelector('video')?.pause();
+      }
+    });
+  });
 })();
 
 /* ── 12. Video placeholder — ready for embed ── */

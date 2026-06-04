@@ -975,14 +975,18 @@ section { padding: 6rem 0; }
 }
 
 @media (max-width: 640px) {
-  .vcf-scene { overflow: visible; }
-  .vcf-track { height: 400px; }
-  .vcf-card { width: 46vw; }
-  .vcf-card.vcf-prev { transform: translateX(-54%) rotateY(36deg) translateZ(-30px); opacity: 0.72; }
-  .vcf-card.vcf-next { transform: translateX(54%) rotateY(-36deg) translateZ(-30px); opacity: 0.72; }
+  .vcf-scene {
+    overflow: hidden;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+  .vcf-track { height: 420px; }
+  .vcf-card { width: 50vw; }
+  .vcf-card.vcf-prev { transform: translateX(-57%) rotateY(36deg) translateZ(-30px); opacity: 0.75; }
+  .vcf-card.vcf-next { transform: translateX(57%) rotateY(-36deg) translateZ(-30px); opacity: 0.75; }
   .vcf-fade-left, .vcf-fade-right { display: none; }
-  .vcf-prev { left: 0.25rem; }
-  .vcf-next { right: 0.25rem; }
+  .vcf-prev { left: 0.5rem; }
+  .vcf-next { right: 0.5rem; }
 }
 
 /* ════════════════════════════════════════
