@@ -1067,10 +1067,12 @@ section { padding: 6rem 0; }
     margin-left: -1.5rem;
     margin-right: -1.5rem;
   }
-  .vcf-track { height: 420px; }
-  .vcf-card { width: 50vw; }
-  .vcf-card.vcf-prev { transform: translateX(-57%) rotateY(36deg) translateZ(-30px); opacity: 0.75; }
-  .vcf-card.vcf-next { transform: translateX(57%) rotateY(-36deg) translateZ(-30px); opacity: 0.75; }
+  .vcf-track { height: 420px; perspective: 600px; }
+  .vcf-card { width: 52vw; }
+  .vcf-card.vcf-prev { transform: translateX(-60%) rotateY(52deg) translateZ(-90px); opacity: 0.55; }
+  .vcf-card.vcf-next { transform: translateX(60%) rotateY(-52deg) translateZ(-90px); opacity: 0.55; }
+  .vcf-card.vcf-far-left { transform: translateX(-90%) rotateY(68deg) translateZ(-200px); opacity: 0.18; }
+  .vcf-card.vcf-far-right { transform: translateX(90%) rotateY(-68deg) translateZ(-200px); opacity: 0.18; }
   .vcf-fade-left, .vcf-fade-right { display: none; }
   .vcf-prev { left: 0.5rem; }
   .vcf-next { right: 0.5rem; }
