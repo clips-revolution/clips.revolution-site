@@ -124,18 +124,32 @@
           </p>
         </div>
 
-        <div class="floating-screen-wrap reveal d1">
-          <video
-            class="floating-screen-video"
-            src="showreel.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            aria-label="clips.Revolution showreel"
-          ></video>
-        </div>
+          <div class="vcf-scene reveal d1">
+            <div class="vcf-track">
+              <div class="vcf-card" data-index="0">
+                <video src="video-rabbit.mp4" autoplay muted loop playsinline preload="auto" aria-label="ארנב קסמים"></video>
+              </div>
+              <div class="vcf-card" data-index="1">
+                <video src="video-restaurant.mp4" autoplay muted loop playsinline preload="auto" aria-label="מסעדה איטלקית"></video>
+              </div>
+              <div class="vcf-card" data-index="2">
+                <video src="video-goamat.mp4" autoplay muted loop playsinline preload="auto" aria-label="גואמת אדריכלית"></video>
+              </div>
+            </div>
+            <div class="vcf-fade-left"  aria-hidden="true"></div>
+            <div class="vcf-fade-right" aria-hidden="true"></div>
+            <button class="vcf-nav vcf-prev" aria-label="הקודם">
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="vcf-nav vcf-next" aria-label="הבא">
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <div class="vcf-dots" role="group" aria-label="ניווט בין סרטונים">
+              <button class="vcf-dot" data-goto="0" aria-label="סרטון 1"></button>
+              <button class="vcf-dot" data-goto="1" aria-label="סרטון 2"></button>
+              <button class="vcf-dot" data-goto="2" aria-label="סרטון 3"></button>
+            </div>
+          </div>
 
         <div class="video-hero-actions reveal d2">
           <a href="#tools" class="btn-primary" id="hero-btn-tools">
@@ -170,34 +184,17 @@
             אנחנו מתמחים בצילום, הפקת סרטונים, ויצירת תוכן ויזואלי מרהיב — ומשלבים בינה מלאכותית כדי לקחת את היצירה שלך לרמה הבאה.
           </p>
 
-          <div class="vcf-scene reveal d1">
-            <div class="vcf-track">
-              <div class="vcf-card" data-index="0">
-                <video src="video-rabbit.mp4" autoplay muted loop playsinline preload="auto" aria-label="ארנב קסמים"></video>
-              </div>
-              <div class="vcf-card" data-index="1">
-                <video src="video-restaurant.mp4" autoplay muted loop playsinline preload="auto" aria-label="מסעדה איטלקית"></video>
-              </div>
-              <div class="vcf-card" data-index="2">
-                <video src="video-goamat.mp4" autoplay muted loop playsinline preload="auto" aria-label="גואמת אדריכלית"></video>
-              </div>
-            </div>
-
-            <div class="vcf-fade-left"  aria-hidden="true"></div>
-            <div class="vcf-fade-right" aria-hidden="true"></div>
-
-            <button class="vcf-nav vcf-prev" aria-label="הקודם">
-              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button class="vcf-nav vcf-next" aria-label="הבא">
-              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-
-            <div class="vcf-dots" role="group" aria-label="ניווט בין סרטונים">
-              <button class="vcf-dot" data-goto="0" aria-label="סרטון 1"></button>
-              <button class="vcf-dot" data-goto="1" aria-label="סרטון 2"></button>
-              <button class="vcf-dot" data-goto="2" aria-label="סרטון 3"></button>
-            </div>
+          <div class="floating-screen-wrap reveal d1">
+            <video
+              class="floating-screen-video"
+              src="showreel.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              aria-label="clips.Revolution showreel"
+            ></video>
           </div>
 
         </div>
