@@ -1039,6 +1039,28 @@ section { padding: 6rem 0; }
   transform: scale(1.4);
 }
 
+@media (min-width: 1024px) {
+  .vcf-scene { overflow: visible; }
+  .vcf-card { width: 200px; }
+  .vcf-card.vcf-far-left {
+    transform: translateX(-138%) rotateY(50deg) translateZ(-110px);
+    opacity: 0.42;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  .vcf-card.vcf-far-right {
+    transform: translateX(138%) rotateY(-50deg) translateZ(-110px);
+    opacity: 0.42;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  .vcf-card.vcf-far-left:hover,
+  .vcf-card.vcf-far-right:hover { opacity: 0.68; }
+  .vcf-fade-left, .vcf-fade-right { display: none; }
+  .vcf-prev { left: max(1rem, calc(50% - 210px)); }
+  .vcf-next { right: max(1rem, calc(50% - 210px)); }
+}
+
 @media (max-width: 640px) {
   .vcf-scene {
     overflow: hidden;
