@@ -87,10 +87,19 @@ setInterval(() => {
   }, 800);
 }, 5000);
 
-/* ── 2. Sticky Header ── */
+/* ── 2. Sticky Header + hide on scroll down ── */
 const header = document.getElementById('site-header');
+let lastScrollY = window.scrollY;
+
 window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 50);
+  const y = window.scrollY;
+  header.classList.toggle('scrolled', y > 50);
+  if (y > lastScrollY && y > 120) {
+    header.classList.add('header-hidden');
+  } else {
+    header.classList.remove('header-hidden');
+  }
+  lastScrollY = y;
 }, { passive: true });
 
 /* ── 3. Mobile Menu ── */
@@ -278,7 +287,71 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
   update(true);
 })();
 
-/* ── 11. Video placeholder — ready for embed ── */
+/* ── 11. Video CoverFlow (about section) ── */
+(function () {
+  const track = document.querySelector('.vcf-track');
+  if (!track) return;
+
+  const cards   = Array.from(track.querySelectorAll('.vcf-card'));
+  const dots    = Array.from(document.querySelectorAll('.vcf-dot'));
+  const btnPrev = document.querySelector('.vcf-prev');
+  const btnNext = document.querySelector('.vcf-next');
+  const total   = cards.length;
+  let   active  = 0;
+
+  const POS = ['vcf-far-left', 'vcf-prev', 'vcf-active', 'vcf-next', 'vcf-far-right'];
+
+  function posClass(offset) {
+    if (offset === 0)  return 'vcf-active';
+    if (offset === -1) return 'vcf-prev';
+    if (offset === 1)  return 'vcf-next';
+    return offset < 0 ? 'vcf-far-left' : 'vcf-far-right';
+  }
+
+  function normalizeOffset(raw) {
+    let o = raw % total;
+    if (o > Math.floor(total / 2))  o -= total;
+    if (o < -Math.ceil(total / 2))  o += total;
+    return o;
+  }
+
+  function update(instant) {
+    if (instant) cards.forEach(c => (c.style.transition = 'none'));
+    cards.forEach((card, i) => {
+      POS.forEach(cls => card.classList.remove(cls));
+      card.classList.add(posClass(normalizeOffset(i - active)));
+    });
+    dots.forEach((dot, i) => dot.classList.toggle('vcf-dot-active', i === active));
+    if (instant) requestAnimationFrame(() => cards.forEach(c => (c.style.transition = '')));
+  }
+
+  function goTo(index) {
+    active = ((index % total) + total) % total;
+    update(false);
+  }
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', e => {
+      if (!card.classList.contains('vcf-active')) { e.preventDefault(); goTo(i); }
+    });
+  });
+
+  btnPrev?.addEventListener('click', () => goTo(active - 1));
+  btnNext?.addEventListener('click', () => goTo(active + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  let touchX = 0;
+  const scene = document.querySelector('.vcf-scene');
+  scene?.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  scene?.addEventListener('touchend', e => {
+    const dx = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 48) goTo(active + (dx > 0 ? 1 : -1));
+  }, { passive: true });
+
+  update(true);
+})();
+
+/* ── 12. Video placeholder — ready for embed ── */
 // To activate: replace the placeholder div with an iframe
 // Example YouTube embed:
 //   <iframe src="https://www.youtube.com/embed/YOUR_ID?autoplay=1" ...></iframe>
