@@ -1042,16 +1042,16 @@ section { padding: 6rem 0; }
 @media (min-width: 1024px) {
   .vcf-scene { overflow: visible; }
   .vcf-card { width: 200px; }
-  .vcf-card.vcf-prev { transform: translateX(-80%) rotateY(44deg) translateZ(-55px); }
-  .vcf-card.vcf-next { transform: translateX(80%) rotateY(-44deg) translateZ(-55px); }
+  .vcf-card.vcf-prev { transform: translateX(-65%) rotateY(44deg) translateZ(-55px); }
+  .vcf-card.vcf-next { transform: translateX(65%) rotateY(-44deg) translateZ(-55px); }
   .vcf-card.vcf-far-left {
-    transform: translateX(-192%) rotateY(54deg) translateZ(-110px);
+    transform: translateX(-168%) rotateY(54deg) translateZ(-110px);
     opacity: 0.42;
     pointer-events: auto;
     cursor: pointer;
   }
   .vcf-card.vcf-far-right {
-    transform: translateX(192%) rotateY(-54deg) translateZ(-110px);
+    transform: translateX(168%) rotateY(-54deg) translateZ(-110px);
     opacity: 0.42;
     pointer-events: auto;
     cursor: pointer;
@@ -1059,8 +1059,8 @@ section { padding: 6rem 0; }
   .vcf-card.vcf-far-left:hover,
   .vcf-card.vcf-far-right:hover { opacity: 0.68; }
   .vcf-fade-left, .vcf-fade-right { display: none; }
-  .vcf-prev { left: max(1rem, calc(50% - 260px)); }
-  .vcf-next { right: max(1rem, calc(50% - 260px)); }
+  .vcf-prev { left: max(1rem, calc(50% - 230px)); }
+  .vcf-next { right: max(1rem, calc(50% - 230px)); }
 }
 
 @media (max-width: 640px) {
