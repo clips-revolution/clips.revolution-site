@@ -298,12 +298,17 @@ header.scrolled {
   flex-direction: column;
   padding: 2rem 1.75rem;
   transform: translateX(100%);
-  transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
+  visibility: hidden;
+  transition: transform 0.32s cubic-bezier(0.4,0,0.2,1),
+              visibility 0s linear 0.32s;
   pointer-events: none;
 }
 
 .mobile-menu.open {
   transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.32s cubic-bezier(0.4,0,0.2,1),
+              visibility 0s linear 0s;
   pointer-events: all;
 }
 
