@@ -352,6 +352,19 @@ header.scrolled {
 .mobile-menu a:last-child { border-bottom: none; }
 .mobile-menu a:hover { color: var(--foreground); }
 
+.mobile-menu-crstudio {
+  display: flex !important;
+  align-items: center;
+  gap: 0.6rem;
+}
+.mobile-menu-crstudio img {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 /* ════════════════════════════════════════
    PAGE WRAPPER
 ════════════════════════════════════════ */
