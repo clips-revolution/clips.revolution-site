@@ -1260,7 +1260,7 @@ section { padding: 6rem 0; }
 @media (max-width: 680px) {
   .coverflow-track { height: 400px; }
   .cf-card { max-width: 68vw; }
-  .browser-frame { height: 210px; }
+  .browser-frame { height: 260px; }
   .cf-card.cf-prev { transform: translateX(-52%) rotateY(36deg) translateZ(-35px); opacity: 0.68; }
   .cf-card.cf-next { transform: translateX(52%) rotateY(-36deg) translateZ(-35px); opacity: 0.68; }
   .cf-prev { left:  0.5rem; }
@@ -1308,7 +1308,7 @@ section { padding: 6rem 0; }
 .browser-frame {
   display: block;
   position: relative;
-  height: 290px;
+  height: 380px;
   overflow: hidden;
   cursor: pointer;
   text-decoration: none;
@@ -1335,6 +1335,21 @@ section { padding: 6rem 0; }
 .browser-frame:hover .browser-overlay {
   background: rgba(168,85,247,0.06);
 }
+
+/* Floating tool name over the preview */
+.tool-floating-name {
+  position: absolute;
+  top: 1rem;
+  right: 1.1rem;
+  z-index: 2;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 30px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+.tool-floating-name span { color: var(--primary-hover); }
 
 /* Info bar below the preview */
 .tool-preview-info {
