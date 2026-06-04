@@ -974,6 +974,16 @@ section { padding: 6rem 0; }
   transform: scale(1.4);
 }
 
+@media (max-width: 640px) {
+  .vcf-track { height: 420px; }
+  .vcf-card { width: 52vw; }
+  .vcf-card.vcf-prev { transform: translateX(-52%) rotateY(38deg) translateZ(-35px); opacity: 0.68; }
+  .vcf-card.vcf-next { transform: translateX(52%) rotateY(-38deg) translateZ(-35px); opacity: 0.68; }
+  .vcf-prev { left: 0.5rem; }
+  .vcf-next { right: 0.5rem; }
+  .vcf-fade-left, .vcf-fade-right { width: 5%; }
+}
+
 /* ════════════════════════════════════════
    INSTAGRAM SECTION
 ════════════════════════════════════════ */
@@ -1234,13 +1244,14 @@ section { padding: 6rem 0; }
 }
 
 @media (max-width: 680px) {
-  .coverflow-track { height: 420px; }
-  .cf-card { max-width: 88vw; }
-  .cf-card.cf-prev { transform: translateX(-60%) rotateY(40deg) translateZ(-60px); }
-  .cf-card.cf-next { transform: translateX(60%) rotateY(-40deg) translateZ(-60px); }
+  .coverflow-track { height: 400px; }
+  .cf-card { max-width: 68vw; }
+  .browser-frame { height: 210px; }
+  .cf-card.cf-prev { transform: translateX(-52%) rotateY(36deg) translateZ(-35px); opacity: 0.68; }
+  .cf-card.cf-next { transform: translateX(52%) rotateY(-36deg) translateZ(-35px); opacity: 0.68; }
   .cf-prev { left:  0.5rem; }
   .cf-next { right: 0.5rem; }
-  .cf-fade-left, .cf-fade-right { width: 8%; }
+  .cf-fade-left, .cf-fade-right { width: 5%; }
 }
 
 /* Browser chrome bar */
