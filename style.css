@@ -390,6 +390,7 @@ header.scrolled {
 .mobile-menu-svg-icon svg {
   width: 15px;
   height: 15px;
+  stroke-width: 2.8;
 }
 .mobile-icon-about {
   background: linear-gradient(135deg, #f97316 0%, #ec4899 60%, #a855f7 100%);
