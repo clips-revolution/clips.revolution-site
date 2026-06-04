@@ -1336,21 +1336,6 @@ section { padding: 6rem 0; }
   background: rgba(168,85,247,0.06);
 }
 
-/* Floating tool name over the preview */
-.tool-floating-name {
-  position: absolute;
-  top: 1rem;
-  right: 1.1rem;
-  z-index: 2;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  color: rgba(255,255,255,0.92);
-  text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 30px rgba(0,0,0,0.5);
-  pointer-events: none;
-}
-.tool-floating-name span { color: var(--primary-hover); }
-
 /* Info bar below the preview */
 .tool-preview-info {
   display: flex;
