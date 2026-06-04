@@ -311,11 +311,25 @@ header.scrolled {
   width: 34px; height: 34px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   transition: background 0.2s;
 }
 
 .mobile-close:hover { background: rgba(255,255,255,0.12); }
+
+.mobile-menu-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.mobile-menu-logo img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
 
 /* Nav links */
 .mobile-menu a {
