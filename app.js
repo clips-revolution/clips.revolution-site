@@ -322,6 +322,15 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
       card.classList.add(posClass(normalizeOffset(i - active)));
     });
     dots.forEach((dot, i) => dot.classList.toggle('vcf-dot-active', i === active));
+    cards.forEach(card => {
+      const video = card.querySelector('video');
+      if (!video) return;
+      if (card.classList.contains('vcf-active')) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
     if (instant) requestAnimationFrame(() => cards.forEach(c => (c.style.transition = '')));
   }
 
