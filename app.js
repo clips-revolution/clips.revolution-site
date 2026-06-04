@@ -348,6 +348,17 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
     if (Math.abs(dx) > 48) goTo(active + (dx > 0 ? 1 : -1));
   }, { passive: true });
 
+  // מניעת מסך שחור בין לופים — מאפס 0.3 שניות לפני הסוף
+  cards.forEach(card => {
+    const video = card.querySelector('video');
+    if (!video) return;
+    video.addEventListener('timeupdate', () => {
+      if (!isNaN(video.duration) && video.currentTime >= video.duration - 0.3) {
+        video.currentTime = 0;
+      }
+    });
+  });
+
   update(true);
 })();
 
