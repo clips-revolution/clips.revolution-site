@@ -903,6 +903,7 @@ section { padding: 6rem 0; }
 ════════════════════════════════════════ */
 .vcf-scene {
   position: relative;
+  width: 100%;
   padding: 1rem 0 4.5rem;
   overflow: hidden;
 }
