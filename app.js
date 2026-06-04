@@ -297,7 +297,7 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
   const btnPrev = document.querySelector('.vcf-prev');
   const btnNext = document.querySelector('.vcf-next');
   const total   = cards.length;
-  let   active  = 0;
+  let   active  = 1;
 
   const POS = ['vcf-far-left', 'vcf-prev', 'vcf-active', 'vcf-next', 'vcf-far-right'];
 

@@ -1600,6 +1600,12 @@ footer {
 @media (max-width: 640px) {
   .nav-links { display:none; }
   .hamburger { display:flex; }
+  .nav-brand-btn { width: 28px; height: 28px; border-radius: 8px; }
+  .nav-instagram svg { width: 18px; height: 18px; }
+  .nav-whatsapp svg { width: 16px; height: 16px; }
+  .nav-crstudio img { border-radius: 7px; }
+  .nav-actions { gap: 0.35rem; }
+  .brand-logo { height: 30px; width: 30px; }
   .hero { padding:8rem 1.25rem 4rem; }
   .hero-actions { flex-direction:column; align-items:center; }
   .hero-title { letter-spacing:-1px; }
