@@ -329,6 +329,12 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
         video.play().catch(() => {});
       } else {
         video.pause();
+        const showPreviewFrame = () => { if (video.currentTime < 0.1) video.currentTime = 0.5; };
+        if (video.readyState >= 2) {
+          showPreviewFrame();
+        } else {
+          video.addEventListener('canplay', showPreviewFrame, { once: true });
+        }
       }
     });
     if (instant) requestAnimationFrame(() => cards.forEach(c => (c.style.transition = '')));
