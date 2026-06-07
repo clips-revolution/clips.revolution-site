@@ -87,19 +87,6 @@ setInterval(() => {
   }, 800);
 }, 5000);
 
-/* ── 2. Sticky Header + hide on scroll down ── */
-const header = document.getElementById('site-header');
-let lastScrollY = window.scrollY;
-
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if (y > lastScrollY && y > 120) {
-    header.classList.add('header-hidden');
-  } else {
-    header.classList.remove('header-hidden');
-  }
-  lastScrollY = y;
-}, { passive: true });
 
 /* ── 3. Mobile Menu ── */
 const hamburger   = document.getElementById('hamburger');
