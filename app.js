@@ -93,7 +93,6 @@ let lastScrollY = window.scrollY;
 
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
-  header.classList.toggle('scrolled', y > 50);
   if (y > lastScrollY && y > 120) {
     header.classList.add('header-hidden');
   } else {
