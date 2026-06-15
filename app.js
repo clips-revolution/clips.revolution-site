@@ -61,31 +61,33 @@ const IMAGE_SETS = [
 ];
 
 const bgGrid = document.getElementById('bg-grid');
-const bgImages = bgGrid.querySelectorAll('.grid-image-wrapper img');
-let currentSetIndex = 0;
+if (bgGrid) {
+  const bgImages = bgGrid.querySelectorAll('.grid-image-wrapper img');
+  let currentSetIndex = 0;
 
-function loadGridImages(setIndex) {
-  const set = IMAGE_SETS[setIndex];
-  bgImages.forEach((img, i) => {
-    if (set[i]) img.src = set[i];
-  });
+  function loadGridImages(setIndex) {
+    const set = IMAGE_SETS[setIndex];
+    bgImages.forEach((img, i) => {
+      if (set[i]) img.src = set[i];
+    });
+  }
+
+  // Load first set immediately
+  loadGridImages(currentSetIndex);
+  bgGrid.style.opacity = '0.38';
+
+  // Rotate every 5 seconds with fade — identical to clips.Scribe
+  setInterval(() => {
+    bgGrid.style.opacity = '0.1';
+    bgGrid.style.transition = 'opacity 0.8s ease';
+
+    setTimeout(() => {
+      currentSetIndex = (currentSetIndex + 1) % IMAGE_SETS.length;
+      loadGridImages(currentSetIndex);
+      bgGrid.style.opacity = '0.38';
+    }, 800);
+  }, 5000);
 }
-
-// Load first set immediately
-loadGridImages(currentSetIndex);
-bgGrid.style.opacity = '0.38';
-
-// Rotate every 5 seconds with fade — identical to clips.Scribe
-setInterval(() => {
-  bgGrid.style.opacity = '0.1';
-  bgGrid.style.transition = 'opacity 0.8s ease';
-
-  setTimeout(() => {
-    currentSetIndex = (currentSetIndex + 1) % IMAGE_SETS.length;
-    loadGridImages(currentSetIndex);
-    bgGrid.style.opacity = '0.38';
-  }, 800);
-}, 5000);
 
 
 /* ── 3. Mobile Menu ── */

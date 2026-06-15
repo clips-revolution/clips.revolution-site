@@ -1,61 +1,6 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>תקנון ותנאי שימוש - clips.Revolution</title>
-  <meta name="description" content="תקנון תנאי השימוש באתר ובשירותים של clips.Revolution.">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/clips-revolution-logo.png" type="image/png" sizes="657x657">
-  <link rel="apple-touch-icon" href="/clips-revolution-logo.png">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .legal-page {
-      position: relative;
-      z-index: 10;
-      padding: 120px 20px 60px;
-      max-width: 800px;
-      margin: 0 auto;
-      color: white;
-      min-height: 100vh;
-      font-family: inherit;
-    }
-    .legal-page h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #bb86fc;
-    }
-    .legal-page h2 {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    .legal-page p, .legal-page li {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #e0e0e0;
-      margin-bottom: 1rem;
-    }
-    .legal-page ul {
-      margin-right: 2rem;
-      margin-bottom: 1rem;
-    }
-    .legal-page a {
-      color: #bb86fc;
-      text-decoration: underline;
-    }
-    
-  </style>
-</head>
-<body>
-  
-  <div class="bg-container">
-    <div class="bg-overlay-dark"></div>
-    <div class="bg-overlay-purple"></div>
-    <div class="bg-overlay-grad"></div>
-  </div>
+const fs = require('fs');
 
-  
+const menuAndHeader = `
   <!-- ═══ MOBILE MENU BACKDROP ═══ -->
   <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
 
@@ -120,35 +65,24 @@
       </a>
     </div>
   </header>
+`;
 
+function processFile(file) {
+  let content = fs.readFileSync(file, 'utf8');
+  
+  // Remove .legal-nav CSS
+  content = content.replace(/\/\* Simple nav overrides for legal pages \*\/[\s\S]*?border-bottom:[^}]+}/g, '');
+  
+  // Remove existing legal-nav
+  content = content.replace(/<nav class="legal-nav">[\s\S]*?<\/nav>/g, menuAndHeader);
+  
+  // Add script at bottom if not exists
+  if (!content.includes('<script src="app.js"></script>')) {
+    content = content.replace('</body>', '  <script src="app.js"></script>\n</body>');
+  }
 
-  <div class="legal-page">
-    <h1>תקנון תנאי שימוש</h1>
-    <p>תאריך עדכון אחרון: ינואר 2025</p>
+  fs.writeFileSync(file, content);
+}
 
-    <h2>1. מבוא</h2>
-    <p>ברוכים הבאים לאתר האינטרנט של clips.Revolution. השימוש באתר ובשירותים המוצעים בו כפוף לתנאי השימוש המפורטים להלן. גלישה באתר כמוה כהסכמה מפורשת לתנאים אלו.</p>
-
-    <h2>2. שירותי האתר</h2>
-    <p>האתר מציג מידע וכלים בתחום יצירת תוכן ויזואלי, לרבות סרטוני תדמית, סרטוני בינה מלאכותית (AI) וימי צילום. השירותים המפורטים כפופים להצעות מחיר פרטניות ולהסכמי התקשרות נפרדים שייחתמו בין הלקוח לחברה.</p>
-
-    <h2>3. קניין רוחני</h2>
-    <p>כל זכויות הקניין הרוחני באתר, לרבות עיצוב האתר, הקוד, התמונות, קטעי הוידאו והטקסטים, הם רכושה הבלעדי של clips.Revolution. אין להעתיק, לשכפל, להפיץ או לעשות כל שימוש מסחרי בתוכן האתר ללא אישור בכתב מראש.</p>
-
-    <h2>4. הגבלת אחריות</h2>
-    <p>המידע באתר מוצג "כפי שהוא" (As Is). החברה לא תישא באחריות לכל נזק עקיף או ישיר שייגרם כתוצאה משימוש באתר או מהסתמכות על התוכן המופיע בו. כמו כן, אנו לא מתחייבים כי הגישה לאתר תהיה רציפה או חסינה מפני תקלות.</p>
-
-    <h2>5. שינויים בתקנון</h2>
-    <p>החברה שומרת לעצמה את הזכות לעדכן או לשנות את תנאי השימוש בכל עת וללא הודעה מוקדמת. התנאים המעודכנים יפורסמו בעמוד זה ויכנסו לתוקף מיד עם פרסומם.</p>
-
-    <h2>6. דין וסמכות שיפוט</h2>
-    <p>על תקנון זה יחולו דיני מדינת ישראל בלבד. כל מחלוקת או סכסוך בקשר לתקנון או לשימוש באתר יתבררו בלעדית בבתי המשפט המוסמכים במחוז תל אביב-יפו.</p>
-
-    <div style="margin-top: 4rem; text-align: center;">
-      <a href="index.html" style="text-decoration:none;" class="btn-ghost">חזרה לעמוד הראשי</a>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
-</body>
-</html>
+processFile('privacy.html');
+processFile('terms.html');
