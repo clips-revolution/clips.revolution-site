@@ -525,10 +525,7 @@ header {
 .hero-title .t-white { color: var(--foreground); }
 .hero-title .t-dot   { color: rgba(255,255,255,0.22); }
 .hero-title .t-grad  {
-  background: linear-gradient(135deg, #c084fc 0%, #a855f7 40%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 /* Hero tagline */
@@ -714,11 +711,12 @@ section { padding: 6rem 0; }
   margin-bottom: 1rem;
 }
 
+.grad {
+  color: #ffffff !important;
+}
+
 .section-title .grad {
-  background: linear-gradient(135deg, #fff 30%, #c084fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 .section-sub {
@@ -1467,10 +1465,7 @@ section { padding: 6rem 0; }
   font-weight: 900; letter-spacing:-1.5px;
   line-height: 1.05; margin-bottom: 1rem;
   position: relative; z-index: 1;
-  background: linear-gradient(135deg, #fff 30%, #c084fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 .cta-sub {
