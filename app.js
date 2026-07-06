@@ -362,3 +362,18 @@ if (playBtn) {
     setTimeout(() => { playBtn.style.transform = ''; }, 200);
   });
 }
+
+/* ── 13. Lazy Load Background Videos (Coverflow & Showreel) ── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('video[data-src]').forEach(video => {
+      video.src = video.getAttribute('data-src');
+      video.removeAttribute('data-src');
+      video.load();
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    });
+  }, 1500);
+});
