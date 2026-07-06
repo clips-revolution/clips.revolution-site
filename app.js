@@ -363,17 +363,24 @@ if (playBtn) {
   });
 }
 
-/* ── 13. Lazy Load Background Videos (Coverflow & Showreel) ── */
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.querySelectorAll('video[data-src]').forEach(video => {
-      video.src = video.getAttribute('data-src');
-      video.removeAttribute('data-src');
-      video.load();
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
-    });
-  }, 1500);
+/* ── 13. Lazy Load Background Videos (Coverflow & Showreel) on Interaction ── */
+let videosLoaded = false;
+function loadVideos() {
+  if (videosLoaded) return;
+  videosLoaded = true;
+  document.querySelectorAll('video[data-src]').forEach(video => {
+    video.src = video.getAttribute('data-src');
+    video.removeAttribute('data-src');
+    video.load();
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
+    }
+  });
+  ['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => {
+    window.removeEventListener(evt, loadVideos);
+  });
+}
+['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => {
+  window.addEventListener(evt, loadVideos, { passive: true, once: true });
 });
