@@ -38,6 +38,41 @@
   }
   </script>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .pro-tips {
+      text-align: right;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+    .pro-tips ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .pro-tips li {
+      margin-bottom: 20px;
+      position: relative;
+      padding-right: 30px;
+    }
+    .pro-tips li:before {
+      content: '⚡';
+      position: absolute;
+      right: 0;
+      top: 2px;
+      font-size: 1.2rem;
+    }
+    .pro-tips li:last-child {
+      margin-bottom: 0;
+    }
+    .pro-tips strong {
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
 
@@ -146,7 +181,7 @@
     <section id="article-body" style="padding: 0 20px 80px; max-width: 800px; margin: 0 auto; color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.8; text-align: center;">
 
       <p style="margin-bottom: 40px;">
-        עד לפני כמה שנים, כדי להפיק סצנה הוליוודית עוצרת נשימה הייתם צריכים תקציב של מיליונים, מצלמות קולנוע ענקיות וצוות של מאות אנשים. היום? כל מה שאתם צריכים זה מחשב נייד, חיבור לאינטרנט וקצת דמיון. בעזרת כלי הבינה המלאכותית (AI) המתקדמים, כל אחד יכול להפוך לבמאי קולנוע מהסלון. הנה השלבים המדויקים להפקת וידאו פרימיום בעצמכם.
+        עד לפני כמה שנים, כדי להפיק סצנה הוליוודית עוצרת נשימה הייתם צריכים תקציב של מיליונים, מצלמות קולנוע ענקיות וצוות של מאות אנשים. היום? כל מה שאתם צריכים זה מחשב נייד, חיבור לאינטרנט וקצת דמיון. <strong>אבל יש פער ענק בין "לדעת שהכלים קיימים" לבין "לדעת להשתמש בהם כמו שצריך"</strong> - והפער הזה הוא בדיוק מה שמפריד בין סרטון שנראה כמו ניסוי AI חובבני לבין סרטון שאף אחד לא מבין איך נוצר. הנה השלבים המדויקים, כולל הטריקים שבדרך כלל לא כותבים במדריכים הרשמיים.
       </p>
 
       <!-- Step 1 -->
@@ -155,11 +190,20 @@
         <video src="video-rabbit.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; border-radius: 20px;"></video>
       </div>
       <p style="margin-bottom: 20px;">
-        <strong>הסוד לתמונה מושלמת:</strong> הכל מתחיל מהפריים הראשון. כדי ליצור וידאו ריאליסטי וקולנועי, אנחנו לא מתחילים ישר מוידאו – אנחנו מתחילים מתמונת סטילס (Image-to-Video).
+        הכל מתחיל מהפריים הראשון. כדי ליצור וידאו ריאליסטי וקולנועי, אנחנו לא מתחילים ישר מוידאו - אנחנו מתחילים מתמונת סטילס (Image-to-Video), כי זה נותן לנו שליטה על כל פרט לפני שמשקיעים קרדיטים יקרים בהנפשה.
       </p>
-      <p style="margin-bottom: 40px;">
-        <strong>איך עושים את זה?</strong> משתמשים בכלים מהדור החדש ביותר כמו <strong>Nano Banana 2</strong>. כותבים פרומפט (Prompt) מפורט שכולל תאורה (למשל: Cinematic lighting), סוג מצלמה וזווית צילום. המנוע של Nano Banana 2 יודע לייצר דמויות עקביות וטיפוגרפיה מושלמת, כך שהבסיס לסרט שלכם יהיה חזק וריאליסטי מתמיד.
+      <p style="margin-bottom: 20px;">
+        <strong>הכלי:</strong> מודלים כמו <strong>Nano Banana Pro/2</strong> יודעים לייצר דמויות עקביות וטיפוגרפיה מדויקת, ומהווים בסיס חזק וריאליסטי.
       </p>
+      <div class="pro-tips">
+        <h4 style="color: #fff; font-size: 1.3rem; margin-bottom: 15px; text-align: center;">מה שבאמת עושה את ההבדל (ולא כותבים במדריכים הכלליים):</h4>
+        <ul>
+          <li><strong>בונים "דף דמות" (character sheet):</strong> לא מייצרים תמונה בודדת ומקווים לטוב - מייצרים 3-4 זוויות של אותה דמות (פרונטלי, פרופיל, 3/4, קלוז-אפ) מאותו seed ואותו פרומפט בסיס, ומזינים את כולן כרפרנס למודל הווידאו. זה מה שמונע מהפרצוף "לזחול" (drift) בין שוטים - הבעיה הכי נפוצה ומתסכלת בעבודת AI רב-שוטית.</li>
+          <li><strong>נעילת seed:</strong> כל מודל תמונה טוב מאפשר לנעול seed - מספר שקובע את "הגרעין האקראי" של הגנרציה. כשנועלים seed ומשנים רק פרט אחד בפרומפט (תאורה, זווית, בגד), מקבלים וריאציה עקבית של אותה דמות במקום דמות חדשה לגמרי בכל פעם.</li>
+          <li><strong>פרומפטים שליליים (Negative Prompts):</strong> הם לא קישוט. בלי לציין מפורשות מה לא רוצים (warped hands, extra fingers, plastic skin, waxy texture, over-sharpened, uncanny eyes), מודלים רבים "בורחים" לכיוון של אסתטיקה סינתטית מדי - מה שבפורומים מכנים "AI sheen" (הברק הפלסטיקי שמסגיר מיד שזה AI).</li>
+          <li><strong>תאורה עקבית = רצף קולנועי:</strong> אם שוט אחד מצולם ב-"golden hour" והבא ב-"studio lighting", זה קופץ לעין גם אם כל שוט בפני עצמו יפהפה. קובעים "schema" של תאורה מראש לכל הסצנה ונשארים איתו.</li>
+        </ul>
+      </div>
 
       <!-- Step 2 -->
       <h2 style="font-size: 2.2rem; color: #fff; margin: 50px 0 20px;">שלב 2: מחרוזת קסם (הנפשת התמונה לוידאו)</h2>
@@ -167,11 +211,19 @@
         <video src="video-restaurant.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; border-radius: 20px;"></video>
       </div>
       <p style="margin-bottom: 20px;">
-        <strong>איך מפיחים בה חיים?</strong> אחרי שיש לכם את התמונה המושלמת, הגיע הזמן לתת לה תנועה עם מודלים חכמים ומתקדמים כמו <strong>Higgsfield AI</strong>. 
+        אחרי שיש לכם את התמונה המושלמת, הגיע הזמן לתת לה תנועה עם מודלים חכמים כמו <strong>Higgsfield</strong> (שמאגד בתוכו Seedance, Kling, Veo ועוד).
       </p>
-      <p style="margin-bottom: 40px;">
-        <strong>הפרומפט המנצח:</strong> בשלב הזה אתם מתארים למנוע ה-AI את התנועה הרצויה. Higgsfield AI מצטיין ביצירת תנועת מצלמה ריאליסטית והנפשת דמויות ברמה הוליוודית, במיוחד ליוצרי תוכן שרוצים שליטה מלאה מהנייד או מהמחשב. ככל שתדייקו בתיאור הפעולה, ככה התוצאה תיראה כאילו צולמה בסט מקצועי.
-      </p>
+      
+      <div class="pro-tips">
+        <h4 style="color: #fff; font-size: 1.3rem; margin-bottom: 15px; text-align: center;">מה שבאמת קובע אם השוט "יעבוד":</h4>
+        <ul>
+          <li><strong>מילות מצלמה אמיתיות, לא תיאורים ספרותיים:</strong> מודלי הווידאו מגיבים הרבה יותר טוב למינוח קולנועי מדויק (dolly in, slow pan left, rack focus, handheld micro-shake, 35mm lens, shallow depth of field) מאשר לתיאורים כלליים כמו "מצלמה יפה שזזה". תיאור פואטי גורם למודל "לנחש" - מינוח טכני נותן לו הוראה שהוא מכיר מנתוני האימון.</li>
+          <li><strong>"סחף קולנועי" (Cinematic Drift) - האויב של תוכן אותנטי:</strong> אם המטרה היא סרטון UGC שנראה כמו סלפי טלפון אמיתי, מודלי הווידאו נוטים "לברוח" לכיוון תאורה מושלמת ותנועת מצלמה חלקה מדי. כדי לשמור על אותנטיות, מזינים בכוונה: "slight handheld shake", "imperfect framing", "front camera phone quality" - ולפעמים מוסיפים Negative Prompt נגד "cinematic" כדי למנוע "שדרוג" יתר.</li>
+          <li><strong>עקביות בין קליפים מרובים:</strong> הבעיה שבאמת שוברת פרויקטים. הפתרון המעשי: שימוש בפיצ'רים ייעודיים לעקביות דמות (כמו Soul ID ב-Higgsfield), עיגון על "first frame" משותף (הפריים האחרון של קליפ אחד הופך לראשון של הבא), ושמירה על אותו seed לאורך כל הרצף.</li>
+          <li><strong>ליפ-סינק בעברית:</strong> אתגר אמיתי שלא מדברים עליו מספיק. טריקים שעובדים: משפטים קצרים וברורים, הימנעות ממילים גרוניות קשות שמקשות על פיענוח השפתיים, ובחירת מודלים עם תמיכת ליפ-סינק מרובת-שפות (כמו Kling עם ה-Omni). כשהתוצאה לא משכנעת, עדיף לסנכרן ידנית בעריכה עם תוכנות חיצוניות.</li>
+          <li><strong>אסטרטגיית "רירול" (Reroll) לחיסכון:</strong> במקום לנסות לקבל שוט מושלם בניסיון הראשון, מייצרים וריאציות זולות וקצרות כדי לבדוק תנועה וקומפוזיציה. רק כשהקומפוזיציה נכונה - מריצים רינדור מלא באיכות גבוהה.</li>
+        </ul>
+      </div>
 
       <!-- Step 3 -->
       <h2 style="font-size: 2.2rem; color: #fff; margin: 50px 0 20px;">שלב 3: הטאץ' הסופי (עריכה וסאונד)</h2>
@@ -179,10 +231,23 @@
         <video src="showreel.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; border-radius: 20px;"></video>
       </div>
       <p style="margin-bottom: 20px;">
-        <strong>מרכיבים את הפאזל:</strong> סרטון הוליוודי לא יכול להיות שקט. עריכת הסאונד (Sound Design) ותיקוני הצבע (Color Grading) הם מה שיוצר את הרגש אצל הצופה.
+        סרטון הוליוודי לא יכול להיות שקט. עריכת הסאונד (Sound Design) ותיקוני הצבע (Color Grading) הם מה שיוצר את הרגש אצל הצופה - וגם מה ש"מאחד" בין קליפים שנוצרו בכמה מודלים שונים.
       </p>
-      <p style="margin-bottom: 40px;">
-        <strong>השלב המקצועי:</strong> מכניסים את חומרי הגלם שייצרנו לתוכנת עריכה כמו Premiere Pro או אפילו CapCut. מוסיפים מוזיקת רקע שמתאימה לאווירה, אפקטים קוליים (SFX) של תנועה (Whooshes) או רעשי רקע אותנטיים, ומשלבים מעברים חלקים. זה הזמן גם להשתמש בכלים כמו clips.Scribe כדי להוסיף כתוביות דינמיות אם הסרטון מיועד לרשתות החברתיות.
+
+      <div class="pro-tips">
+        <h4 style="color: #fff; font-size: 1.3rem; margin-bottom: 15px; text-align: center;">מה שבאמת קורה בעריכה מקצועית של תוכן AI:</h4>
+        <ul>
+          <li><strong>אחידות צבע בין מודלים שונים:</strong> אם שוט אחד יצא מ-Veo ושוט אחר מ-Kling, לכל מודל "טביעת אצבע" צבעונית שונה. לפני ההרכבה, מעבירים LUT (טבלת צבע) אחידה על כל החומר כדי שהמעברים לא יבלטו.</li>
+          <li><strong>פוליי (Foley) הוא מה שמוכר את השוט:</strong> רעשי צעדים, נשימה, בד מתחכך. בלעדיהם, גם שוט ויזואלי מושלם ירגיש ריק ומלאכותי.</li>
+          <li><strong>"רעש חדר" (Room tone) לפני מוזיקה:</strong> לפני הכל, מוסיפים שכבת רעש סביבתי עדין שנותנת לצליל "מקום" אמיתי, ולא שקט דיגיטלי מוחלט שמסגיר עריכה.</li>
+          <li><strong>כלים:</strong> מרכיבים הכל בתוכנת עריכה כמו Premiere Pro, DaVinci Resolve (יש לה פלאגין ישיר של Higgsfield) או CapCut. כתוביות אפשר להוסיף בקלות דרך כלים כמו clips.Scribe.</li>
+        </ul>
+      </div>
+      
+      <!-- Bottom Line -->
+      <h2 style="font-size: 2.2rem; color: #fff; margin: 50px 0 20px;">שורה תחתונה</h2>
+      <p style="margin-bottom: 20px;">
+        הפער בין "עוד סרטון AI" לבין תוכן שנראה כמו הפקה אמיתית לא נמצא בבחירת המודל הכי חדש - הוא נמצא בפרטים הטכניים הקטנים: נעילת seed, עקביות דמות בין קליפים, בחירת מינוח מצלמה נכון, והתאמת האסתטיקה למטרה של הסרטון. אלה בדיוק הדברים שלוקח זמן ללמוד בניסוי וטעייה - ואלה בדיוק הדברים שאנחנו כבר יודעים.
       </p>
 
       <!-- CTA -->
