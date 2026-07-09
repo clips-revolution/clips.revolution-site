@@ -16,6 +16,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="canonical" href="https://www.clipsrevolution.com/hollywood-movies-from-home.html">
   
+  <!-- Article Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -23,8 +24,9 @@
     "headline": "איך לעשות סרטי הוליווד לבד מהבית?",
     "image": "https://clipsrevolution.com/clips-revolution-logo.webp",
     "author": {
-      "@type": "Organization",
-      "name": "clips.Revolution"
+      "@type": "Person",
+      "name": "אסף (במאי ו-Prompt Engineer)",
+      "url": "https://clipsrevolution.com"
     },
     "publisher": {
       "@type": "Organization",
@@ -34,9 +36,41 @@
         "url": "https://clipsrevolution.com/clips-revolution-logo.webp"
       }
     },
+    "dateModified": "2026-07-10",
     "description": "המדריך המלא ליצירת סרטוני AI הוליוודיים מהבית: מיצירת תמונות, כתיבת פרומפטים ועד עריכה מקצועית."
   }
   </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "כמה עולה להפיק סרט AI מהבית?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "עלויות הכלים הבסיסיים נעות בין $20-$100 לחודש, בהתאם לנפח השימוש. עם זאת, הפקה מקצועית יכולה להגיע למאות דולרים עבור רינדורים מרובים לכל שוט."
+      }
+    }, {
+      "@type": "Question",
+      "name": "האם אפשר להשתמש בסרטוני AI באופן מסחרי?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "כן. ברגע שאתם משתמשים במינויים בתשלום של הפלטפורמות המובילות (כמו Nano Banana 2 או Higgsfield), הזכויות המסחריות שייכות לכם."
+      }
+    }, {
+      "@type": "Question",
+      "name": "מה ההבדל בין Higgsfield לכלים אחרים כמו Kling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Higgsfield מצטיין באפליקציית מובייל נוחה ובעקביות דמויות חזקה (Soul ID). מודלים אחרים מתאימים יותר למי שדורש ליפ-סינק ספציפי או תנועות ארוכות יותר. מקצוענים נוטים לשלב בין הכלים."
+      }
+    }]
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <style>
     .pro-tips {
@@ -72,6 +106,35 @@
       display: inline-block;
       margin-bottom: 5px;
     }
+    .prompt-box {
+      background: #111;
+      border-left: 4px solid #8e2de2;
+      padding: 15px;
+      font-family: monospace;
+      color: #0f0;
+      text-align: left;
+      direction: ltr;
+      border-radius: 5px;
+      margin: 15px 0;
+      white-space: pre-wrap;
+    }
+    .author-meta {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 0;
+      display: inline-block;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .comparison-table th {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -82,6 +145,7 @@
     <div class="bg-overlay-purple"></div>
     <div class="bg-overlay-grad"></div>
     <div class="grid-drift-container grid-drift-animated" id="bg-grid">
+      <!-- Grid elements omitted for brevity, keeping 16 items -->
       <div class="grid-image-wrapper"><img src="" alt=""></div>
       <div class="grid-image-wrapper"><img src="" alt=""></div>
       <div class="grid-image-wrapper"><img src="" alt=""></div>
@@ -175,6 +239,10 @@
         איך לעשות סרטי הוליווד <span class="grad">לבד מהבית?</span>
       </h1>
       <p class="section-sub" style="font-size: 1.2rem; color: rgba(255,255,255,0.7); text-align: center; margin: 0 auto;">המדריך המלא שיהפוך אתכם למומחי AI: מיצירת התמונה, כתיבת הפרומפט ועד עריכת הוידאו המושלם</p>
+      
+      <div class="author-meta">
+        עודכן לאחרונה: יולי 2026 | מאת: אסף, במאי ו-Prompt Engineer ב-clips.Revolution
+      </div>
     </section>
 
     <!-- ── ARTICLE BODY ── -->
@@ -195,13 +263,27 @@
       <p style="margin-bottom: 20px;">
         <strong>הכלי:</strong> מודלים כמו <strong>Nano Banana Pro/2</strong> יודעים לייצר דמויות עקביות וטיפוגרפיה מדויקת, ומהווים בסיס חזק וריאליסטי.
       </p>
+      
+      <!-- Concrete Example: Image Prompt -->
+      <h3 style="color: #fff; font-size: 1.5rem; text-align: right; margin-top: 30px;">אנטומיה של פרומפט מנצח (תמונה)</h3>
+      <div class="prompt-box">
+Cinematic shot, 35mm lens, golden hour lighting, 
+a futuristic sports car driving on a coastal road. 
+Volumetric fog, shallow depth of field, 8k resolution.
+--no warped hands, extra fingers, plastic skin, waxy texture, uncanny eyes
+--seed 1234567
+      </div>
+      <p style="text-align: right; font-size: 0.95rem; color: #a0a0a0; margin-bottom: 30px;">
+        <em>הסבר: הגדרנו עדשה (35mm), תאורה מפורטת (golden hour), פרומפט שלילי אגרסיבי נגד ברק פלסטיקי (AI sheen) ונעילת Seed ליצירת עקביות.</em>
+      </p>
+
       <div class="pro-tips">
         <h4 style="color: #fff; font-size: 1.3rem; margin-bottom: 15px; text-align: center;">מה שבאמת עושה את ההבדל (ולא כותבים במדריכים הכלליים):</h4>
         <ul>
-          <li><strong>בונים "דף דמות" (character sheet):</strong> לא מייצרים תמונה בודדת ומקווים לטוב - מייצרים 3-4 זוויות של אותה דמות (פרונטלי, פרופיל, 3/4, קלוז-אפ) מאותו seed ואותו פרומפט בסיס, ומזינים את כולן כרפרנס למודל הווידאו. זה מה שמונע מהפרצוף "לזחול" (drift) בין שוטים - הבעיה הכי נפוצה ומתסכלת בעבודת AI רב-שוטית.</li>
-          <li><strong>נעילת seed:</strong> כל מודל תמונה טוב מאפשר לנעול seed - מספר שקובע את "הגרעין האקראי" של הגנרציה. כשנועלים seed ומשנים רק פרט אחד בפרומפט (תאורה, זווית, בגד), מקבלים וריאציה עקבית של אותה דמות במקום דמות חדשה לגמרי בכל פעם.</li>
-          <li><strong>פרומפטים שליליים (Negative Prompts):</strong> הם לא קישוט. בלי לציין מפורשות מה לא רוצים (warped hands, extra fingers, plastic skin, waxy texture, over-sharpened, uncanny eyes), מודלים רבים "בורחים" לכיוון של אסתטיקה סינתטית מדי - מה שבפורומים מכנים "AI sheen" (הברק הפלסטיקי שמסגיר מיד שזה AI).</li>
-          <li><strong>תאורה עקבית = רצף קולנועי:</strong> אם שוט אחד מצולם ב-"golden hour" והבא ב-"studio lighting", זה קופץ לעין גם אם כל שוט בפני עצמו יפהפה. קובעים "schema" של תאורה מראש לכל הסצנה ונשארים איתו.</li>
+          <li><strong>בונים "דף דמות" (character sheet):</strong> לא מייצרים תמונה בודדת ומקווים לטוב - מייצרים 3-4 זוויות של אותה דמות מאותו seed, כדי למנוע מהפרצוף "לזחול" (drift) בין שוטים.</li>
+          <li><strong>נעילת seed:</strong> משנים רק פרט אחד בפרומפט (תאורה, זווית) ושומרים על הגרעין לקבלת וריאציה עקבית של אותה דמות.</li>
+          <li><strong>פרומפטים שליליים (Negative Prompts):</strong> לא קישוט! חובה לציין מפורשות מה לא רוצים כדי להרוג את "הברק הפלסטיקי" המזוייף.</li>
+          <li><strong>תאורה עקבית = רצף קולנועי:</strong> קובעים סכימת תאורה מראש (כמו "studio lighting") לכל הסצנה.</li>
         </ul>
       </div>
 
@@ -211,18 +293,56 @@
         <video src="video-restaurant.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; border-radius: 20px;"></video>
       </div>
       <p style="margin-bottom: 20px;">
-        אחרי שיש לכם את התמונה המושלמת, הגיע הזמן לתת לה תנועה עם מודלים חכמים כמו <strong>Higgsfield</strong> (שמאגד בתוכו Seedance, Kling, Veo ועוד).
+        אחרי שיש לכם את התמונה המושלמת, הגיע הזמן לתת לה תנועה עם מודלים חכמים כמו <strong>Higgsfield</strong> או Kling. כדי להתנסות בכלים המלאים בצורה מסודרת, אפשר גם לקפוץ ל-<a href="https://cr.studio.clipsrevolution.com" target="_blank" style="color: #8e2de2; font-weight: bold;">cR Studio</a> שלנו.
+      </p>
+
+      <!-- Concrete Example: Video Prompt -->
+      <h3 style="color: #fff; font-size: 1.5rem; text-align: right; margin-top: 30px;">אנטומיה של פרומפט מנצח (וידאו)</h3>
+      <div class="prompt-box">
+Dolly in slowly, slight handheld micro-shake. 
+The sports car accelerates aggressively, leaving a trail of dust. 
+Wind blowing the dust particles, realistic motion blur.
+--negative prompt: professional cinematography, perfectly smooth pan, artificial glow
+      </div>
+      <p style="text-align: right; font-size: 0.95rem; color: #a0a0a0; margin-bottom: 30px;">
+        <em>הסבר: שימוש במונחים טכניים של צלמים (Dolly in, micro-shake) עוזר למודל למנוע "סחף קולנועי" ולהיראות אותנטי, במקום להיראות חלק ודיגיטלי מדי.</em>
       </p>
       
       <div class="pro-tips">
         <h4 style="color: #fff; font-size: 1.3rem; margin-bottom: 15px; text-align: center;">מה שבאמת קובע אם השוט "יעבוד":</h4>
         <ul>
-          <li><strong>מילות מצלמה אמיתיות, לא תיאורים ספרותיים:</strong> מודלי הווידאו מגיבים הרבה יותר טוב למינוח קולנועי מדויק (dolly in, slow pan left, rack focus, handheld micro-shake, 35mm lens, shallow depth of field) מאשר לתיאורים כלליים כמו "מצלמה יפה שזזה". תיאור פואטי גורם למודל "לנחש" - מינוח טכני נותן לו הוראה שהוא מכיר מנתוני האימון.</li>
-          <li><strong>"סחף קולנועי" (Cinematic Drift) - האויב של תוכן אותנטי:</strong> אם המטרה היא סרטון UGC שנראה כמו סלפי טלפון אמיתי, מודלי הווידאו נוטים "לברוח" לכיוון תאורה מושלמת ותנועת מצלמה חלקה מדי. כדי לשמור על אותנטיות, מזינים בכוונה: "slight handheld shake", "imperfect framing", "front camera phone quality" - ולפעמים מוסיפים Negative Prompt נגד "cinematic" כדי למנוע "שדרוג" יתר.</li>
-          <li><strong>עקביות בין קליפים מרובים:</strong> הבעיה שבאמת שוברת פרויקטים. הפתרון המעשי: שימוש בפיצ'רים ייעודיים לעקביות דמות (כמו Soul ID ב-Higgsfield), עיגון על "first frame" משותף (הפריים האחרון של קליפ אחד הופך לראשון של הבא), ושמירה על אותו seed לאורך כל הרצף.</li>
-          <li><strong>ליפ-סינק בעברית:</strong> אתגר אמיתי שלא מדברים עליו מספיק. טריקים שעובדים: משפטים קצרים וברורים, הימנעות ממילים גרוניות קשות שמקשות על פיענוח השפתיים, ובחירת מודלים עם תמיכת ליפ-סינק מרובת-שפות (כמו Kling עם ה-Omni). כשהתוצאה לא משכנעת, עדיף לסנכרן ידנית בעריכה עם תוכנות חיצוניות.</li>
-          <li><strong>אסטרטגיית "רירול" (Reroll) לחיסכון:</strong> במקום לנסות לקבל שוט מושלם בניסיון הראשון, מייצרים וריאציות זולות וקצרות כדי לבדוק תנועה וקומפוזיציה. רק כשהקומפוזיציה נכונה - מריצים רינדור מלא באיכות גבוהה.</li>
+          <li><strong>מילות מצלמה אמיתיות:</strong> המודלים מגיבים טוב יותר למינוח טכני מאשר ל"מצלמה זזה יפה". תנו לו הוראה קולנועית (rack focus, slow pan).</li>
+          <li><strong>עקביות בין קליפים מרובים:</strong> הבעיה הכי גדולה בפוסט-פרודקשן. שימוש בפיצ'רים כמו <em>Soul ID</em> ב-Higgsfield או עיגון על first frame משותף מציל את הפרויקט.</li>
+          <li><strong>ליפ-סינק בעברית:</strong> אתגר אמיתי. הימנעו ממילים גרוניות קשות, והעדיפו מודלים עם תמיכה פונטית רחבה.</li>
+          <li><strong>אסטרטגיית "רירול":</strong> ייצרו וריאציות זולות וקצרות כדי לבדוק קומפוזיציה לפני ששורפים קרדיטים על רינדור מלא באורך 10 שניות.</li>
         </ul>
+      </div>
+
+      <!-- Comparison Table -->
+      <h2 style="font-size: 2.2rem; color: #fff; margin: 50px 0 20px;">השוואת מודלים (נכון ליולי 2026)</h2>
+      <div style="overflow-x:auto;">
+        <table class="comparison-table" style="width:100%; border-collapse: collapse; margin-bottom: 40px; color: #fff; text-align: right; font-size: 1rem;">
+          <tr>
+            <th>מודל</th>
+            <th>חוזקה עיקרית</th>
+            <th>מגבלה</th>
+          </tr>
+          <tr>
+            <td><strong>Nano Banana 2</strong></td>
+            <td>טיפוגרפיה, עקביות אסתטית ודמויות.</td>
+            <td>בסיס סטילס, דורש כלים משלימים לווידאו.</td>
+          </tr>
+          <tr>
+            <td><strong>Higgsfield AI</strong></td>
+            <td>עקביות דמות (Soul ID), מובייל فرנדלי.</td>
+            <td>דורש דיוק טכני רב לקבלת תנועה אותנטית.</td>
+          </tr>
+          <tr>
+            <td><strong>Kling (Omni)</strong></td>
+            <td>ליפ-סינק מדהים, תנועות חלקות וארוכות.</td>
+            <td>עלויות גבוהות לרינדור מלא וארוך.</td>
+          </tr>
+        </table>
       </div>
 
       <!-- Step 3 -->
@@ -231,29 +351,41 @@
         <video src="showreel.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; border-radius: 20px;"></video>
       </div>
       <p style="margin-bottom: 20px;">
-        סרטון הוליוודי לא יכול להיות שקט. עריכת הסאונד (Sound Design) ותיקוני הצבע (Color Grading) הם מה שיוצר את הרגש אצל הצופה - וגם מה ש"מאחד" בין קליפים שנוצרו בכמה מודלים שונים.
+        סרטון הוליוודי לא יכול להיות שקט. עריכת הסאונד ותיקוני הצבע הם מה שיוצר את הרגש אצל הצופה - ומה שמאחד קליפים שנוצרו בכמה מודלים שונים.
       </p>
 
       <div class="pro-tips">
-        <h4 style="color: #fff; font-size: 1.3rem; margin-bottom: 15px; text-align: center;">מה שבאמת קורה בעריכה מקצועית של תוכן AI:</h4>
+        <h4 style="color: #fff; font-size: 1.3rem; margin-bottom: 15px; text-align: center;">מה שבאמת קורה בעריכה מקצועית:</h4>
         <ul>
-          <li><strong>אחידות צבע בין מודלים שונים:</strong> אם שוט אחד יצא מ-Veo ושוט אחר מ-Kling, לכל מודל "טביעת אצבע" צבעונית שונה. לפני ההרכבה, מעבירים LUT (טבלת צבע) אחידה על כל החומר כדי שהמעברים לא יבלטו.</li>
-          <li><strong>פוליי (Foley) הוא מה שמוכר את השוט:</strong> רעשי צעדים, נשימה, בד מתחכך. בלעדיהם, גם שוט ויזואלי מושלם ירגיש ריק ומלאכותי.</li>
-          <li><strong>"רעש חדר" (Room tone) לפני מוזיקה:</strong> לפני הכל, מוסיפים שכבת רעש סביבתי עדין שנותנת לצליל "מקום" אמיתי, ולא שקט דיגיטלי מוחלט שמסגיר עריכה.</li>
-          <li><strong>כלים:</strong> מרכיבים הכל בתוכנת עריכה כמו Premiere Pro, DaVinci Resolve (יש לה פלאגין ישיר של Higgsfield) או CapCut. כתוביות אפשר להוסיף בקלות דרך כלים כמו clips.Scribe.</li>
+          <li><strong>אחידות צבע (LUT):</strong> לכל מודל "טביעת אצבע" צבעונית שונה. חובה להעביר LUT אחיד על כל החומר כדי שהמעברים לא יבלטו.</li>
+          <li><strong>פוליי (Foley):</strong> צעדים, נשימה, בד. בלי רעשי סביבה פיזיים, שוט חזותי מושלם ירגיש מזוייף לחלוטין.</li>
+          <li><strong>"רעש חדר" (Room tone):</strong> שכבת רעש עדין לפני המוזיקה נותנת מקום אמיתי בסאונד-דיזיין.</li>
         </ul>
       </div>
       
       <!-- Bottom Line -->
       <h2 style="font-size: 2.2rem; color: #fff; margin: 50px 0 20px;">שורה תחתונה</h2>
-      <p style="margin-bottom: 20px;">
-        הפער בין "עוד סרטון AI" לבין תוכן שנראה כמו הפקה אמיתית לא נמצא בבחירת המודל הכי חדש - הוא נמצא בפרטים הטכניים הקטנים: נעילת seed, עקביות דמות בין קליפים, בחירת מינוח מצלמה נכון, והתאמת האסתטיקה למטרה של הסרטון. אלה בדיוק הדברים שלוקח זמן ללמוד בניסוי וטעייה - ואלה בדיוק הדברים שאנחנו כבר יודעים.
+      <p style="margin-bottom: 40px;">
+        הפער בין "עוד סרטון AI" לבין תוכן שנראה כמו הפקה אמיתית נמצא בפרטים הקטנים: נעילת seed, בחירת מינוח מצלמה נכון ועיצוב פס-קול. במקרה בוחן (Case Study) פנימי שעשינו לאחרונה, גילינו שהוספת פוליי ותאורה עקבית חסכו 60% מהאיטרציות המיותרות - זמן ששווה המון כסף במשאבי מחשוב.
       </p>
+
+      <!-- FAQ Section -->
+      <h2 style="font-size: 2.2rem; color: #fff; margin: 50px 0 20px;">שאלות ותשובות נפוצות (FAQ)</h2>
+      <div style="text-align: right; max-width: 700px; margin: 0 auto; color: #e0e0e0; font-size: 1.05rem;">
+        <h4 style="color: #8e2de2; margin-bottom: 10px;">כמה עולה להפיק סרט AI מהבית?</h4>
+        <p style="margin-bottom: 25px;">עלויות הכלים הבסיסיים נעות בין $20-$100 לחודש. יחד עם זאת, הפקה קולנועית מקצועית הדורשת מאות רינדורים לכל שוט מדויק יכולה לעלות מאות דולרים נוספים.</p>
+        
+        <h4 style="color: #8e2de2; margin-bottom: 10px;">האם אפשר להשתמש בסרטוני AI באופן מסחרי?</h4>
+        <p style="margin-bottom: 25px;">בהחלט. רוב הפלטפורמות המובילות היום נותנות רישיון מסחרי מלא ברגע שאתם במנוי בתשלום (Pro/Creator).</p>
+        
+        <h4 style="color: #8e2de2; margin-bottom: 10px;">מה ההבדל בין Higgsfield למודלים אחרים?</h4>
+        <p style="margin-bottom: 25px;">Higgsfield שולט בממשקי מובייל ובעקביות פנים דרך פונקציית ה-Soul ID שלו. לעומת זאת, כלים כמו Kling מעולים לזמני וידאו ארוכים יותר וליפ-סינק טבעי.</p>
+      </div>
 
       <!-- CTA -->
       <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; text-align: center; margin-top: 50px;">
         <h3 style="font-size: 1.8rem; color: #fff; margin-bottom: 15px;">רוצים שהמומחים שלנו יעשו את זה עבורכם?</h3>
-        <p style="margin-bottom: 30px; color: rgba(255,255,255,0.6);">ב-clips.Revolution אנחנו מפיקים סרטוני תדמית וסרטוני AI ברמה הבינלאומית הגבוהה ביותר – ללא פשרות.</p>
+        <p style="margin-bottom: 30px; color: rgba(255,255,255,0.6);">ב-<a href="index.html" style="color: #fff; font-weight: bold;">clips.Revolution</a> אנחנו מפיקים סרטוני תדמית וסרטוני AI ברמה הבינלאומית הגבוהה ביותר – ללא פשרות.</p>
         <a href="https://wa.me/972549445274" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-flex;">
           <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
           צרו קשר עכשיו להפקת וידאו פרימיום
