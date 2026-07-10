@@ -209,70 +209,79 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
 
 /* ── 10. 3D CoverFlow Carousel ── */
 (function () {
-  const track = document.querySelector('.coverflow-track');
-  if (!track) return;
+  const scenes = document.querySelectorAll('.coverflow-scene');
+  
+  scenes.forEach(scene => {
+    const track = scene.querySelector('.coverflow-track');
+    if (!track) return;
 
-  const cards  = Array.from(track.querySelectorAll('.cf-card'));
-  const dots   = Array.from(document.querySelectorAll('.cf-dot'));
-  const btnPrev = document.querySelector('.cf-prev');
-  const btnNext = document.querySelector('.cf-next');
-  const total  = cards.length;
-  let   active = 0;
+    const cards  = Array.from(track.querySelectorAll('.cf-card'));
+    const dots   = Array.from(scene.querySelectorAll('.cf-dot'));
+    const btnPrev = scene.querySelector('.cf-prev');
+    const btnNext = scene.querySelector('.cf-next');
+    const total  = cards.length;
+    let   active = 0;
 
-  const POS = ['cf-far-left', 'cf-prev', 'cf-active', 'cf-next', 'cf-far-right'];
+    const POS = ['cf-far-left', 'cf-prev', 'cf-active', 'cf-next', 'cf-far-right'];
 
-  function posClass(offset) {
-    if (offset === 0)  return 'cf-active';
-    if (offset === -1) return 'cf-prev';
-    if (offset === 1)  return 'cf-next';
-    return offset < 0  ? 'cf-far-left' : 'cf-far-right';
-  }
+    function posClass(offset) {
+      if (offset === 0)  return 'cf-active';
+      if (offset === -1) return 'cf-prev';
+      if (offset === 1)  return 'cf-next';
+      return offset < 0  ? 'cf-far-left' : 'cf-far-right';
+    }
 
-  function normalizeOffset(raw) {
-    let o = raw % total;
-    if (o > Math.floor(total / 2))  o -= total;
-    if (o < -Math.ceil(total / 2))  o += total;
-    return o;
-  }
+    function normalizeOffset(raw) {
+      let o = raw % total;
+      if (o > Math.floor(total / 2))  o -= total;
+      if (o < -Math.ceil(total / 2))  o += total;
+      return o;
+    }
 
-  function update(instant) {
-    if (instant) cards.forEach(c => (c.style.transition = 'none'));
+    function update(instant) {
+      if (instant) cards.forEach(c => (c.style.transition = 'none'));
+
+      cards.forEach((card, i) => {
+        POS.forEach(cls => card.classList.remove(cls));
+        card.classList.add(posClass(normalizeOffset(i - active)));
+      });
+
+      dots.forEach((dot, i) => dot.classList.toggle('cf-dot-active', i === active));
+
+      if (instant) requestAnimationFrame(() => cards.forEach(c => (c.style.transition = '')));
+    }
+
+    function goTo(index) {
+      active = ((index % total) + total) % total;
+      update(false);
+    }
 
     cards.forEach((card, i) => {
-      POS.forEach(cls => card.classList.remove(cls));
-      card.classList.add(posClass(normalizeOffset(i - active)));
+      card.addEventListener('click', e => {
+        if (!card.classList.contains('cf-active')) {
+          e.preventDefault();
+          goTo(i);
+        }
+      });
     });
 
-    dots.forEach((dot, i) => dot.classList.toggle('cf-dot-active', i === active));
-
-    if (instant) requestAnimationFrame(() => cards.forEach(c => (c.style.transition = '')));
-  }
-
-  function goTo(index) {
-    active = ((index % total) + total) % total;
-    update(false);
-  }
-
-  cards.forEach((card, i) => {
-    card.addEventListener('click', e => {
-      if (!card.classList.contains('cf-active')) { e.preventDefault(); goTo(i); }
+    btnPrev?.addEventListener('click', () => goTo(active - 1));
+    btnNext?.addEventListener('click', () => goTo(active + 1));
+    dots.forEach((dot, i) => {
+      const targetIndex = dot.hasAttribute('data-goto') ? parseInt(dot.getAttribute('data-goto')) : i;
+      dot.addEventListener('click', () => goTo(targetIndex));
     });
+
+    // Touch swipe
+    let touchX = 0;
+    scene.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    scene.addEventListener('touchend',   e => {
+      const dx = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(dx) > 48) goTo(active + (dx > 0 ? 1 : -1));
+    }, { passive: true });
+
+    update(true);
   });
-
-  btnPrev?.addEventListener('click', () => goTo(active - 1));
-  btnNext?.addEventListener('click', () => goTo(active + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-
-  // Touch swipe
-  let touchX = 0;
-  const scene = document.querySelector('.coverflow-scene');
-  scene?.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-  scene?.addEventListener('touchend',   e => {
-    const dx = touchX - e.changedTouches[0].clientX;
-    if (Math.abs(dx) > 48) goTo(active + (dx > 0 ? 1 : -1));
-  }, { passive: true });
-
-  update(true);
 })();
 
 /* ── 11. Video CoverFlow (about section) ── */

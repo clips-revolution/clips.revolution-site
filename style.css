@@ -1766,3 +1766,16 @@ footer {
   font-weight: 600;
   font-size: 0.95rem;
 }
+
+.article-cf-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.article-cf-card .article-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
