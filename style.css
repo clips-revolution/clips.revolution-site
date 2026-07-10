@@ -1781,3 +1781,10 @@ footer {
   flex-direction: column;
   justify-content: center;
 }
+
+/* Hide footer articles on mobile */
+@media (max-width: 768px) {
+  .footer-articles {
+    display: none !important;
+  }
+}
