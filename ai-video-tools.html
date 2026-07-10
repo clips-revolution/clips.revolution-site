@@ -171,7 +171,10 @@
       <p class="section-sub" style="font-size: 1.2rem; color: rgba(255,255,255,0.7); text-align: center; margin: 0 auto;">הצצה בלעדית לאקו-סיסטם הטכנולוגי מאחורי הקלעים של הפקות הוידאו המתקדמות ביותר בישראל</p>
       
       <div style="position: relative; margin-bottom: 20px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 320px; width: 92%; margin: 40px auto 0;">
-        <video src="video-ortal.mp4" autoplay muted loop playsinline style="width: 100%; height: auto; display: block;"></video>
+        <video id="ortal-video" src="video-ortal.mp4" autoplay muted loop playsinline style="width: 100%; height: auto; display: block;"></video>
+        <button onclick="toggleMute('ortal-video', this)" aria-label="השתק / הפעל סאונד" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; z-index: 10; backdrop-filter: blur(4px); transition: background 0.3s;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        </button>
       </div>
 
       <div style="border-top: 1px solid rgba(192, 132, 252, 0.4); border-bottom: 1px solid rgba(192, 132, 252, 0.4); padding: 15px 0; margin: 40px auto 0; text-align: center; font-size: 0.95rem; color: rgba(255,255,255,0.7); max-width: 650px;">
