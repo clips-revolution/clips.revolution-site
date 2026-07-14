@@ -431,7 +431,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 1rem;
 }
 
 .video-hero-text { text-align: center; }
@@ -636,7 +636,7 @@ header {
 /* Scroll hint */
 .scroll-hint {
   position: absolute;
-  bottom: 70px; left: 0; right: 0;
+  bottom: 110px; left: 0; right: 0;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 0.5rem;
   color: var(--text-muted-2);
@@ -919,7 +919,7 @@ section { padding: 6rem 0; }
 .vcf-scene {
   position: relative;
   width: 100%;
-  padding: 1rem 0 2.5rem;
+  padding: 1rem 0 1rem;
   overflow: hidden;
 }
 
