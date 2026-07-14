@@ -919,7 +919,7 @@ section { padding: 6rem 0; }
 .vcf-scene {
   position: relative;
   width: 100%;
-  padding: 1rem 0 4.5rem;
+  padding: 1rem 0 2.5rem;
   overflow: hidden;
 }
 
@@ -1036,7 +1036,7 @@ section { padding: 6rem 0; }
 
 .vcf-dots {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 0rem;
   left: 50%; transform: translateX(-50%);
   display: flex; gap: 8px;
   z-index: 10;
