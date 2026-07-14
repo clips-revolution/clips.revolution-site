@@ -1036,7 +1036,7 @@ section { padding: 6rem 0; }
 
 .vcf-dots {
   position: absolute;
-  bottom: 0rem;
+  bottom: 1.5rem;
   left: 50%; transform: translateX(-50%);
   display: flex; gap: 8px;
   z-index: 10;
