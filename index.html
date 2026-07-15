@@ -283,8 +283,9 @@
             אנחנו מתמחים בצילום, הפקת סרטונים, ויצירת תוכן ויזואלי מרהיב — ומשלבים בינה מלאכותית כדי לקחת את היצירה שלך לרמה הבאה.
           </p>
 
-          <div class="floating-screen-wrap reveal d1">
+          <div class="floating-screen-wrap reveal d1" style="position: relative;">
             <video
+              id="showreel-video"
               class="floating-screen-video"
               data-src="showreel.mp4"
               poster="showreel-poster.jpg"
@@ -294,6 +295,9 @@
               preload="none"
               aria-label="clips.Revolution showreel"
             ></video>
+            <button onclick="toggleMute('showreel-video', this)" class="sound-toggle-btn" aria-label="הפעל/כבה סאונד">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
           </div>
 
         </div>
