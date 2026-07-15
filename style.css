@@ -1986,3 +1986,17 @@ footer {
 .mac-dl-copy-btn:hover {
   background: rgba(255,255,255,0.2);
 }
+
+.support-text-glow {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.5);
+  animation: pulse-glow 2s infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(1); text-shadow: 0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.5); }
+  100% { transform: scale(1.02); text-shadow: 0 0 15px rgba(168, 85, 247, 1), 0 0 30px rgba(168, 85, 247, 0.8); }
+}
