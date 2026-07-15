@@ -1801,3 +1801,10 @@ footer {
     flex-wrap: nowrap !important;
   }
 }
+
+/* Move scroll hint below buttons on mobile */
+@media (max-width: 768px) {
+  .scroll-hint {
+    bottom: 20px;
+  }
+}
