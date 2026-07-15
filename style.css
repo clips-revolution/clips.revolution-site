@@ -1805,6 +1805,6 @@ footer {
 /* Move scroll hint below buttons on mobile */
 @media (max-width: 768px) {
   .scroll-hint {
-    bottom: -5px;
+    bottom: -30px;
   }
 }
