@@ -1817,10 +1817,10 @@ footer {
   }
 }
 
-/* Move scroll hint below buttons on mobile */
+/* Hide scroll hint entirely on mobile */
 @media (max-width: 768px) {
   .scroll-hint {
-    bottom: -30px;
+    display: none !important;
   }
 }
 
