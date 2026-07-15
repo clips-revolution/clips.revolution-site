@@ -188,13 +188,15 @@
       <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 20px; padding: 30px; text-align: right; max-width: 650px; margin: 0 auto 40px; direction: rtl;">
         <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 15px;">🍎 מדריך התקנה למשתמשי Mac</h3>
         <p style="margin-bottom: 15px; font-size: 0.95rem; color: rgba(255,255,255,0.8);">
-          מערכת ההפעלה של מק (Gatekeeper) נוטה לחסום תוכנות עצמאיות ולהציג שגיאה שהקובץ "פגום" (Damaged). כדי לעקוף את זה בקלות, לאחר הורדת התוכנה בצעו את השלבים הבאים:
+          מערכת ההפעלה עשויה לחסום תוכנות עצמאיות ולהציג שגיאה שהקובץ "פגום" (Damaged).<br>
+          <strong>אם זה קרה לכם</strong>, בצעו את הפעולה הפשוטה הבאה:
         </p>
         <ol style="margin-bottom: 20px; padding-right: 20px; font-size: 0.95rem; color: rgba(255,255,255,0.9); line-height: 1.6;">
-          <li>פתחו את ה-<strong>Terminal</strong> במק שלכם (חפשו ב-Spotlight).</li>
-          <li>הקלידו את הפקודה: <code style="background: #000; color: #4ade80; padding: 2px 6px; border-radius: 4px; direction: ltr; display: inline-block;">xattr -cr </code> (שימו לב לרווח בסוף!).</li>
-          <li>גררו את התוכנה <strong>clips.Draft</strong> מתיקיית האפליקציות שלכם ישר לחלון הטרמינל, ולחצו Enter.</li>
+          <li>פתחו את ה-<strong>Terminal</strong> (מסוף) דרך החיפוש במק (Cmd + Space).</li>
+          <li>העתיקו והדביקו את הפקודה לתוך ה-Terminal (כולל הרווח בסוף!): <code style="background: #000; color: #4ade80; padding: 2px 6px; border-radius: 4px; direction: ltr; display: inline-block;">xattr -cr </code></li>
+          <li>גררו את סמל התוכנה (clips.Draft) מתיקיית האפליקציות שלכם ישר לתוך ה-Terminal ולחצו <strong>Enter</strong>.</li>
         </ol>
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: -10px; margin-bottom: 20px;">* הפעולה מאשרת למק שלכם להפעיל את התוכנה כרגיל.</p>
         <a href="mac-install-guide.txt" download class="btn-white" style="display: inline-flex; align-items: center; padding: 8px 16px; font-size: 0.9rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-left:6px;" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           הורד מדריך התקנה (TXT)
@@ -249,7 +251,10 @@
     <div class="mac-dl-modal">
       <button class="mac-dl-close" onclick="closeMacDownloadModal()" aria-label="סגור">✕</button>
       <div class="mac-dl-title">ההורדה החלה בהצלחה! 🎉</div>
-      <div class="mac-dl-subtitle">⚠️ שימו לב: חובה לבצע פעולה אחת קטנה לפני הפתיחה במק:</div>
+      <div class="mac-dl-subtitle" style="line-height: 1.5; font-size: 0.95rem;">
+        מערכת ההפעלה עשויה לחסום תוכנות עצמאיות ולהציג שגיאה שהקובץ "פגום" (Damaged).<br>
+        <strong>אם זה קרה לכם</strong>, בצעו את הפעולה הפשוטה הבאה:
+      </div>
       
       <div class="mac-dl-step">
         <div class="mac-dl-step-number">1</div>
@@ -261,7 +266,7 @@
       <div class="mac-dl-step">
         <div class="mac-dl-step-number">2</div>
         <div class="mac-dl-step-content">
-          <p>העתיקו והדביקו את הפקודה הבאה לתוך ה-Terminal (כולל הרווח בסוף):</p>
+          <p>העתיקו והדביקו את הפקודה הבאה לתוך ה-Terminal (כולל הרווח בסוף!):</p>
           <div class="mac-dl-code-box">
             <code id="mac-dl-code">xattr -cr </code>
             <button class="mac-dl-copy-btn" onclick="copyMacDlCode()" id="mac-dl-copy-btn">העתק פקודה</button>
@@ -272,9 +277,16 @@
       <div class="mac-dl-step">
         <div class="mac-dl-step-number">3</div>
         <div class="mac-dl-step-content">
-          <p>גררו את סמל התוכנה (clips.Draft) מתיקיית האפליקציות שלכם ישר לתוך חלון ה-Terminal ולחצו <strong>Enter</strong>.</p>
-          <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 5px;">* פעולה זו מאשרת למק שלכם להפעיל תוכנות מחוץ ל-App Store.</p>
+          <p>גררו את סמל התוכנה (clips.Draft) מתיקיית האפליקציות שלכם ישר לתוך ה-Terminal ולחצו <strong>Enter</strong>.</p>
+          <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 5px;">* הפעולה מאשרת למק שלכם להפעיל את התוכנה כרגיל.</p>
         </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <a href="mac-install-guide.txt" download class="btn-white" style="display: inline-flex; align-items: center; padding: 10px 20px; font-size: 0.95rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;margin-left:8px;" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          שמירת ההוראות לקובץ (TXT)
+        </a>
       </div>
 
     </div>
