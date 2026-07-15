@@ -1846,3 +1846,143 @@ footer {
   background: rgba(0, 0, 0, 0.8);
   transform: scale(1.05);
 }
+
+/* ════════════════════════════════════════
+   MAC DOWNLOAD MODAL
+════════════════════════════════════════ */
+.mac-dl-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mac-dl-modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mac-dl-modal {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 550px;
+  padding: 30px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(168,85,247,0.15);
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  direction: rtl;
+  color: #fff;
+  position: relative;
+}
+
+.mac-dl-modal-overlay.show .mac-dl-modal {
+  transform: translateY(0) scale(1);
+}
+
+.mac-dl-close {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mac-dl-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.mac-dl-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #a855f7;
+  text-align: center;
+}
+
+.mac-dl-subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.mac-dl-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.03);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.mac-dl-step-number {
+  background: #a855f7;
+  color: #fff;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.mac-dl-step-content {
+  flex-grow: 1;
+}
+
+.mac-dl-step-content p {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.mac-dl-code-box {
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: monospace;
+  direction: ltr;
+  margin-top: 10px;
+}
+
+.mac-dl-code-box code {
+  color: #4ade80;
+  font-size: 0.9rem;
+}
+
+.mac-dl-copy-btn {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mac-dl-copy-btn:hover {
+  background: rgba(255,255,255,0.2);
+}

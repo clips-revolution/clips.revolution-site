@@ -409,4 +409,52 @@ function toggleMute(videoId, btn) {
     btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>';
   }
 }
+}
 
+/* ── Mac Download Modal Logic ── */
+let macDownloadUrl = '';
+
+function openMacDownloadModal(downloadUrl) {
+  macDownloadUrl = downloadUrl;
+  const modal = document.getElementById('mac-dl-modal');
+  if (modal) {
+    modal.classList.add('show');
+    // Start the download automatically in the background
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = downloadUrl;
+    document.body.appendChild(iframe);
+    
+    // Clean up iframe after a while
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 10000);
+  }
+}
+
+function closeMacDownloadModal() {
+  const modal = document.getElementById('mac-dl-modal');
+  if (modal) {
+    modal.classList.remove('show');
+  }
+}
+
+function copyMacDlCode() {
+  const code = 'xattr -cr '; // Note the space at the end
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.getElementById('mac-dl-copy-btn');
+    if (btn) {
+      const originalText = btn.innerText;
+      btn.innerText = 'הועתק!';
+      btn.style.background = '#4ade80';
+      btn.style.color = '#000';
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.background = 'rgba(255,255,255,0.1)';
+        btn.style.color = '#fff';
+      }, 2000);
+    }
+  }).catch(err => {
+    console.error('Failed to copy text: ', err);
+  });
+}

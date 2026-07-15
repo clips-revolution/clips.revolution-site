@@ -128,7 +128,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;margin-left:8px;" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           הורדה ל-Windows
         </a>
-        <a href="https://pub-6a9d4dd7cdb644789e0c86bf9251835f.r2.dev/clips.Draft-1.0.6-arm64.dmg" class="btn-white" style="display: flex; align-items: center;">
+        <a href="javascript:openMacDownloadModal('https://pub-6a9d4dd7cdb644789e0c86bf9251835f.r2.dev/clips.Draft-1.0.6-arm64.dmg')" class="btn-white" style="display: flex; align-items: center;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;margin-left:8px;" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           הורדה ל-Mac
         </a>
@@ -189,7 +189,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;margin-left:8px;" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           הורדה ל-Windows
         </a>
-        <a href="https://pub-6a9d4dd7cdb644789e0c86bf9251835f.r2.dev/clips.Draft-1.0.6-arm64.dmg" class="btn-white" style="display: flex; align-items: center;">
+        <a href="javascript:openMacDownloadModal('https://pub-6a9d4dd7cdb644789e0c86bf9251835f.r2.dev/clips.Draft-1.0.6-arm64.dmg')" class="btn-white" style="display: flex; align-items: center;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;margin-left:8px;" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           הורדה ל-Mac
         </a>
@@ -227,5 +227,41 @@
   </div><!-- /page -->
 
   <script src="app.js"></script>
+  <!-- MAC DOWNLOAD MODAL -->
+  <div id="mac-dl-modal" class="mac-dl-modal-overlay">
+    <div class="mac-dl-modal">
+      <button class="mac-dl-close" onclick="closeMacDownloadModal()" aria-label="סגור">✕</button>
+      <div class="mac-dl-title">ההורדה החלה בהצלחה! 🎉</div>
+      <div class="mac-dl-subtitle">⚠️ שימו לב: חובה לבצע פעולה אחת קטנה לפני הפתיחה במק:</div>
+      
+      <div class="mac-dl-step">
+        <div class="mac-dl-step-number">1</div>
+        <div class="mac-dl-step-content">
+          <p>פתחו את ה-<strong>Terminal</strong> (מסוף) דרך החיפוש במק (Cmd + Space).</p>
+        </div>
+      </div>
+      
+      <div class="mac-dl-step">
+        <div class="mac-dl-step-number">2</div>
+        <div class="mac-dl-step-content">
+          <p>העתיקו והדביקו את הפקודה הבאה לתוך ה-Terminal (כולל הרווח בסוף):</p>
+          <div class="mac-dl-code-box">
+            <code id="mac-dl-code">xattr -cr </code>
+            <button class="mac-dl-copy-btn" onclick="copyMacDlCode()" id="mac-dl-copy-btn">העתק פקודה</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mac-dl-step">
+        <div class="mac-dl-step-number">3</div>
+        <div class="mac-dl-step-content">
+          <p>גררו את סמל התוכנה (clips.Draft) מתיקיית האפליקציות שלכם ישר לתוך חלון ה-Terminal ולחצו <strong>Enter</strong>.</p>
+          <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 5px;">* פעולה זו מאשרת למק שלכם להפעיל תוכנות מחוץ ל-App Store.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
