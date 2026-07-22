@@ -1848,9 +1848,10 @@ footer {
 }
 
 /* ════════════════════════════════════════
-   MAC DOWNLOAD MODAL
+   MAC & WINDOWS DOWNLOAD MODALS
 ════════════════════════════════════════ */
-.mac-dl-modal-overlay {
+.mac-dl-modal-overlay,
+.win-dl-modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.7);
@@ -1865,13 +1866,15 @@ footer {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.mac-dl-modal-overlay.show {
+.mac-dl-modal-overlay.show,
+.win-dl-modal-overlay.show {
   opacity: 1;
   visibility: visible;
 }
 
-.mac-dl-modal {
-  background: rgba(20, 20, 20, 0.9);
+.mac-dl-modal,
+.win-dl-modal {
+  background: rgba(20, 20, 20, 0.95);
   border: 1px solid rgba(168, 85, 247, 0.3);
   border-radius: 20px;
   width: 90%;
@@ -1885,11 +1888,13 @@ footer {
   position: relative;
 }
 
-.mac-dl-modal-overlay.show .mac-dl-modal {
+.mac-dl-modal-overlay.show .mac-dl-modal,
+.win-dl-modal-overlay.show .win-dl-modal {
   transform: translateY(0) scale(1);
 }
 
-.mac-dl-close {
+.mac-dl-close,
+.win-dl-close {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -1904,11 +1909,13 @@ footer {
   transition: background 0.2s;
 }
 
-.mac-dl-close:hover {
+.mac-dl-close:hover,
+.win-dl-close:hover {
   background: rgba(255,255,255,0.2);
 }
 
-.mac-dl-title {
+.mac-dl-title,
+.win-dl-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 10px;
@@ -1916,14 +1923,16 @@ footer {
   text-align: center;
 }
 
-.mac-dl-subtitle {
+.mac-dl-subtitle,
+.win-dl-subtitle {
   font-size: 1rem;
   color: rgba(255,255,255,0.8);
   margin-bottom: 25px;
   text-align: center;
 }
 
-.mac-dl-step {
+.mac-dl-step,
+.win-dl-step {
   display: flex;
   align-items: flex-start;
   gap: 15px;
@@ -1934,7 +1943,8 @@ footer {
   border: 1px solid rgba(255,255,255,0.05);
 }
 
-.mac-dl-step-number {
+.mac-dl-step-number,
+.win-dl-step-number {
   background: #a855f7;
   color: #fff;
   width: 28px; height: 28px;
@@ -1944,12 +1954,14 @@ footer {
   flex-shrink: 0;
 }
 
-.mac-dl-step-content {
+.mac-dl-step-content,
+.win-dl-step-content {
   flex-grow: 1;
 }
 
-.mac-dl-step-content p {
-  margin: 0 0 10px 0;
+.mac-dl-step-content p,
+.win-dl-step-content p {
+  margin: 0 0 5px 0;
   font-size: 0.95rem;
   line-height: 1.5;
 }

@@ -438,6 +438,8 @@ function closeMacDownloadModal() {
   }
 }
 
+}
+
 function copyMacDlCode() {
   const code = 'xattr -cr '; // Note the space at the end
   navigator.clipboard.writeText(code).then(() => {
@@ -456,4 +458,32 @@ function copyMacDlCode() {
   }).catch(err => {
     console.error('Failed to copy text: ', err);
   });
+}
+
+/* ── Windows Download Modal Logic ── */
+let winDownloadUrl = '';
+
+function openWinDownloadModal(downloadUrl) {
+  winDownloadUrl = downloadUrl;
+  const modal = document.getElementById('win-dl-modal');
+  if (modal) {
+    modal.classList.add('show');
+    // Start the download automatically in the background
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = downloadUrl;
+    document.body.appendChild(iframe);
+    
+    // Clean up iframe after a while
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 10000);
+  }
+}
+
+function closeWinDownloadModal() {
+  const modal = document.getElementById('win-dl-modal');
+  if (modal) {
+    modal.classList.remove('show');
+  }
 }

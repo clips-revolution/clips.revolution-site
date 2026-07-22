@@ -323,7 +323,7 @@
           </div>
 
           <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://pub-6a9d4dd7cdb644789e0c86bf9251835f.r2.dev/clips.Draft%20Setup%201.0.6.exe" class="btn-primary" style="display: flex; align-items: center;">
+            <a href="javascript:openWinDownloadModal('https://pub-6a9d4dd7cdb644789e0c86bf9251835f.r2.dev/clips.Draft%20Setup%201.0.6.exe')" class="btn-primary" style="display: flex; align-items: center;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;margin-left:8px;" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               הורדה ל-Windows
             </a>
@@ -476,6 +476,38 @@
           שמירת ההוראות לקובץ (TXT)
         </a>
         <p class="support-text-glow">אם בכל זאת נתקעתם צרו קשר עם אבישי או דייויד הם ידאגו לכם ;)</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ WINDOWS DOWNLOAD MODAL ═══ -->
+  <div id="win-dl-modal" class="win-dl-modal-overlay">
+    <div class="win-dl-modal">
+      <button class="win-dl-close" onclick="closeWinDownloadModal()" aria-label="סגור">✕</button>
+      <div class="win-dl-title">ההורדה ל-Windows החלה! 🎉</div>
+      <div class="win-dl-subtitle" style="line-height: 1.5; font-size: 0.95rem;">
+        מערכת Windows או הדפדפן עשויים להציג אזהרת אבטחה בגלל שהקובץ מורד מהרשת.<br>
+        <strong>אם מופיעה אזהרה, בצעו את הצעדים הפשוטים הבאים:</strong>
+      </div>
+      
+      <div class="win-dl-step">
+        <div class="win-dl-step-number">1</div>
+        <div class="win-dl-step-content">
+          <p><strong>אזהרה בדפדפן (Chrome / Edge):</strong></p>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem;">אם מופיעה התראה על "הורדה לא מזוהה", לחצו על 3 הנקודות ליד הקובץ וביחרו <strong>"שמור בכל מקרה"</strong> (Keep / Download anyway).</p>
+        </div>
+      </div>
+      
+      <div class="win-dl-step">
+        <div class="win-dl-step-number">2</div>
+        <div class="win-dl-step-content">
+          <p><strong>אזהרה בעת ההתקנה (SmartScreen):</strong></p>          <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem;">אם מופיע מסך כחול, לחצו על <strong>"מידע נוסף"</strong> (More info) ואז על <strong>"הפעל בכל מקרה"</strong> (Run anyway).</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <p class="support-text-glow">אם נתקעתם או צריכים עזרה, צוות clips.Revolution כאן לשירותכם! 😉</p>
       </div>
 
     </div>
