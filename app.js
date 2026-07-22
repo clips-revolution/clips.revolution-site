@@ -438,8 +438,6 @@ function closeMacDownloadModal() {
   }
 }
 
-}
-
 function copyMacDlCode() {
   const code = 'xattr -cr '; // Note the space at the end
   navigator.clipboard.writeText(code).then(() => {
