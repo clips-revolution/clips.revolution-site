@@ -737,7 +737,7 @@ section { padding: 6rem 0; }
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--primary);
   margin-bottom: 0.75rem;
 }
