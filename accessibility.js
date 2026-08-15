@@ -40,7 +40,7 @@
                 bottom: 20px;
                 left: 20px;
                 z-index: 999999;
-                font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-family: 'Outfit', 'Abraham', 'Segoe UI', system-ui, sans-serif;
                 direction: rtl;
             }
 
@@ -49,30 +49,31 @@
                 width: 48px;
                 height: 48px;
                 border-radius: 50%;
-                background-color: #1a1a2e;
+                background-color: #121212;
                 color: #ffffff;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                border: 1px solid #222222;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 font-size: 24px;
-                transition: transform 0.3s ease, background-color 0.3s ease;
+                transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
                 padding: 0;
             }
             
             .${PREFIX}trigger-btn:hover, .${PREFIX}trigger-btn:focus {
-                background-color: #232342;
+                background-color: #a855f7;
+                border-color: #a855f7;
                 transform: scale(1.05);
                 outline: 2px solid #ffffff;
                 outline-offset: 2px;
             }
 
             @keyframes ${PREFIX}pulse {
-                0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-                70% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+                0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6); }
+                70% { box-shadow: 0 0 0 15px rgba(168, 85, 247, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
             }
 
             .${PREFIX}pulse-anim {
@@ -86,11 +87,11 @@
                 left: 0;
                 width: 320px;
                 max-width: calc(100vw - 40px);
-                background-color: rgba(26, 26, 46, 0.95);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 12px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                background-color: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(12px);
+                border: 1px solid #222222;
+                border-radius: 16px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
                 display: flex;
                 flex-direction: column;
                 opacity: 0;
@@ -113,8 +114,9 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 16px 20px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                background-color: rgba(0, 0, 0, 0.2);
+                border-bottom: 1px solid #222222;
+                background-color: #121212;
+                border-radius: 16px 16px 0 0;
             }
 
             .${PREFIX}title {
@@ -139,8 +141,8 @@
             }
 
             .${PREFIX}close-btn:hover, .${PREFIX}close-btn:focus {
-                background-color: rgba(255, 255, 255, 0.1);
-                outline: 2px solid #ffffff;
+                background-color: #222222;
+                outline: 2px solid #a855f7;
             }
 
             /* Content Grid */
@@ -155,9 +157,9 @@
 
             /* Feature Buttons */
             .${PREFIX}feature-btn {
-                background-color: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 8px;
+                background-color: #121212;
+                border: 1px solid #222222;
+                border-radius: 12px;
                 padding: 12px 8px;
                 color: #ffffff;
                 cursor: pointer;
@@ -168,19 +170,22 @@
                 gap: 8px;
                 transition: all 0.2s ease;
                 font-size: 13px;
+                font-weight: 500;
                 font-family: inherit;
             }
 
             .${PREFIX}feature-btn:hover, .${PREFIX}feature-btn:focus {
-                background-color: rgba(255, 255, 255, 0.1);
-                outline: 2px solid #ffffff;
+                background-color: #222222;
+                border-color: rgba(255, 255, 255, 0.1);
+                outline: 2px solid #a855f7;
                 outline-offset: -2px;
             }
 
             .${PREFIX}feature-btn.is-active {
-                background-color: rgba(255, 255, 255, 0.15);
-                border-color: #4da6ff;
-                box-shadow: inset 0 0 0 1px #4da6ff;
+                background-color: rgba(168, 85, 247, 0.1);
+                border-color: #a855f7;
+                box-shadow: inset 0 0 0 1px #a855f7;
+                color: #c084fc;
             }
 
             .${PREFIX}icon {
@@ -190,35 +195,37 @@
             /* Footer */
             .${PREFIX}footer {
                 padding: 16px 20px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                background-color: rgba(0, 0, 0, 0.2);
+                border-top: 1px solid #222222;
+                background-color: #121212;
+                border-radius: 0 0 16px 16px;
                 display: flex;
                 flex-direction: column;
                 gap: 12px;
             }
 
             .${PREFIX}reset-btn {
-                background-color: #d9534f;
-                color: white;
-                border: none;
-                border-radius: 6px;
+                background-color: #222222;
+                color: #ffffff;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
                 padding: 10px;
                 font-size: 14px;
                 font-weight: 600;
                 cursor: pointer;
-                transition: background-color 0.2s;
+                transition: all 0.2s ease;
                 width: 100%;
                 font-family: inherit;
             }
 
             .${PREFIX}reset-btn:hover, .${PREFIX}reset-btn:focus {
-                background-color: #c9302c;
+                background-color: #a855f7;
+                border-color: #a855f7;
                 outline: 2px solid #ffffff;
                 outline-offset: 2px;
             }
 
             .${PREFIX}link {
-                color: #8c8cbe;
+                color: rgba(255, 255, 255, 0.4);
                 text-align: center;
                 font-size: 13px;
                 text-decoration: underline;
@@ -226,8 +233,8 @@
             }
 
             .${PREFIX}link:hover, .${PREFIX}link:focus {
-                color: #ffffff;
-                outline: 2px solid #ffffff;
+                color: #c084fc;
+                outline: 2px solid #c084fc;
                 outline-offset: 2px;
                 border-radius: 2px;
             }
