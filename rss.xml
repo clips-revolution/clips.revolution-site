@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>clips.Revolution</title>
+    <link>https://clipsrevolution.com</link>
+    <description>מהפכת הוידאו מבוססת בינה מלאכותית. אנו מציעים פתרונות AI מתקדמים לשיווק, כלי אוטומציה לעורכים ויוצרים, ושירותי וידאו לעסקים.</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 24 Aug 2026 12:00:00 +0300</lastBuildDate>
+    <atom:link href="https://clipsrevolution.com/rss.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://clipsrevolution.com/favicon-192-v2.png</url>
+      <title>clips.Revolution</title>
+      <link>https://clipsrevolution.com</link>
+    </image>
+
+    <item>
+      <title>שיווק בווידאו בעזרת AI</title>
+      <link>https://clipsrevolution.com/ai-video-marketing.html</link>
+      <guid isPermaLink="true">https://clipsrevolution.com/ai-video-marketing.html</guid>
+      <description>גלו איך בינה מלאכותית יכולה לשדרג את שיווק הוידאו שלכם. יצירת תכנים מהירים, מדויקים ואיכותיים שימשכו את הלקוחות שלכם.</description>
+      <pubDate>Thu, 09 Jul 2026 10:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+      <title>ימי צילום לעסקים וחברות</title>
+      <link>https://clipsrevolution.com/corporate-shooting-days.html</link>
+      <guid isPermaLink="true">https://clipsrevolution.com/corporate-shooting-days.html</guid>
+      <description>הפקת ימי צילום מקצועיים לעסקים, בשילוב יכולות AI בעריכה ופוסט-פרודקשן ליצירת חומרי גלם מנצחים.</description>
+      <pubDate>Thu, 09 Jul 2026 10:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+      <title>הפיכת חומרי גלם לסרטונים מרהיבים</title>
+      <link>https://clipsrevolution.com/ai-ingredients-to-video.html</link>
+      <guid isPermaLink="true">https://clipsrevolution.com/ai-ingredients-to-video.html</guid>
+      <description>שירותי עריכה מבוססי בינה מלאכותית להפיכת צילומים גולמיים לסרטונים עוצמתיים ומרתקים בקלות.</description>
+      <pubDate>Thu, 09 Jul 2026 10:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+      <title>כלי AI לעורכי וידאו ויוצרים</title>
+      <link>https://clipsrevolution.com/ai-video-tools.html</link>
+      <guid isPermaLink="true">https://clipsrevolution.com/ai-video-tools.html</guid>
+      <description>הכירו את סדרת הכלים החדשנית שלנו לעורכים: clips.Draft, clips.Scribe ו-clips.board שמאיצים את תהליכי העבודה שלכם.</description>
+      <pubDate>Thu, 09 Jul 2026 10:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+      <title>הוליווד אצלך בבית - קורס ליצירת סרטים עם AI</title>
+      <link>https://clipsrevolution.com/hollywood-movies-from-home.html</link>
+      <guid isPermaLink="true">https://clipsrevolution.com/hollywood-movies-from-home.html</guid>
+      <description>הקורס המקיף ביותר ליצירת סרטים שוברי קופות ופרסומות באיכות קולנועית בעזרת כלי בינה מלאכותית (Midjourney, Runway, Luma ועוד).</description>
+      <pubDate>Fri, 10 Jul 2026 10:00:00 +0300</pubDate>
+    </item>
+  </channel>
+</rss>
