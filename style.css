@@ -420,7 +420,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem 5rem;
+  padding: 2rem 1.5rem 3.5rem;
   position: relative;
 }
 
@@ -731,7 +731,7 @@ header {
 /* ════════════════════════════════════════
    SECTION SHARED
 ════════════════════════════════════════ */
-section { padding: 6rem 0; }
+section { padding: 3rem 0; }
 
 .section-label {
   font-size: 0.74rem;
@@ -924,7 +924,7 @@ section { padding: 6rem 0; }
    ABOUT / COMPANY SECTION
 ════════════════════════════════════════ */
 #about {
-  padding-top: 3.5rem;
+  padding: 2.5rem 0;
 }
 
 .about-centered {
@@ -1235,7 +1235,11 @@ section { padding: 6rem 0; }
 /* ════════════════════════════════════════
    3D COVERFLOW CAROUSEL
 ════════════════════════════════════════ */
-#tools { overflow: hidden; }
+#tools {
+  overflow: hidden;
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
+}
 
 .coverflow-scene {
   position: relative;
@@ -1525,7 +1529,7 @@ section { padding: 6rem 0; }
 footer {
   position: relative; z-index: 10;
   border-top: 1px solid var(--border-subtle);
-  padding: 2.5rem 0;
+  padding: 2rem 0;
 }
 
 .footer-inner {
@@ -1729,7 +1733,7 @@ footer {
   .hero { padding:8rem 1.25rem 4rem; }
   .hero-actions { flex-direction:column; align-items:center; }
   .hero-title { letter-spacing:-1px; }
-  section { padding:4rem 0; }
+  section { padding: 2.25rem 0; }
   .about-point { flex-direction:column; }
   .cta-inner { padding:3rem 1.5rem; }
   .footer-inner { flex-direction:column; align-items:center; text-align:center; }
