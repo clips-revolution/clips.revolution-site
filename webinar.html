@@ -43,31 +43,6 @@
       padding: 20px 20px 100px;
     }
 
-    .top-brand-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(168, 85, 247, 0.12);
-      border: 1px solid rgba(168, 85, 247, 0.3);
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #c084fc;
-      margin-bottom: 24px;
-    }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: #ef4444;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #ef4444;
-      animation: pulse-dot 1.5s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.2); }
-    }
 
     /* Hero Section */
     .webinar-hero {
@@ -553,13 +528,6 @@
 
     <!-- ── Hero Section ── -->
     <section class="webinar-hero">
-      <div style="text-align: center;">
-        <div class="top-brand-badge">
-          <span class="live-dot"></span>
-          <span>שידור חי אונליין · כמות מקומות מוגבלת</span>
-        </div>
-      </div>
-      <br>
       <span class="hero-eyebrow">הדרכת אונליין בלעדית ללא עלות 🎬</span>
       <h1 class="hero-title">
         איך להפיק סרט הוליוודי שלם<br>
@@ -741,49 +709,15 @@
       </div>
     </section>
 
-    <!-- ── Registration Form #2 (Bottom) ── -->
-    <section class="registration-card" style="margin-bottom: 30px;">
-      <div id="form-content-2">
-        <div class="form-header">
-          <h3>אל תישארו מאחור – הבטיחו את מקומכם 🎟️</h3>
-          <p>הצטרפו לשידור החי וגלו איך ליצור סרטים שלמים מהבית</p>
-        </div>
-
-        <form id="webinar-form-2" class="reg-form" onsubmit="handleFormSubmit(event, 2)">
-          <input type="hidden" name="_subject" value="🚀 ליד חדש מוובינאר קולנוע AI (טופס תחתון)!">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="source" value="webinar_bottom_form">
-
-          <div class="form-group">
-            <label for="name-2">שם מלא</label>
-            <input type="text" id="name-2" name="name" class="form-input" placeholder="שם מלא" required>
-          </div>
-
-          <div class="form-group">
-            <label for="phone-2">טלפון / וואטסאפ</label>
-            <input type="tel" id="phone-2" name="phone" class="form-input" placeholder="מספר נייד" pattern="[0-9\-+ ]{9,15}" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email-2">אימייל</label>
-            <input type="email" id="email-2" name="email" class="form-input" placeholder="name@example.com" required>
-          </div>
-
-          <button type="submit" id="submit-btn-2" class="submit-btn">
-            <span>שריינו לי מקום עכשיו בחינם 🍿</span>
-          </button>
-        </form>
-      </div>
-
-      <div id="success-state-2" class="success-box">
-        <div class="success-icon">🎉</div>
-        <h3 class="success-title">מעולה! מקומך בוובינאר שוריין</h3>
-        <p class="success-desc">שלחנו לך את כל הפרטים למייל.</p>
-        <a href="https://wa.me/972549445274?text=%D7%94%D7%99%D7%99%20%D7%93%D7%99%D7%99%D7%95%D7%99%D7%93%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%90%D7%A8%20%D7%A7%D7%95%D7%9C%D7%A0%D7%95%D7%A2%20AI%20%D7%A9%D7%9C%20clips.Revolution!" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
-          <span>שלח הודעת וואטסאפ לאישור מהיר 💬</span>
-        </a>
-      </div>
+    <!-- ── Bottom CTA ── -->
+    <section class="registration-card" style="text-align: center; margin-bottom: 40px; padding: 40px 25px;">
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 12px;">מוכנים ללמוד איך ליצור סרטים מהבית? 🎬</h3>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 25px;">
+        ההשתתפות ללא עלות – הבטיחו את מקומכם בהדרכה עוד היום
+      </p>
+      <a href="#register" class="submit-btn" style="text-decoration: none; display: inline-flex; margin: 0 auto; max-width: 320px; width: 100%;">
+        <span>מעבר לטופס ההרשמה 👈</span>
+      </a>
     </section>
 
     <!-- ── Minimal Footer ── -->
