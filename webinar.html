@@ -307,72 +307,6 @@
       line-height: 1.55;
     }
 
-    /* Why Us / About Section */
-    .about-box {
-      background: linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 20, 45, 0.6));
-      border: 1px solid rgba(168, 85, 247, 0.25);
-      border-radius: 24px;
-      padding: 40px;
-      margin-bottom: 70px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      text-align: right;
-    }
-    .about-box h3 {
-      font-size: 1.8rem;
-      color: #fff;
-      font-weight: 800;
-    }
-    .about-box p {
-      font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.75);
-      line-height: 1.7;
-    }
-
-    /* FAQ Section */
-    .faq-wrapper {
-      max-width: 700px;
-      margin: 0 auto 80px;
-    }
-    .faq-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-    .faq-question {
-      padding: 18px 22px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #fff;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-    }
-    .faq-question:hover {
-      color: #c084fc;
-    }
-    .faq-toggle-icon {
-      transition: transform 0.3s ease;
-      color: #a855f7;
-    }
-    .faq-item.open .faq-toggle-icon {
-      transform: rotate(180deg);
-    }
-    .faq-answer {
-      padding: 0 22px 18px;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.98rem;
-      line-height: 1.6;
-      display: none;
-    }
-    .faq-item.open .faq-answer {
-      display: block;
-    }
 
     /* Sticky Bottom Mobile Bar */
     .mobile-sticky-bar {
@@ -547,63 +481,8 @@
       </div>
     </section>
 
-    <!-- ── Registration Form #1 (Hero) ── -->
-    <section id="register" class="registration-card">
-      <div id="form-content-1">
-        <div class="form-header">
-          <h3>שריינו מקום להדרכה החיה 👈</h3>
-          <p>הכניסה ללא עלות – הלינק לשידור והתזכורת יישלחו אליכם</p>
-        </div>
-
-        <form id="webinar-form-1" class="reg-form" onsubmit="handleFormSubmit(event, 1)">
-          <!-- FormSubmit Configuration -->
-          <input type="hidden" name="_subject" value="🚀 ליד חדש מוובינאר קולנוע AI!">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="source" value="webinar_top_form">
-
-          <div class="form-group">
-            <label for="name-1">שם מלא</label>
-            <input type="text" id="name-1" name="name" class="form-input" placeholder="למשל: דניאל לוי" required>
-          </div>
-
-          <div class="form-group">
-            <label for="phone-1">טלפון / וואטסאפ (לקבלת קישור לשידור)</label>
-            <input type="tel" id="phone-1" name="phone" class="form-input" placeholder="050-0000000" pattern="[0-9\-+ ]{9,15}" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email-1">כתובת אימייל</label>
-            <input type="email" id="email-1" name="email" class="form-input" placeholder="name@example.com" required>
-          </div>
-
-          <button type="submit" id="submit-btn-1" class="submit-btn">
-            <span>שריינו לי מקום בחינם עכשיו</span>
-            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
-
-          <p class="form-trust-text">
-            <span>🔒</span> הפרטים שלכם שמורים ומאובטחים. אנחנו שונאים ספאם בדיוק כמוכם.
-          </p>
-        </form>
-      </div>
-
-      <!-- Success State -->
-      <div id="success-state-1" class="success-box">
-        <div class="success-icon">🎉</div>
-        <h3 class="success-title">מעולה! מקומך בוובינאר שוריין בהצלחה</h3>
-        <p class="success-desc">
-          שלחנו לך אישור ישיר לתיבת המייל.<br>
-          כדי להבטיח שלא תפספס את הקישור לשידור החי, הצטרף עכשיו לוואטסאפ השקט של הוובינאר:
-        </p>
-        <a href="https://wa.me/972549445274?text=%D7%94%D7%99%D7%99%20%D7%93%D7%99%D7%99%D7%95%D7%99%D7%93%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%90%D7%A8%20%D7%A7%D7%95%D7%9C%D7%A0%D7%95%D7%A2%20AI%20%D7%A9%D7%9C%20clips.Revolution!" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
-          <span>אישור הגעה בוואטסאפ של דייויד 💬</span>
-        </a>
-      </div>
-    </section>
-
     <!-- ── What You Will Learn (Syllabus) ── -->
-    <section style="margin-top: 30px;">
+    <section style="margin-top: 20px; margin-bottom: 40px;">
       <h2 class="section-title">מה תלמדו בשידור החי?</h2>
       <p class="section-subtitle">בלי תיאוריות באוויר – חשיפה מלאה של ה-Workflow המקצועי שמשמש אותנו להפקת פרסומות וסרטים בסטודיו</p>
 
@@ -646,82 +525,59 @@
       </div>
     </section>
 
-    <!-- ── Who Is This For ── -->
-    <section class="about-box">
-      <h3>למי הוובינאר הזה מתאים במיוחד?</h3>
-      <p>
-        🎯 <strong>יוצרי תוכן ועורכי וידאו:</strong> שרוצים להישאר צעד אחד קדימה לפני כולם ולהכפיל את המהירות ואיכות התוצרים שלהם פי 10.<br>
-        🎯 <strong>במאים ויוצרי קולנוע:</strong> שרוצים ליצור פיילוטים, קונספטים וסרטים קצרים שלמים בלי לחכות לתקציבים של מאות אלפי שקלים מקרנות.<br>
-        🎯 <strong>בעלי עסקים ואנשי שיווק:</strong> שרוצים לייצר סרטוני פרסומת ממירים וקמפיינים ויראליים שמותירים את המתחרים מאחור.<br>
-        🎯 <strong>כל מי שמרותק מעולם ה-AI:</strong> ורוצה ללמוד את המקצוע החם ביותר של השנים הקרובות – בימוי ויצירת וידאו סינטטי.
-      </p>
-    </section>
-
-    <!-- ── About the Studio ── -->
-    <section style="text-align: center; margin-bottom: 60px;">
-      <h2 class="section-title">מי עומד מאחורי ההדרכה?</h2>
-      <p class="section-subtitle">צוות clips.Revolution – הסטודיו המוביל בישראל ליצירת תוכן קולנועי וכלי AI לעורכים</p>
-      <div style="max-width: 650px; margin: 0 auto; color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.7;">
-        אנחנו ב-<strong>clips.Revolution</strong> מפתחים תוכנות מקצועיות לעורכים ויוצרים (כמו clips.Draft ו-clips.Scribe) ומפיקים ימי צילום וסרטוני AI לחברות ולמותגים המובילים בארץ. 
-        בוובינאר הזה נשתף איתכם את הידע המעשי והטרי ביותר ישירות מחדר העריכה שלנו.
-      </div>
-    </section>
-
-    <!-- ── FAQ Section ── -->
-    <section class="faq-wrapper">
-      <h2 class="section-title">שאלות נפוצות</h2>
-      <p class="section-subtitle">כל מה שצריך לדעת לפני השידור</p>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>האם ההדרכה באמת ללא עלות?</span>
-          <span class="faq-toggle-icon">▼</span>
+    <!-- ── Registration Form (Right after what you learn!) ── -->
+    <section id="register" class="registration-card" style="margin-bottom: 50px;">
+      <div id="form-content-1">
+        <div class="form-header">
+          <h3>שריינו מקום להדרכה החיה 👈</h3>
+          <p>הכניסה ללא עלות – הלינק לשידור והתזכורת יישלחו אליכם</p>
         </div>
-        <div class="faq-answer">
-          כן, לחלוטין! ההדרכה מועברת בחינם כחלק מקהילת היוצרים שאנחנו בונים בישראל. מספר המקומות בשרת מוגבל ל-100 משתתפים בלבד כדי לאפשר מענה לשאלות בלייב.
-        </div>
-      </div>
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>האם צריך ידע קודם בעריכה או ניסיון ב-AI?</span>
-          <span class="faq-toggle-icon">▼</span>
-        </div>
-        <div class="faq-answer">
-          לא. ההדרכה בנויה בצורה הדרגתית, החל מצעדי הבסיס ועד לטכניקות המתקדמות ביותר. כל מה שאתם צריכים זה מחשב, סקרנות וחיבור לאינטרנט.
-        </div>
+        <form id="webinar-form-1" class="reg-form" onsubmit="handleFormSubmit(event, 1)">
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_subject" value="🚀 ליד חדש מוובינאר קולנוע AI!">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="source" value="webinar_page">
+
+          <div class="form-group">
+            <label for="name-1">שם מלא</label>
+            <input type="text" id="name-1" name="name" class="form-input" placeholder="למשל: דניאל לוי" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone-1">טלפון / וואטסאפ (לקבלת קישור לשידור)</label>
+            <input type="tel" id="phone-1" name="phone" class="form-input" placeholder="050-0000000" pattern="[0-9\-+ ]{9,15}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email-1">כתובת אימייל</label>
+            <input type="email" id="email-1" name="email" class="form-input" placeholder="name@example.com" required>
+          </div>
+
+          <button type="submit" id="submit-btn-1" class="submit-btn">
+            <span>שריינו לי מקום בחינם עכשיו 🍿</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+
+          <p class="form-trust-text">
+            <span>🔒</span> הפרטים שלכם שמורים ומאובטחים. אנחנו שונאים ספאם בדיוק כמוכם.
+          </p>
+        </form>
       </div>
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>האם צריך מחשב גיימינג חזק ויקר?</span>
-          <span class="faq-toggle-icon">▼</span>
-        </div>
-        <div class="faq-answer">
-          ממש לא! כמעט כל מודלי ה-AI המובילים (Runway, Kling, Midjourney וכו') רצים בענן של החברות. כלומר, כוח העיבוד מתבצע בשרתים שלהם, ואתם יכולים לעבוד מכל מחשב נייד פשוט.
-        </div>
+      <!-- Success State -->
+      <div id="success-state-1" class="success-box">
+        <div class="success-icon">🎉</div>
+        <h3 class="success-title">מעולה! מקומך בוובינאר שוריין בהצלחה</h3>
+        <p class="success-desc">
+          שלחנו לך אישור ישיר לתיבת המייל.<br>
+          כדי להבטיח שלא תפספס את הקישור לשידור החי, שלח הודעת אישור בוואטסאפ:
+        </p>
+        <a href="https://wa.me/972549445274?text=%D7%94%D7%99%D7%99%20%D7%93%D7%99%D7%99%D7%95%D7%99%D7%93%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%90%D7%A8%20%D7%A7%D7%95%D7%9C%D7%A0%D7%95%D7%A2%20AI%20%D7%A9%D7%9C%20clips.Revolution!" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          <span>אישור הגעה בוואטסאפ של דייויד 💬</span>
+        </a>
       </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>מה אם אני לא יכול להגיע בדיוק בשעה של השידור?</span>
-          <span class="faq-toggle-icon">▼</span>
-        </div>
-        <div class="faq-answer">
-          ההקלטה והבונוסים יישלחו אך ורק למי שנרשם מראש בעמוד זה. עם זאת, אנחנו ממליצים מאוד להגיע בלייב כדי שתוכלו לשאול שאלות ולקבל מענה ישיר.
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Bottom CTA ── -->
-    <section class="registration-card" style="text-align: center; margin-bottom: 40px; padding: 40px 25px;">
-      <h3 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 12px;">מוכנים ללמוד איך ליצור סרטים מהבית? 🎬</h3>
-      <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 25px;">
-        ההשתתפות ללא עלות – הבטיחו את מקומכם בהדרכה עוד היום
-      </p>
-      <a href="#register" class="submit-btn" style="text-decoration: none; display: inline-flex; margin: 0 auto; max-width: 320px; width: 100%;">
-        <span>מעבר לטופס ההרשמה 👈</span>
-      </a>
     </section>
 
     <!-- ── Minimal Footer ── -->
@@ -797,11 +653,6 @@
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
       }
-    }
-
-    function toggleFaq(el) {
-      const parent = el.parentElement;
-      parent.classList.toggle('open');
     }
 
     /* Mobile Menu Logic (identical to main site) */
