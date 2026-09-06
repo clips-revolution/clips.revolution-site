@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>וובינאר לייב: איך ליצור סרט הוליוודי עם AI מהבית - clips.Revolution</title>
+  <meta name="description" content="הדרכה מעשית בלייב ללא עלות: איך להפיק סרטים, קמפיינים ופרסומות באיכות הוליוודית לבד מהמחשב בבית בעזרת כלי בינה מלאכותית מובילים. שריינו מקום עכשיו.">
+  <meta property="og:title" content="וובינאר לייב: איך ליצור סרט הוליוודי עם AI מהבית">
+  <meta property="og:description" content="הדרכה בלייב ללא עלות: טכניקות עבודה של במאים מובילים, עקביות דמויות, בימוי מודלים וסאונד קולנועי.">
+  <meta property="og:image" content="https://clipsrevolution.com/social-preview.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="icon" href="/favicon-v2.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48-v2.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32-v2.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192-v2.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512-v2.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/favicon-512-v2.png">
+  <link rel="canonical" href="https://www.clipsrevolution.com/webinar.html">
+
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* ── Webinar Dedicated Styles ── */
+    :root {
+      --glow-purple: rgba(168, 85, 247, 0.4);
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .webinar-wrapper {
+      position: relative;
+      z-index: 10;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+
+    /* Top Brand Bar */
+    .top-brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .top-brand-logo {
+      height: 38px;
+      width: auto;
+    }
+    .top-brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c084fc;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ef4444;
+      animation: pulse-dot 1.5s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+    }
+
+    /* Hero Section */
+    .webinar-hero {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      color: #a855f7;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #c084fc, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #ffffff 30%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 760px;
+      margin: 0 auto 35px;
+      font-weight: 400;
+    }
+
+    /* Video Frame */
+    .video-showcase-box {
+      position: relative;
+      max-width: 780px;
+      margin: 0 auto 40px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(168, 85, 247, 0.2);
+      background: #000;
+    }
+    .video-showcase-box video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .video-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    /* Form Container */
+    .registration-card {
+      background: rgba(18, 18, 18, 0.9);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 24px;
+      padding: 35px 30px;
+      max-width: 580px;
+      margin: 0 auto 60px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(168, 85, 247, 0.15);
+      backdrop-filter: blur(16px);
+      position: relative;
+    }
+    .form-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .form-header h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .form-header p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .reg-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: right;
+    }
+    .form-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .form-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.25s ease;
+      direction: rtl;
+    }
+    .form-input:focus {
+      border-color: #a855f7;
+      background: rgba(168, 85, 247, 0.06);
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);
+    }
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+    .submit-btn {
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
+      margin-top: 8px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(168, 85, 247, 0.6);
+      filter: brightness(1.1);
+    }
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-trust-text {
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* Success Message State */
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 30px 15px;
+    }
+    .success-icon {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      animation: pop 0.4s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .success-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .success-desc {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
+    }
+    .whatsapp-btn {
+      background: #25D366;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      transition: all 0.25s ease;
+    }
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    /* Value Pillars / Syllabus Grid */
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 70px;
+    }
+    .curriculum-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .curriculum-card:hover {
+      border-color: rgba(168, 85, 247, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    }
+    .card-step-badge {
+      display: inline-block;
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+    .curriculum-card h4 {
+      font-size: 1.25rem;
+      color: #fff;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .curriculum-card p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.55;
+    }
+
+    /* Why Us / About Section */
+    .about-box {
+      background: linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 20, 45, 0.6));
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 70px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: right;
+    }
+    .about-box h3 {
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: 800;
+    }
+    .about-box p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+    }
+
+    /* FAQ Section */
+    .faq-wrapper {
+      max-width: 700px;
+      margin: 0 auto 80px;
+    }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 18px 22px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question:hover {
+      color: #c084fc;
+    }
+    .faq-toggle-icon {
+      transition: transform 0.3s ease;
+      color: #a855f7;
+    }
+    .faq-item.open .faq-toggle-icon {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 22px 18px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* Sticky Bottom Mobile Bar */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(168, 85, 247, 0.3);
+      padding: 12px 20px;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.6);
+    }
+    .sticky-bar-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .sticky-bar-text .title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .sticky-bar-text .sub {
+      font-size: 0.75rem;
+      color: #c084fc;
+    }
+    .sticky-bar-btn {
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-sticky-bar {
+        display: flex;
+      }
+      .webinar-wrapper {
+        padding-bottom: 120px;
+      }
+      .registration-card {
+        padding: 28px 20px;
+      }
+      .top-brand-badge {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip to content -->
+  <a href="#register" class="skip-to-content">דלג לטופס ההרשמה</a>
+
+  <!-- Ambient Background Overlay -->
+  <div class="bg-container" aria-hidden="true">
+    <div class="bg-overlay-dark"></div>
+    <div class="bg-overlay-purple"></div>
+    <div class="bg-overlay-grad"></div>
+  </div>
+
+  <div class="webinar-wrapper">
+
+    <!-- ── Top Brand Bar ── -->
+    <header class="top-brand">
+      <a href="index.html" aria-label="חזרה לדף הבית של clips.Revolution">
+        <img src="clips-revolution-logo.webp" alt="clips.Revolution Logo" class="top-brand-logo">
+      </a>
+      <div class="top-brand-badge">
+        <span class="live-dot"></span>
+        <span>שידור חי אונליין · כמות מקומות מוגבלת</span>
+      </div>
+    </header>
+
+    <!-- ── Hero Section ── -->
+    <section class="webinar-hero">
+      <span class="hero-eyebrow">הדרכת אונליין בלעדית ללא עלות 🎬</span>
+      <h1 class="hero-title">
+        איך להפיק סרט הוליוודי שלם<br>
+        <span class="highlight">בעזרת בינה מלאכותית מהבית</span>
+      </h1>
+      <p class="hero-subtitle">
+        השיטה המעשית צעד-אחר-צעד: החל מעקביות דמויות מושלמת (Character Consistency), דרך בימוי מודלים מתקדמים (Kling, Runway, Veo), ועד עריכת סאונד ופוסט-פרודקשן קולנועי – בלי לגעת במצלמה ובלי תקציבי ענק.
+      </p>
+
+      <!-- Video Teaser Box -->
+      <div class="video-showcase-box">
+        <div class="video-tag">
+          <span>🍿 הופק 100% באמצעות AI</span>
+        </div>
+        <video src="video-hollywood.mp4" autoplay loop muted playsinline poster="preview-draft.png" aria-label="הצצה לתוצרים שנוצרו בקורס"></video>
+      </div>
+    </section>
+
+    <!-- ── Registration Form #1 (Hero) ── -->
+    <section id="register" class="registration-card">
+      <div id="form-content-1">
+        <div class="form-header">
+          <h3>שריינו מקום להדרכה החיה 👈</h3>
+          <p>הכניסה ללא עלות – הלינק לשידור והתזכורת יישלחו אליכם</p>
+        </div>
+
+        <form id="webinar-form-1" class="reg-form" onsubmit="handleFormSubmit(event, 1)">
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_subject" value="🚀 ליד חדש מוובינאר קולנוע AI!">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="source" value="webinar_top_form">
+
+          <div class="form-group">
+            <label for="name-1">שם מלא</label>
+            <input type="text" id="name-1" name="name" class="form-input" placeholder="למשל: דניאל לוי" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone-1">טלפון / וואטסאפ (לקבלת קישור לשידור)</label>
+            <input type="tel" id="phone-1" name="phone" class="form-input" placeholder="050-0000000" pattern="[0-9\-+ ]{9,15}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email-1">כתובת אימייל</label>
+            <input type="email" id="email-1" name="email" class="form-input" placeholder="name@example.com" required>
+          </div>
+
+          <button type="submit" id="submit-btn-1" class="submit-btn">
+            <span>שריינו לי מקום בחינם עכשיו</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+
+          <p class="form-trust-text">
+            <span>🔒</span> הפרטים שלכם שמורים ומאובטחים. אנחנו שונאים ספאם בדיוק כמוכם.
+          </p>
+        </form>
+      </div>
+
+      <!-- Success State -->
+      <div id="success-state-1" class="success-box">
+        <div class="success-icon">🎉</div>
+        <h3 class="success-title">מעולה! מקומך בוובינאר שוריין בהצלחה</h3>
+        <p class="success-desc">
+          שלחנו לך אישור ישיר לתיבת המייל.<br>
+          כדי להבטיח שלא תפספס את הקישור לשידור החי, הצטרף עכשיו לוואטסאפ השקט של הוובינאר:
+        </p>
+        <a href="https://wa.me/972549445274?text=%D7%94%D7%99%D7%99%20%D7%93%D7%99%D7%99%D7%95%D7%99%D7%93%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%90%D7%A8%20%D7%A7%D7%95%D7%9C%D7%A0%D7%95%D7%A2%20AI%20%D7%A9%D7%9C%20clips.Revolution!" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          <span>אישור הגעה בוואטסאפ של דייויד 💬</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── What You Will Learn (Syllabus) ── -->
+    <section style="margin-top: 30px;">
+      <h2 class="section-title">מה תלמדו בשידור החי?</h2>
+      <p class="section-subtitle">בלי תיאוריות באוויר – חשיפה מלאה של ה-Workflow המקצועי שמשמש אותנו להפקת פרסומות וסרטים בסטודיו</p>
+
+      <div class="curriculum-grid">
+        <div class="curriculum-card">
+          <span class="card-step-badge">חלק 01</span>
+          <h4>תסריט וקונספט קולנועי</h4>
+          <p>איך לפתח עלילה מרתקת, לבנות שוט-ליסט מנצח ולנסח פרומפטים שמפיקים תוצאות ויזואליות מדויקות כבר מהניסיון הראשון בלי לבזבז קרדיטים.</p>
+        </div>
+
+        <div class="curriculum-card">
+          <span class="card-step-badge">חלק 02</span>
+          <h4>סוד עקביות הדמויות</h4>
+          <p>הטכניקה המחתרתית (Character Sheets & Soul ID) לשמירה על תווי פנים, בגדים וסגנון זהים של אותה הדמות לאורך כל הסרט ומכל זווית צילום.</p>
+        </div>
+
+        <div class="curriculum-card">
+          <span class="card-step-badge">חלק 03</span>
+          <h4>בימוי מודלים ותנועות מצלמה</h4>
+          <p>שליטה מתקדמת ב-Kling, Runway Gen-3, Luma ו-Veo. איך מייצרים פיזיקה ריאליסטית, תנועות מצלמה מורכבות ודינמיקה שמדמה צילום אמיתי.</p>
+        </div>
+
+        <div class="curriculum-card">
+          <span class="card-step-badge">חלק 04</span>
+          <h4>סאונד, דיבוב ו-Color Grading</h4>
+          <p>סרטון בלי סאונד הוא רק קליפ. נלמד איך להלביש פוליי (Foley), דיבוב עם ליפ-סינק מדויק, מוזיקה דרמטית ותיקוני צבע שהופכים אותו להפקה הוליוודית.</p>
+        </div>
+
+        <div class="curriculum-card">
+          <span class="card-step-badge">חלק 05</span>
+          <h4>איך להפוך את הידע לכסף?</h4>
+          <p>איך למכור סרטוני AI, פרסומות וידאו ותוכן ממותג לעסקים ולחברות בתעריפים של אלפי שקלים – גם אם אין לכם סטודיו פיזי או ציוד יקר.</p>
+        </div>
+
+        <div class="curriculum-card">
+          <span class="card-step-badge">בונוס מיוחד לנרשמים</span>
+          <h4>קובץ הפרומפטים והסודות</h4>
+          <p>רשימת מילות המפתח המדויקות של תאורה, עדשות ומצלמות שמקפיצות כל תמונה לרמה של במאי קולנוע עולמי.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Who Is This For ── -->
+    <section class="about-box">
+      <h3>למי הוובינאר הזה מתאים במיוחד?</h3>
+      <p>
+        🎯 <strong>יוצרי תוכן ועורכי וידאו:</strong> שרוצים להישאר צעד אחד קדימה לפני כולם ולהכפיל את המהירות ואיכות התוצרים שלהם פי 10.<br>
+        🎯 <strong>במאים ויוצרי קולנוע:</strong> שרוצים ליצור פיילוטים, קונספטים וסרטים קצרים שלמים בלי לחכות לתקציבים של מאות אלפי שקלים מקרנות.<br>
+        🎯 <strong>בעלי עסקים ואנשי שיווק:</strong> שרוצים לייצר סרטוני פרסומת ממירים וקמפיינים ויראליים שמותירים את המתחרים מאחור.<br>
+        🎯 <strong>כל מי שמרותק מעולם ה-AI:</strong> ורוצה ללמוד את המקצוע החם ביותר של השנים הקרובות – בימוי ויצירת וידאו סינטטי.
+      </p>
+    </section>
+
+    <!-- ── About the Studio ── -->
+    <section style="text-align: center; margin-bottom: 60px;">
+      <h2 class="section-title">מי עומד מאחורי ההדרכה?</h2>
+      <p class="section-subtitle">צוות clips.Revolution – הסטודיו המוביל בישראל ליצירת תוכן קולנועי וכלי AI לעורכים</p>
+      <div style="max-width: 650px; margin: 0 auto; color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.7;">
+        אנחנו ב-<strong>clips.Revolution</strong> מפתחים תוכנות מקצועיות לעורכים ויוצרים (כמו clips.Draft ו-clips.Scribe) ומפיקים ימי צילום וסרטוני AI לחברות ולמותגים המובילים בארץ. 
+        בוובינאר הזה נשתף איתכם את הידע המעשי והטרי ביותר ישירות מחדר העריכה שלנו.
+      </div>
+    </section>
+
+    <!-- ── FAQ Section ── -->
+    <section class="faq-wrapper">
+      <h2 class="section-title">שאלות נפוצות</h2>
+      <p class="section-subtitle">כל מה שצריך לדעת לפני השידור</p>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>האם ההדרכה באמת ללא עלות?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          כן, לחלוטין! ההדרכה מועברת בחינם כחלק מקהילת היוצרים שאנחנו בונים בישראל. מספר המקומות בשרת מוגבל ל-100 משתתפים בלבד כדי לאפשר מענה לשאלות בלייב.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>האם צריך ידע קודם בעריכה או ניסיון ב-AI?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          לא. ההדרכה בנויה בצורה הדרגתית, החל מצעדי הבסיס ועד לטכניקות המתקדמות ביותר. כל מה שאתם צריכים זה מחשב, סקרנות וחיבור לאינטרנט.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>האם צריך מחשב גיימינג חזק ויקר?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          ממש לא! כמעט כל מודלי ה-AI המובילים (Runway, Kling, Midjourney וכו') רצים בענן של החברות. כלומר, כוח העיבוד מתבצע בשרתים שלהם, ואתם יכולים לעבוד מכל מחשב נייד פשוט.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>מה אם אני לא יכול להגיע בדיוק בשעה של השידור?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          ההקלטה והבונוסים יישלחו אך ורק למי שנרשם מראש בעמוד זה. עם זאת, אנחנו ממליצים מאוד להגיע בלייב כדי שתוכלו לשאול שאלות ולקבל מענה ישיר.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Registration Form #2 (Bottom) ── -->
+    <section class="registration-card" style="margin-bottom: 30px;">
+      <div id="form-content-2">
+        <div class="form-header">
+          <h3>אל תישארו מאחור – הבטיחו את מקומכם 🎟️</h3>
+          <p>הצטרפו לשידור החי וגלו איך ליצור סרטים שלמים מהבית</p>
+        </div>
+
+        <form id="webinar-form-2" class="reg-form" onsubmit="handleFormSubmit(event, 2)">
+          <input type="hidden" name="_subject" value="🚀 ליד חדש מוובינאר קולנוע AI (טופס תחתון)!">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="source" value="webinar_bottom_form">
+
+          <div class="form-group">
+            <label for="name-2">שם מלא</label>
+            <input type="text" id="name-2" name="name" class="form-input" placeholder="שם מלא" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone-2">טלפון / וואטסאפ</label>
+            <input type="tel" id="phone-2" name="phone" class="form-input" placeholder="מספר נייד" pattern="[0-9\-+ ]{9,15}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email-2">אימייל</label>
+            <input type="email" id="email-2" name="email" class="form-input" placeholder="name@example.com" required>
+          </div>
+
+          <button type="submit" id="submit-btn-2" class="submit-btn">
+            <span>שריינו לי מקום עכשיו בחינם 🍿</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="success-state-2" class="success-box">
+        <div class="success-icon">🎉</div>
+        <h3 class="success-title">מעולה! מקומך בוובינאר שוריין</h3>
+        <p class="success-desc">שלחנו לך את כל הפרטים למייל.</p>
+        <a href="https://wa.me/972549445274?text=%D7%94%D7%99%D7%99%20%D7%93%D7%99%D7%99%D7%95%D7%99%D7%93%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%90%D7%A8%20%D7%A7%D7%95%D7%9C%D7%A0%D7%95%D7%A2%20AI%20%D7%A9%D7%9C%20clips.Revolution!" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          <span>שלח הודעת וואטסאפ לאישור מהיר 💬</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── Minimal Footer ── -->
+    <footer style="text-align: center; padding-top: 30px; border-top: 1px solid var(--border-subtle); font-size: 0.85rem; color: rgba(255,255,255,0.4);">
+      <p>© 2026 clips.Revolution · כל הזכויות שמורות</p>
+      <div style="margin-top: 10px;">
+        <a href="index.html" style="color: rgba(255,255,255,0.6); margin: 0 8px; text-decoration: none;">עמוד הבית</a> ·
+        <a href="privacy.html" style="color: rgba(255,255,255,0.6); margin: 0 8px; text-decoration: none;">מדיניות פרטיות</a> ·
+        <a href="terms.html" style="color: rgba(255,255,255,0.6); margin: 0 8px; text-decoration: none;">תקנון</a> ·
+        <a href="nagishut.html" style="color: rgba(255,255,255,0.6); margin: 0 8px; text-decoration: none;">הצהרת נגישות ♿</a>
+      </div>
+    </footer>
+
+  </div><!-- /webinar-wrapper -->
+
+  <!-- ── Mobile Sticky Bar ── -->
+  <div class="mobile-sticky-bar">
+    <div class="sticky-bar-text">
+      <span class="title">וובינאר קולנוע AI 🎬</span>
+      <span class="sub">השתתפות בחינם בלייב</span>
+    </div>
+    <a href="#register" class="sticky-bar-btn">שריין מקום 👈</a>
+  </div>
+
+  <!-- Accessibility Widget -->
+  <script src="accessibility.js"></script>
+
+  <!-- Form Handling Script -->
+  <script>
+    async function handleFormSubmit(event, formIndex) {
+      event.preventDefault();
+      const form = document.getElementById(`webinar-form-${formIndex}`);
+      const submitBtn = document.getElementById(`submit-btn-${formIndex}`);
+      const formContent = document.getElementById(`form-content-${formIndex}`);
+      const successState = document.getElementById(`success-state-${formIndex}`);
+
+      const originalBtnHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>שולח הרשמה... ⏳</span>';
+
+      const formData = new FormData(form);
+      const dataObj = {};
+      formData.forEach((value, key) => { dataObj[key] = value; });
+
+      try {
+        // Send directly to FormSubmit via AJAX
+        const response = await fetch("https://formsubmit.co/ajax/1clipsrevolution1@gmail.com", {
+          method: "POST",
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(dataObj)
+        });
+
+        // Backup lead in localStorage
+        try {
+          const savedLeads = JSON.parse(localStorage.getItem('webinar_leads') || '[]');
+          savedLeads.push({ ...dataObj, date: new Date().toISOString() });
+          localStorage.setItem('webinar_leads', JSON.stringify(savedLeads));
+        } catch(e) {}
+
+        // Show success state
+        formContent.style.display = 'none';
+        successState.style.display = 'block';
+
+        // Scroll into view if needed
+        successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      } catch (error) {
+        console.error('Submission error:', error);
+        alert('הייתה בעיה קלה בשליחה, אנא נסו שוב או פנו ישירות בוואטסאפ');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    }
+
+    function toggleFaq(el) {
+      const parent = el.parentElement;
+      parent.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
