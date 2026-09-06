@@ -111,56 +111,40 @@
     }
     .registration-card {
       width: 100%;
-      max-width: 480px;
+      max-width: 820px;
       background: linear-gradient(180deg, rgba(22, 19, 32, 0.96) 0%, rgba(13, 11, 19, 0.98) 100%);
       border: 1px solid rgba(168, 85, 247, 0.35);
       border-radius: 22px;
-      padding: 34px 28px;
+      padding: 34px 36px;
       box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 45px rgba(168, 85, 247, 0.18);
       backdrop-filter: blur(20px);
       position: relative;
     }
     .form-header {
       text-align: center;
-      margin-bottom: 22px;
-    }
-    .form-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(168, 85, 247, 0.12);
-      border: 1px solid rgba(168, 85, 247, 0.35);
-      color: #d8b4fe;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 50px;
-      margin-bottom: 12px;
-    }
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 8px #22c55e;
-      display: inline-block;
+      margin-bottom: 24px;
     }
     .form-title {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 6px;
       letter-spacing: -0.5px;
     }
     .form-subtitle {
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       color: rgba(255, 255, 255, 0.65);
       line-height: 1.5;
     }
     .reg-form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 16px;
+    }
+    .form-inputs-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
     .form-group {
       display: flex;
@@ -172,6 +156,7 @@
       font-size: 0.84rem;
       font-weight: 600;
       color: rgba(255, 255, 255, 0.88);
+      white-space: nowrap;
     }
     .input-wrap {
       position: relative;
@@ -193,13 +178,13 @@
     }
     .form-input {
       width: 100%;
-      height: 48px;
-      padding: 0 44px 0 16px;
+      height: 46px;
+      padding: 0 42px 0 14px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 12px;
       color: #ffffff;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-family: inherit;
       outline: none;
       transition: all 0.2s ease;
@@ -222,7 +207,7 @@
       color: #ffffff;
       border: none;
       border-radius: 12px;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 800;
       font-family: inherit;
       cursor: pointer;
@@ -251,7 +236,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       margin-top: 12px;
       flex-wrap: wrap;
     }
@@ -259,7 +244,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       color: rgba(255, 255, 255, 0.55);
     }
 
@@ -428,6 +413,10 @@
         padding: 26px 18px;
         border-radius: 18px;
       }
+      .form-inputs-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
     }
   </style>
 </head>
@@ -595,10 +584,6 @@
       <div class="registration-card">
         <div id="form-content-1">
           <div class="form-header">
-            <div class="form-badge">
-              <span class="pulse-dot"></span>
-              <span>שידור חי אונליין · ללא עלות</span>
-            </div>
             <h3 class="form-title">שריינו מקום להדרכה החיה 🎬</h3>
             <p class="form-subtitle">הלינק לשידור והתזכורת יישלחו אליכם ישירות לוואטסאפ ולמייל</p>
           </div>
@@ -610,27 +595,29 @@
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="source" value="webinar_page">
 
-            <div class="form-group">
-              <label for="name-1" class="form-label">שם מלא</label>
-              <div class="input-wrap">
-                <input type="text" id="name-1" name="name" class="form-input" placeholder="הכנס את שמך המלא" required autocomplete="name">
-                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <div class="form-inputs-row">
+              <div class="form-group">
+                <label for="name-1" class="form-label">שם מלא</label>
+                <div class="input-wrap">
+                  <input type="text" id="name-1" name="name" class="form-input" placeholder="הכנס את שמך המלא" required autocomplete="name">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="phone-1" class="form-label">מספר וואטסאפ (לקבלת הקישור)</label>
-              <div class="input-wrap">
-                <input type="tel" id="phone-1" name="phone" class="form-input" placeholder="מספר נייד לשליחת הלינק" pattern="[0-9\-+ ]{9,15}" required autocomplete="tel">
-                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <div class="form-group">
+                <label for="phone-1" class="form-label">מספר וואטסאפ (לקבלת הקישור)</label>
+                <div class="input-wrap">
+                  <input type="tel" id="phone-1" name="phone" class="form-input" placeholder="מספר נייד לשליחת הלינק" pattern="[0-9\-+ ]{9,15}" required autocomplete="tel">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="email-1" class="form-label">כתובת אימייל</label>
-              <div class="input-wrap">
-                <input type="email" id="email-1" name="email" class="form-input" placeholder="כתובת מייל לעדכונים" required autocomplete="email">
-                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              <div class="form-group">
+                <label for="email-1" class="form-label">כתובת אימייל</label>
+                <div class="input-wrap">
+                  <input type="email" id="email-1" name="email" class="form-input" placeholder="כתובת מייל לעדכונים" required autocomplete="email">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </div>
               </div>
             </div>
 
