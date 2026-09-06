@@ -82,21 +82,22 @@
       font-weight: 400;
     }
 
-    /* Video Frame - Compact Cinematic Size */
+    /* Video Frame - Cinematic Widescreen Showreel */
     .video-showcase-box {
       position: relative;
-      max-width: 440px;
-      width: 92%;
-      margin: 0 auto 35px;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto 40px;
       border-radius: 18px;
       overflow: hidden;
       border: 1px solid rgba(168, 85, 247, 0.35);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(168, 85, 247, 0.2);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(168, 85, 247, 0.2);
       background: #000;
+      aspect-ratio: 16 / 9;
     }
     .video-showcase-box video {
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
       object-fit: cover;
     }
@@ -537,9 +538,12 @@
         השיטה המעשית צעד-אחר-צעד: החל מעקביות דמויות מושלמת (Character Consistency), דרך בימוי מודלים מתקדמים (Kling, Runway, Veo), ועד עריכת סאונד ופוסט-פרודקשן קולנועי – בלי לגעת במצלמה ובלי תקציבי ענק.
       </p>
 
-      <!-- Video Teaser Box (Compact & Clean) -->
+      <!-- Video Teaser Box (Cinematic Widescreen Showreel) -->
       <div class="video-showcase-box">
-        <video src="video-hollywood.mp4" autoplay loop muted playsinline poster="preview-draft.png" aria-label="הצצה לתוצרים שנוצרו בקורס"></video>
+        <video id="webinar-video" src="showreel.mp4" poster="showreel-poster.jpg" autoplay loop muted playsinline aria-label="סרטון הדרכה קולנועי"></video>
+        <button onclick="toggleMute('webinar-video', this)" class="sound-toggle-btn" aria-label="הפעל/כבה סאונד">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        </button>
       </div>
     </section>
 
@@ -821,6 +825,18 @@
     if (hamburger) hamburger.addEventListener('click', openMobileMenu);
     if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
     if (backdrop) backdrop.addEventListener('click', closeMobileMenu);
+
+    /* Video Mute/Unmute Helper */
+    function toggleMute(videoId, btn) {
+      const video = document.getElementById(videoId);
+      if (!video) return;
+      video.muted = !video.muted;
+      if (video.muted) {
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>';
+      } else {
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>';
+      }
+    }
   </script>
 </body>
 </html>
