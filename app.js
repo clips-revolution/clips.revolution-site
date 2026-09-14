@@ -380,26 +380,7 @@ if (playBtn) {
   });
 }
 
-/* ── 13. Auto-play Hero Video right after initial paint ── */
-const heroVid = document.getElementById('hero-restaurant-video');
-if (heroVid && heroVid.dataset.src) {
-  const initHeroVideo = () => {
-    if (!heroVid.src) {
-      heroVid.src = heroVid.dataset.src;
-      heroVid.removeAttribute('data-src');
-      heroVid.load();
-      const p = heroVid.play();
-      if (p !== undefined) p.catch(() => {});
-    }
-  };
-  if (document.readyState === 'complete') {
-    setTimeout(initHeroVideo, 100);
-  } else {
-    window.addEventListener('load', () => setTimeout(initHeroVideo, 100));
-  }
-}
-
-/* ── 14. Lazy Load Background Videos (Coverflow & Showreel) on Interaction ── */
+/* ── 13. Lazy Load Background Videos (Coverflow & Showreel) on Interaction ── */
 let videosLoaded = false;
 function loadVideos() {
   if (videosLoaded) return;
