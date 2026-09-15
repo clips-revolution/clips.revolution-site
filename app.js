@@ -72,29 +72,21 @@ if (bgGrid) {
     });
   }
 
-  function initBgGrid() {
-    loadGridImages(currentSetIndex);
-    bgGrid.style.opacity = '0.38';
+  // Load first set immediately
+  loadGridImages(currentSetIndex);
+  bgGrid.style.opacity = '0.38';
 
-    // Rotate every 5 seconds with fade — identical to clips.Scribe
-    setInterval(() => {
-      bgGrid.style.opacity = '0.1';
-      bgGrid.style.transition = 'opacity 0.8s ease';
+  // Rotate every 5 seconds with fade — identical to clips.Scribe
+  setInterval(() => {
+    bgGrid.style.opacity = '0.1';
+    bgGrid.style.transition = 'opacity 0.8s ease';
 
-      setTimeout(() => {
-        currentSetIndex = (currentSetIndex + 1) % IMAGE_SETS.length;
-        loadGridImages(currentSetIndex);
-        bgGrid.style.opacity = '0.38';
-      }, 800);
-    }, 5000);
-  }
-
-  // Defer background image network requests until after main content paint
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => initBgGrid(), { timeout: 2500 });
-  } else {
-    window.addEventListener('load', () => setTimeout(initBgGrid, 600));
-  }
+    setTimeout(() => {
+      currentSetIndex = (currentSetIndex + 1) % IMAGE_SETS.length;
+      loadGridImages(currentSetIndex);
+      bgGrid.style.opacity = '0.38';
+    }, 800);
+  }, 5000);
 }
 
 
