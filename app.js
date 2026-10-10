@@ -5,58 +5,58 @@
 /* ── 1. Background Grid Images (exact same logic as clips.Scribe) ── */
 const IMAGE_SETS = [
   [
-    'https://picsum.photos/seed/cr1/400/600',
-    'https://picsum.photos/seed/cr2/400/400',
-    'https://picsum.photos/seed/cr3/400/500',
-    'https://picsum.photos/seed/cr4/400/350',
-    'https://picsum.photos/seed/cr5/400/600',
-    'https://picsum.photos/seed/cr6/400/400',
-    'https://picsum.photos/seed/cr7/400/550',
-    'https://picsum.photos/seed/cr8/400/400',
-    'https://picsum.photos/seed/cr9/400/600',
-    'https://picsum.photos/seed/cr10/400/350',
-    'https://picsum.photos/seed/cr11/400/500',
-    'https://picsum.photos/seed/cr12/400/450',
-    'https://picsum.photos/seed/cr13/400/600',
-    'https://picsum.photos/seed/cr14/400/350',
-    'https://picsum.photos/seed/cr15/400/500',
-    'https://picsum.photos/seed/cr16/400/400',
+    'bg/cr1.jpg',
+    'bg/cr2.jpg',
+    'bg/cr3.jpg',
+    'bg/cr4.jpg',
+    'bg/cr5.jpg',
+    'bg/cr6.jpg',
+    'bg/cr7.jpg',
+    'bg/cr8.jpg',
+    'bg/cr9.jpg',
+    'bg/cr10.jpg',
+    'bg/cr11.jpg',
+    'bg/cr12.jpg',
+    'bg/cr13.jpg',
+    'bg/cr14.jpg',
+    'bg/cr15.jpg',
+    'bg/cr16.jpg',
   ],
   [
-    'https://picsum.photos/seed/rev1/400/500',
-    'https://picsum.photos/seed/rev2/400/600',
-    'https://picsum.photos/seed/rev3/400/400',
-    'https://picsum.photos/seed/rev4/400/550',
-    'https://picsum.photos/seed/rev5/400/400',
-    'https://picsum.photos/seed/rev6/400/600',
-    'https://picsum.photos/seed/rev7/400/350',
-    'https://picsum.photos/seed/rev8/400/500',
-    'https://picsum.photos/seed/rev9/400/450',
-    'https://picsum.photos/seed/rev10/400/600',
-    'https://picsum.photos/seed/rev11/400/400',
-    'https://picsum.photos/seed/rev12/400/500',
-    'https://picsum.photos/seed/rev13/400/350',
-    'https://picsum.photos/seed/rev14/400/600',
-    'https://picsum.photos/seed/rev15/400/400',
-    'https://picsum.photos/seed/rev16/400/550',
+    'bg/rev1.jpg',
+    'bg/rev2.jpg',
+    'bg/rev3.jpg',
+    'bg/rev4.jpg',
+    'bg/rev5.jpg',
+    'bg/rev6.jpg',
+    'bg/rev7.jpg',
+    'bg/rev8.jpg',
+    'bg/rev9.jpg',
+    'bg/rev10.jpg',
+    'bg/rev11.jpg',
+    'bg/rev12.jpg',
+    'bg/rev13.jpg',
+    'bg/rev14.jpg',
+    'bg/rev15.jpg',
+    'bg/rev16.jpg',
   ],
   [
-    'https://picsum.photos/seed/vid1/400/600',
-    'https://picsum.photos/seed/vid2/400/350',
-    'https://picsum.photos/seed/vid3/400/500',
-    'https://picsum.photos/seed/vid4/400/600',
-    'https://picsum.photos/seed/vid5/400/400',
-    'https://picsum.photos/seed/vid6/400/550',
-    'https://picsum.photos/seed/vid7/400/600',
-    'https://picsum.photos/seed/vid8/400/350',
-    'https://picsum.photos/seed/vid9/400/500',
-    'https://picsum.photos/seed/vid10/400/400',
-    'https://picsum.photos/seed/vid11/400/600',
-    'https://picsum.photos/seed/vid12/400/350',
-    'https://picsum.photos/seed/vid13/400/500',
-    'https://picsum.photos/seed/vid14/400/450',
-    'https://picsum.photos/seed/vid15/400/600',
-    'https://picsum.photos/seed/vid16/400/400',
+    'bg/vid1.jpg',
+    'bg/vid2.jpg',
+    'bg/vid3.jpg',
+    'bg/vid4.jpg',
+    'bg/vid5.jpg',
+    'bg/vid6.jpg',
+    'bg/vid7.jpg',
+    'bg/vid8.jpg',
+    'bg/vid9.jpg',
+    'bg/vid10.jpg',
+    'bg/vid11.jpg',
+    'bg/vid12.jpg',
+    'bg/vid13.jpg',
+    'bg/vid14.jpg',
+    'bg/vid15.jpg',
+    'bg/vid16.jpg',
   ]
 ];
 
@@ -393,6 +393,36 @@ function loadVideos() {
 ['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => {
   window.addEventListener(evt, loadVideos, { passive: true, once: true });
 });
+
+/* ── 13b. Lazy-load heavy below-the-fold videos shortly before they enter the viewport ── */
+(function () {
+  const lazyVideos = document.querySelectorAll('video[data-lazy-src]');
+
+  if (!lazyVideos.length) return;
+
+  function startVideo(video) {
+    video.src = video.getAttribute('data-lazy-src');
+    video.removeAttribute('data-lazy-src');
+    video.load();
+    const p = video.play();
+    if (p !== undefined) p.catch(() => {});
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    lazyVideos.forEach(startVideo);
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        obs.unobserve(entry.target);
+        startVideo(entry.target);
+      }
+    });
+  }, { rootMargin: '400px 0px' });
+  lazyVideos.forEach(v => io.observe(v));
+})();
 
 /* ── Video Mute/Unmute Helper ── */
 function toggleMute(videoId, btn) {

@@ -23,10 +23,16 @@
   <link rel="canonical" href="https://www.clipsrevolution.com/">
   <meta name="google-site-verification" content="yZhAE9iG1d8WpdIQTvmJALGnkv7lbU2So1Lt_8nfWQQ" />
   
-  <!-- Preconnect to Google Fonts for fast text rendering -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+  <!-- Outfit font self-hosted (identical files to Google Fonts) — removes render-blocking third-party CSS -->
+  <link rel="preload" as="font" type="font/woff2" href="fonts/outfit-latin.woff2" crossorigin>
+  <style>
+    @font-face { font-family: 'Outfit'; font-style: normal; font-weight: 300 900; font-display: swap;
+      src: url(fonts/outfit-latin-ext.woff2) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Outfit'; font-style: normal; font-weight: 300 900; font-display: swap;
+      src: url(fonts/outfit-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  </style>
 
   <!-- Preload hero LCP poster image with highest priority -->
   <link rel="preload" as="image" href="restaurant-poster.webp" type="image/webp" fetchpriority="high">
@@ -148,7 +154,7 @@
       דף הבית
     </a>
     <a href="https://cr.studio.clipsrevolution.com" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()" class="mobile-menu-branded">
-      <img src="cr-studio-logo.webp" alt="cR Studio" class="mobile-menu-brand-logo">
+      <img src="cr-studio-logo-160.webp" alt="cR Studio" class="mobile-menu-brand-logo" width="28" height="28">
       סטודיו
     </a>
     <a href="https://www.instagram.com/clips.revolution" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()" class="mobile-menu-branded">
@@ -343,7 +349,7 @@
           </p>
           
           <div class="draft-preview-wrapper" style="margin-bottom: 1.75rem; position: relative;">
-            <img src="preview-draft.png" alt="clips.Draft software" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(168,85,247,0.25); border: 1px solid rgba(255,255,255,0.1);">
+            <img src="preview-draft.png" loading="lazy" decoding="async" alt="clips.Draft software" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(168,85,247,0.25); border: 1px solid rgba(255,255,255,0.1);">
           </div>
 
           <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
@@ -383,7 +389,7 @@
           <!-- Card 0: cR Studio (active first) -->
           <div class="cf-card" data-index="0">
             <a href="https://cr.studio.clipsrevolution.com" target="_blank" rel="noopener noreferrer" class="browser-frame" aria-label="פתח cR Studio">
-              <video src="cr-studio-card.mp4" autoplay loop muted playsinline class="browser-screenshot"></video>
+              <video data-lazy-src="cr-studio-card.mp4" preload="none" autoplay loop muted playsinline class="browser-screenshot"></video>
               <div class="browser-overlay"></div>
             </a>
           </div>
