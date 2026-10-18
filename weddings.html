@@ -339,6 +339,47 @@
       </div>
     </section>
 
+    <!-- ── COUPLE STORY SHOWCASE (TAL & OMRI) ── -->
+    <section id="couple-story" aria-labelledby="couple-story-title" style="padding: 2.5rem 0;">
+      <div class="container">
+        <div class="about-centered reveal" style="text-align: center;">
+
+          <p class="section-label" style="text-align:center;">סרטוני חוויות והקרנה לאירוע 🎬</p>
+          <h2 class="section-title" id="couple-story-title" style="text-align:center;">
+            <span class="grad">הסיפור שלכם</span> בסרט קולנועי
+          </h2>
+          <p class="section-sub" style="text-align:center; margin: 0 auto 1.5rem; max-width: 680px;">
+            הפקה מיוחדת שמחברת את החוויות, הרגעים הקטנים וההומור שלכם כזוג לסרט אחד בלתי נשכח — מושלם להקרנה באירוע או לשיתוף ברשתות.
+          </p>
+
+          <div class="floating-screen-wrap reveal d1" style="position: relative; margin: 0 auto;">
+            <video
+              id="tal-omri-video"
+              class="floating-screen-video"
+              data-lazy-src="video-tal-omri.mp4"
+              poster="tal-omri-poster.jpg"
+              muted
+              loop
+              playsinline
+              preload="none"
+              onclick="toggleMute('tal-omri-video', document.getElementById('tal-omri-sound-btn'))"
+              aria-label="הסיפור של טל ועומרי - סרטון חוויות לזוג"
+              style="cursor: pointer;"
+            ></video>
+            <button
+              id="tal-omri-sound-btn"
+              onclick="toggleMute('tal-omri-video', this)"
+              class="sound-toggle-btn"
+              aria-label="הפעל/כבה סאונד"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ── WEDDING SERVICES SECTION ── -->
     <section id="how-it-works" aria-labelledby="how-title">
       <div class="container">
