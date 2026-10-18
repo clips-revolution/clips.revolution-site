@@ -1,0 +1,18 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "weddings.clipsrevolution.com"
+        }
+      ],
+      "destination": "/weddings.html"
+    },
+    {
+      "source": "/weddings",
+      "destination": "/weddings.html"
+    }
+  ]
+}
