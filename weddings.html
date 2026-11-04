@@ -80,6 +80,20 @@
       padding-bottom: 6rem;
     }
 
+    .video-hero-actions .btn-primary,
+    .video-hero-actions .btn-white {
+      min-width: 245px;
+      justify-content: center;
+    }
+
+    @media (max-width: 640px) {
+      .video-hero-actions .btn-primary,
+      .video-hero-actions .btn-white {
+        min-width: 0;
+        flex: 1 1 0;
+      }
+    }
+
     .scroll-hint {
       bottom: 14px;
       width: 100%;
