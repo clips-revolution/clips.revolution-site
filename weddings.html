@@ -133,6 +133,9 @@
       .vcf-next {
         right: max(1rem, calc(50% - 195px));
       }
+      .floating-screen-wrap {
+        max-width: 620px;
+      }
     }
 
     /* ── Sound Toggle inside 3D CoverFlow & Save-The-Date Cards ── */
@@ -437,49 +440,8 @@
       </div>
     </section>
 
-    <!-- ── 2. SAVE THE DATE SECTION ── -->
-    <section id="save-the-date" aria-labelledby="std-title" style="padding: 2.5rem 0;">
-      <div class="container">
-        <div class="about-centered reveal" style="text-align: center;">
-
-          <p class="section-label" style="text-align:center;">לפני החתונה</p>
-          <h2 class="section-title" id="std-title" style="text-align:center;">
-            סרטוני <span class="grad">Save The Date</span>
-          </h2>
-          <p class="section-sub" style="text-align:center; margin: 0 auto 1.5rem; max-width: 640px;">
-            הופכים את ההזמנה שלכם לסרטון קולנועי מקורי או הפקת Ai ייחודית שתכניס את כל האורחים לאווירה עוד לפני האירוע.
-          </p>
-
-          <div class="wedding-std-scene reveal d1">
-            <div class="wedding-video-card">
-              <video
-                id="wedding-std-video"
-                data-lazy-src="video-save-the-date.mp4"
-                poster="save-the-date-poster.jpg"
-                muted
-                loop
-                playsinline
-                preload="none"
-                onclick="toggleMute('wedding-std-video', document.getElementById('wedding-std-sound-btn'))"
-                aria-label="סרטון Save The Date לחתונה מבית clips.Revolution"
-              ></video>
-              <button
-                id="wedding-std-sound-btn"
-                onclick="toggleMute('wedding-std-video', this)"
-                class="wedding-sound-pill"
-                aria-label="הפעל או כבה סאונד"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 3. AI CINEMATIC MOVIE / FRIENDS GIFT SECTION (TAL & OMRI) ── -->
-    <section id="couple-story" aria-labelledby="couple-story-title" style="padding: 2.5rem 0 4rem;">
+    <!-- ── 2. AI CINEMATIC MOVIE / FRIENDS GIFT SECTION (TAL & OMRI) ── -->
+    <section id="couple-story" aria-labelledby="couple-story-title" style="padding: 2.5rem 0;">
       <div class="container">
         <div class="about-centered reveal" style="text-align: center;">
 
@@ -513,6 +475,47 @@
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
             </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. SAVE THE DATE SECTION ── -->
+    <section id="save-the-date" aria-labelledby="std-title" style="padding: 2.5rem 0 4rem;">
+      <div class="container">
+        <div class="about-centered reveal" style="text-align: center;">
+
+          <p class="section-label" style="text-align:center;">לפני החתונה</p>
+          <h2 class="section-title" id="std-title" style="text-align:center;">
+            סרטוני <span class="grad">Save The Date</span>
+          </h2>
+          <p class="section-sub" style="text-align:center; margin: 0 auto 1.5rem; max-width: 640px;">
+            הופכים את ההזמנה שלכם לסרטון קולנועי מקורי או הפקת Ai ייחודית שתכניס את כל האורחים לאווירה עוד לפני האירוע.
+          </p>
+
+          <div class="wedding-std-scene reveal d1">
+            <div class="wedding-video-card">
+              <video
+                id="wedding-std-video"
+                data-lazy-src="video-save-the-date.mp4"
+                poster="save-the-date-poster.jpg"
+                muted
+                loop
+                playsinline
+                preload="none"
+                onclick="toggleMute('wedding-std-video', document.getElementById('wedding-std-sound-btn'))"
+                aria-label="סרטון Save The Date לחתונה מבית clips.Revolution"
+              ></video>
+              <button
+                id="wedding-std-sound-btn"
+                onclick="toggleMute('wedding-std-video', this)"
+                class="wedding-sound-pill"
+                aria-label="הפעל או כבה סאונד"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+            </div>
           </div>
 
           <div style="margin-top: 2rem; text-align: center;">
