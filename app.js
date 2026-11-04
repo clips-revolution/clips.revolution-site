@@ -308,7 +308,7 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
   function normalizeOffset(raw) {
     let o = raw % total;
     if (o > Math.floor(total / 2))  o -= total;
-    if (o < -Math.ceil(total / 2))  o += total;
+    if (o < -Math.floor(total / 2))  o += total;
     return o;
   }
 
