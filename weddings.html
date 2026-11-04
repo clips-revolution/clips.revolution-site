@@ -342,13 +342,12 @@
             <div class="vcf-card" data-index="0">
               <video
                 id="wedding-reel-left"
-                src="video-wedding-reel-left.mp4"
+                data-src="video-wedding-reel-left.mp4"
                 poster="wedding-reel-left-poster.jpg"
-                autoplay
                 muted
                 loop
                 playsinline
-                preload="metadata"
+                preload="none"
                 aria-label="רילס סושיאל לחתונה - שמאל"
               ></video>
               <button
@@ -379,13 +378,12 @@
             <div class="vcf-card" data-index="2">
               <video
                 id="wedding-reel-right"
-                src="video-wedding-reel-right.mp4"
+                data-src="video-wedding-reel-right.mp4"
                 poster="wedding-reel-right-poster.jpg"
-                autoplay
                 muted
                 loop
                 playsinline
-                preload="metadata"
+                preload="none"
                 aria-label="רילס סושיאל לחתונה - ימין"
               ></video>
               <button
@@ -559,9 +557,22 @@
     }
 
     function toggleReelSound(videoId, btn) {
+      if (typeof loadVideos === 'function') loadVideos();
       muteAllReelsExcept(videoId);
       toggleMute(videoId, btn);
     }
+
+    // טעינה מדורגת: הסרטון האמצעי מקבל עדיפות מלאה בטעינת הדף, והסרטונים בצדדים נטענים מיד אחריו
+    (function () {
+      const centerVid = document.getElementById('wedding-reel-center');
+      const triggerSideReels = () => {
+        if (typeof loadVideos === 'function') loadVideos();
+      };
+      if (centerVid) {
+        centerVid.addEventListener('canplay', () => setTimeout(triggerSideReels, 150), { once: true });
+      }
+      window.addEventListener('load', () => setTimeout(triggerSideReels, 400), { once: true });
+    })();
 
     // כשמחליפים כרטיס בקרוסלה, משתיק רילסים שעברו לצדדים
     document.querySelectorAll('.vcf-card, .vcf-nav, .vcf-dot').forEach(el => {
