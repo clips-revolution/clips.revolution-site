@@ -107,6 +107,22 @@
       text-align: center;
     }
 
+    /* ── Desktop & Tablet 3-Card CoverFlow: tighter spacing for 3 reels ── */
+    @media (min-width: 769px) {
+      .vcf-card.vcf-prev {
+        transform: translateX(-48%) rotateY(40deg) translateZ(-50px);
+      }
+      .vcf-card.vcf-next {
+        transform: translateX(48%) rotateY(-40deg) translateZ(-50px);
+      }
+      .vcf-prev {
+        left: max(1rem, calc(50% - 195px));
+      }
+      .vcf-next {
+        right: max(1rem, calc(50% - 195px));
+      }
+    }
+
     /* ── Sound Toggle inside 3D CoverFlow & Save-The-Date Cards ── */
     .wedding-sound-pill {
       position: absolute;
