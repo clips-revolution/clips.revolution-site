@@ -1,63 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://clipsrevolution.com/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://www.clipsrevolution.com/</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/privacy.html</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://www.clipsrevolution.com/weddings</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/terms.html</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://www.clipsrevolution.com/webinar.html</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/ai-video-marketing.html</loc>
+    <loc>https://www.clipsrevolution.com/ai-video-marketing.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/corporate-shooting-days.html</loc>
+    <loc>https://www.clipsrevolution.com/corporate-shooting-days.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/ai-ingredients-to-video.html</loc>
+    <loc>https://www.clipsrevolution.com/ai-ingredients-to-video.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/ai-video-tools.html</loc>
+    <loc>https://www.clipsrevolution.com/ai-video-tools.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/hollywood-movies-from-home.html</loc>
+    <loc>https://www.clipsrevolution.com/hollywood-movies-from-home.html</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/nagishut.html</loc>
-    <lastmod>2025-08-15</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://www.clipsrevolution.com/privacy.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://clipsrevolution.com/webinar.html</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.clipsrevolution.com/terms.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.clipsrevolution.com/nagishut.html</loc>
+    <lastmod>2025-08-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
