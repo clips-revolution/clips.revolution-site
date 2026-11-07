@@ -536,3 +536,56 @@ function closeWinDownloadModal() {
     modal.classList.remove('show');
   }
 }
+
+/* ── Live TikTok Stats Sync (Real-time views, likes, comments, shares) ── */
+(function () {
+  const ttCards = document.querySelectorAll('.tiktok-card[data-tiktok-id]');
+  if (!ttCards.length) return;
+
+  function formatCompact(n) {
+    if (typeof n !== 'number' || isNaN(n)) return null;
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+    return String(n);
+  }
+
+  let fetched = false;
+  function syncTikTokStats() {
+    if (fetched) return;
+    fetched = true;
+    ttCards.forEach((card, idx) => {
+      const vidId = card.getAttribute('data-tiktok-id');
+      if (!vidId) return;
+      setTimeout(() => {
+        fetch('https://www.tikwm.com/api/?url=https://www.tiktok.com/@clipsrevolution1/video/' + vidId)
+          .then(r => r.json())
+          .then(res => {
+            const d = res && res.data;
+            if (!d) return;
+            const viewsEl = card.querySelector('.tt-views');
+            const likesEl = card.querySelector('.tt-likes');
+            const commentsEl = card.querySelector('.tt-comments');
+            const sharesEl = card.querySelector('.tt-shares');
+            if (viewsEl && d.play_count) viewsEl.textContent = formatCompact(d.play_count);
+            if (likesEl && d.digg_count) likesEl.textContent = formatCompact(d.digg_count);
+            if (commentsEl && d.comment_count !== undefined) commentsEl.textContent = formatCompact(d.comment_count);
+            if (sharesEl && d.share_count !== undefined) sharesEl.textContent = formatCompact(d.share_count);
+          })
+          .catch(() => {});
+      }, idx * 1100);
+    });
+  }
+
+  const section = document.getElementById('tiktok');
+  if (section && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        obs.disconnect();
+        syncTikTokStats();
+      }
+    }, { rootMargin: '600px 0px' });
+    obs.observe(section);
+  } else {
+    window.addEventListener('load', () => setTimeout(syncTikTokStats, 1500), { once: true });
+  }
+})();
