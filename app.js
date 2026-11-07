@@ -284,79 +284,95 @@ document.querySelectorAll('.phone-tile').forEach(tile => {
   });
 })();
 
-/* ── 11. Video CoverFlow (about section) ── */
+/* ── 11. Video CoverFlow (supports multiple .vcf-scene instances) ── */
 (function () {
-  const track = document.querySelector('.vcf-track');
-  if (!track) return;
+  const mutedSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>';
 
-  const cards   = Array.from(track.querySelectorAll('.vcf-card'));
-  const dots    = Array.from(document.querySelectorAll('.vcf-dot'));
-  const btnPrev = document.querySelector('.vcf-prev');
-  const btnNext = document.querySelector('.vcf-next');
-  const total   = cards.length;
-  let   active  = 1;
+  document.querySelectorAll('.vcf-scene').forEach(scene => {
+    const track = scene.querySelector('.vcf-track');
+    if (!track) return;
 
-  const POS = ['vcf-far-left', 'vcf-prev', 'vcf-active', 'vcf-next', 'vcf-far-right'];
+    const cards   = Array.from(track.querySelectorAll('.vcf-card'));
+    const dots    = Array.from(scene.querySelectorAll('.vcf-dot'));
+    const btnPrev = scene.querySelector('.vcf-prev');
+    const btnNext = scene.querySelector('.vcf-next');
+    const total   = cards.length;
+    if (!total) return;
+    let   active  = Math.min(1, total - 1);
 
-  function posClass(offset) {
-    if (offset === 0)  return 'vcf-active';
-    if (offset === -1) return 'vcf-prev';
-    if (offset === 1)  return 'vcf-next';
-    return offset < 0 ? 'vcf-far-left' : 'vcf-far-right';
-  }
+    const POS = ['vcf-far-left', 'vcf-prev', 'vcf-active', 'vcf-next', 'vcf-far-right'];
 
-  function normalizeOffset(raw) {
-    let o = raw % total;
-    if (o > Math.floor(total / 2))  o -= total;
-    if (o < -Math.floor(total / 2))  o += total;
-    return o;
-  }
+    function posClass(offset) {
+      if (offset === 0)  return 'vcf-active';
+      if (offset === -1) return 'vcf-prev';
+      if (offset === 1)  return 'vcf-next';
+      return offset < 0 ? 'vcf-far-left' : 'vcf-far-right';
+    }
 
-  function update(instant) {
-    if (instant) cards.forEach(c => (c.style.transition = 'none'));
+    function normalizeOffset(raw) {
+      let o = raw % total;
+      if (o > Math.floor(total / 2))  o -= total;
+      if (o < -Math.floor(total / 2))  o += total;
+      return o;
+    }
+
+    function update(instant) {
+      if (instant) cards.forEach(c => (c.style.transition = 'none'));
+      cards.forEach((card, i) => {
+        POS.forEach(cls => card.classList.remove(cls));
+        card.classList.add(posClass(normalizeOffset(i - active)));
+        if (i !== active) {
+          const v = card.querySelector('video');
+          if (v && !v.muted) {
+            v.muted = true;
+            const btn = card.querySelector('.tiktok-sound-btn, .wedding-sound-pill, .sound-toggle-btn');
+            if (btn) btn.innerHTML = mutedSvg;
+          }
+        }
+      });
+      dots.forEach((dot, i) => dot.classList.toggle('vcf-dot-active', i === active));
+      if (instant) requestAnimationFrame(() => cards.forEach(c => (c.style.transition = '')));
+    }
+
+    function goTo(index) {
+      active = ((index % total) + total) % total;
+      update(false);
+    }
+
     cards.forEach((card, i) => {
-      POS.forEach(cls => card.classList.remove(cls));
-      card.classList.add(posClass(normalizeOffset(i - active)));
+      card.addEventListener('click', e => {
+        if (!card.classList.contains('vcf-active')) {
+          e.preventDefault();
+          e.stopPropagation();
+          goTo(i);
+        }
+      });
     });
-    dots.forEach((dot, i) => dot.classList.toggle('vcf-dot-active', i === active));
-    if (instant) requestAnimationFrame(() => cards.forEach(c => (c.style.transition = '')));
-  }
 
-  function goTo(index) {
-    active = ((index % total) + total) % total;
-    update(false);
-  }
+    btnPrev?.addEventListener('click', () => goTo(active - 1));
+    btnNext?.addEventListener('click', () => goTo(active + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-  cards.forEach((card, i) => {
-    card.addEventListener('click', e => {
-      if (!card.classList.contains('vcf-active')) { e.preventDefault(); goTo(i); }
+    let touchX = 0;
+    scene.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    scene.addEventListener('touchend', e => {
+      const dx = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(dx) > 48) goTo(active + (dx > 0 ? 1 : -1));
+    }, { passive: true });
+
+    // מניעת מסך שחור בין לופים — מאפס 0.3 שניות לפני הסוף
+    cards.forEach(card => {
+      const video = card.querySelector('video');
+      if (!video) return;
+      video.addEventListener('timeupdate', () => {
+        if (!isNaN(video.duration) && video.currentTime >= video.duration - 0.3) {
+          video.currentTime = 0;
+        }
+      });
     });
+
+    update(true);
   });
-
-  btnPrev?.addEventListener('click', () => goTo(active - 1));
-  btnNext?.addEventListener('click', () => goTo(active + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-
-  let touchX = 0;
-  const scene = document.querySelector('.vcf-scene');
-  scene?.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-  scene?.addEventListener('touchend', e => {
-    const dx = touchX - e.changedTouches[0].clientX;
-    if (Math.abs(dx) > 48) goTo(active + (dx > 0 ? 1 : -1));
-  }, { passive: true });
-
-  // מניעת מסך שחור בין לופים — מאפס 0.3 שניות לפני הסוף
-  cards.forEach(card => {
-    const video = card.querySelector('video');
-    if (!video) return;
-    video.addEventListener('timeupdate', () => {
-      if (!isNaN(video.duration) && video.currentTime >= video.duration - 0.3) {
-        video.currentTime = 0;
-      }
-    });
-  });
-
-  update(true);
 })();
 
 /* ── 12. Video placeholder — ready for embed ── */

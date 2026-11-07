@@ -430,128 +430,143 @@
           </p>
         </div>
 
-        <div class="tiktok-grid reveal d1">
+        <div class="vcf-scene tiktok-vcf-scene reveal d1">
+          <div class="vcf-track">
 
-          <!-- סרטון 1 (ימין) -->
-          <div class="tiktok-card" data-tiktok-id="7699142708736249108">
-            <a href="https://www.tiktok.com/@clipsrevolution1/video/7699142708736249108" target="_blank" rel="noopener noreferrer" class="tiktok-views-pill" aria-label="צפה בסרטון בטיקטוק">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              <span class="tt-views">117.7K</span>
-            </a>
-            <button id="tiktok-btn-1" onclick="event.stopPropagation(); toggleMute('tiktok-vid-1', this)" class="tiktok-sound-btn" aria-label="הפעל או כבה סאונד">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-            </button>
-            <video
-              id="tiktok-vid-1"
-              data-lazy-src="tiktok-ai-1.mp4"
-              poster="tiktok-ai-1-poster.webp"
-              muted
-              loop
-              playsinline
-              preload="none"
-              onclick="toggleMute('tiktok-vid-1', document.getElementById('tiktok-btn-1'))"
-              aria-label="סרטון טיקטוק מצחיק ב-Ai - אין כמו אמא"
-            ></video>
-            <div class="tiktok-side-stats">
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7699142708736249108" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="לייקים בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="#ff2d55" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-                <span class="tt-likes">3.9K</span>
+            <!-- סרטון 1 (שמאל - index 0) -->
+            <div class="vcf-card tiktok-card" data-index="0" data-tiktok-id="7699142708736249108">
+              <a href="https://www.tiktok.com/@clipsrevolution1/video/7699142708736249108" target="_blank" rel="noopener noreferrer" class="tiktok-views-pill" aria-label="צפה בסרטון בטיקטוק">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="tt-views">117.7K</span>
               </a>
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7699142708736249108" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="תגובות בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="white" width="15" height="15"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-                <span class="tt-comments">114</span>
-              </a>
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7699142708736249108" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="שיתופים בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg></span>
-                <span class="tt-shares">2.8K</span>
-              </a>
+              <button id="tiktok-btn-1" onclick="event.stopPropagation(); toggleMute('tiktok-vid-1', this)" class="tiktok-sound-btn" aria-label="הפעל או כבה סאונד">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+              <video
+                id="tiktok-vid-1"
+                data-lazy-src="tiktok-ai-1.mp4"
+                poster="tiktok-ai-1-poster.webp"
+                muted
+                loop
+                playsinline
+                preload="none"
+                onclick="if(this.closest('.vcf-card').classList.contains('vcf-active')) { event.stopPropagation(); toggleMute('tiktok-vid-1', document.getElementById('tiktok-btn-1')); }"
+                aria-label="סרטון טיקטוק מצחיק ב-Ai - אין כמו אמא"
+              ></video>
+              <div class="tiktok-side-stats">
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7699142708736249108" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="לייקים בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="#ff2d55" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+                  <span class="tt-likes">3.9K</span>
+                </a>
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7699142708736249108" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="תגובות בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="white" width="15" height="15"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+                  <span class="tt-comments">114</span>
+                </a>
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7699142708736249108" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="שיתופים בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg></span>
+                  <span class="tt-shares">2.8K</span>
+                </a>
+              </div>
+              <div class="tiktok-bottom-info">
+                <div class="tiktok-handle">@clipsrevolution1</div>
+                <div class="tiktok-caption">אין כמו אמא 🤣</div>
+              </div>
             </div>
-            <div class="tiktok-bottom-info">
-              <div class="tiktok-handle">@clipsrevolution1</div>
-              <div class="tiktok-caption">אין כמו אמא 🤣</div>
+
+            <!-- סרטון 2 (אמצע - index 1 - 401.6K צפיות!) -->
+            <div class="vcf-card tiktok-card" data-index="1" data-tiktok-id="7697659939770223892">
+              <a href="https://www.tiktok.com/@clipsrevolution1/video/7697659939770223892" target="_blank" rel="noopener noreferrer" class="tiktok-views-pill" aria-label="צפה בסרטון בטיקטוק">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="tt-views">401.6K</span>
+              </a>
+              <button id="tiktok-btn-2" onclick="event.stopPropagation(); toggleMute('tiktok-vid-2', this)" class="tiktok-sound-btn" aria-label="הפעל או כבה סאונד">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+              <video
+                id="tiktok-vid-2"
+                data-lazy-src="tiktok-ai-2.mp4"
+                poster="tiktok-ai-2-poster.webp"
+                muted
+                loop
+                playsinline
+                preload="none"
+                onclick="if(this.closest('.vcf-card').classList.contains('vcf-active')) { event.stopPropagation(); toggleMute('tiktok-vid-2', document.getElementById('tiktok-btn-2')); }"
+                aria-label="סרטון טיקטוק מצחיק ב-Ai - ביבי סיפר אותי"
+              ></video>
+              <div class="tiktok-side-stats">
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7697659939770223892" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="לייקים בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="#ff2d55" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+                  <span class="tt-likes">29.4K</span>
+                </a>
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7697659939770223892" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="תגובות בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="white" width="15" height="15"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+                  <span class="tt-comments">497</span>
+                </a>
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7697659939770223892" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="שיתופים בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg></span>
+                  <span class="tt-shares">12.9K</span>
+                </a>
+              </div>
+              <div class="tiktok-bottom-info">
+                <div class="tiktok-handle">@clipsrevolution1</div>
+                <div class="tiktok-caption">די תגידו בתגובות שזה יפה כדי שאני לא ארגיש שזה מכוער 😭</div>
+              </div>
             </div>
+
+            <!-- סרטון 3 (ימין - index 2) -->
+            <div class="vcf-card tiktok-card" data-index="2" data-tiktok-id="7698771155619990804">
+              <a href="https://www.tiktok.com/@clipsrevolution1/video/7698771155619990804" target="_blank" rel="noopener noreferrer" class="tiktok-views-pill" aria-label="צפה בסרטון בטיקטוק">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="tt-views">44.6K</span>
+              </a>
+              <button id="tiktok-btn-3" onclick="event.stopPropagation(); toggleMute('tiktok-vid-3', this)" class="tiktok-sound-btn" aria-label="הפעל או כבה סאונד">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+              <video
+                id="tiktok-vid-3"
+                data-lazy-src="tiktok-ai-3.mp4"
+                poster="tiktok-ai-3-poster.webp"
+                muted
+                loop
+                playsinline
+                preload="none"
+                onclick="if(this.closest('.vcf-card').classList.contains('vcf-active')) { event.stopPropagation(); toggleMute('tiktok-vid-3', document.getElementById('tiktok-btn-3')); }"
+                aria-label="סרטון טיקטוק מצחיק ב-Ai - ראפ מהיר"
+              ></video>
+              <div class="tiktok-side-stats">
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7698771155619990804" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="לייקים בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="#ff2d55" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+                  <span class="tt-likes">1.5K</span>
+                </a>
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7698771155619990804" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="תגובות בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="white" width="15" height="15"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+                  <span class="tt-comments">55</span>
+                </a>
+                <a href="https://www.tiktok.com/@clipsrevolution1/video/7698771155619990804" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="שיתופים בטיקטוק">
+                  <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg></span>
+                  <span class="tt-shares">237</span>
+                </a>
+              </div>
+              <div class="tiktok-bottom-info">
+                <div class="tiktok-handle">@clipsrevolution1</div>
+                <div class="tiktok-caption">נראלי אני הבחורה שעושה ראפ הכי מהיר בארץ</div>
+              </div>
+            </div>
+
           </div>
-
-          <!-- סרטון 2 (אמצע - 401.6K צפיות!) -->
-          <div class="tiktok-card" data-tiktok-id="7697659939770223892">
-            <a href="https://www.tiktok.com/@clipsrevolution1/video/7697659939770223892" target="_blank" rel="noopener noreferrer" class="tiktok-views-pill" aria-label="צפה בסרטון בטיקטוק">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              <span class="tt-views">401.6K</span>
-            </a>
-            <button id="tiktok-btn-2" onclick="event.stopPropagation(); toggleMute('tiktok-vid-2', this)" class="tiktok-sound-btn" aria-label="הפעל או כבה סאונד">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-            </button>
-            <video
-              id="tiktok-vid-2"
-              data-lazy-src="tiktok-ai-2.mp4"
-              poster="tiktok-ai-2-poster.webp"
-              muted
-              loop
-              playsinline
-              preload="none"
-              onclick="toggleMute('tiktok-vid-2', document.getElementById('tiktok-btn-2'))"
-              aria-label="סרטון טיקטוק מצחיק ב-Ai - ביבי סיפר אותי"
-            ></video>
-            <div class="tiktok-side-stats">
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7697659939770223892" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="לייקים בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="#ff2d55" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-                <span class="tt-likes">29.4K</span>
-              </a>
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7697659939770223892" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="תגובות בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="white" width="15" height="15"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-                <span class="tt-comments">497</span>
-              </a>
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7697659939770223892" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="שיתופים בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg></span>
-                <span class="tt-shares">12.9K</span>
-              </a>
-            </div>
-            <div class="tiktok-bottom-info">
-              <div class="tiktok-handle">@clipsrevolution1</div>
-              <div class="tiktok-caption">די תגידו בתגובות שזה יפה כדי שאני לא ארגיש שזה מכוער 😭</div>
-            </div>
+          <div class="vcf-fade-left"  aria-hidden="true"></div>
+          <div class="vcf-fade-right" aria-hidden="true"></div>
+          <button class="vcf-nav vcf-prev" aria-label="הקודם">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="vcf-nav vcf-next" aria-label="הבא">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="vcf-dots" role="group" aria-label="ניווט בין סרטוני טיקטוק">
+            <button class="vcf-dot" data-goto="0" aria-label="סרטון טיקטוק 1"></button>
+            <button class="vcf-dot" data-goto="1" aria-label="סרטון טיקטוק 2"></button>
+            <button class="vcf-dot" data-goto="2" aria-label="סרטון טיקטוק 3"></button>
           </div>
-
-          <!-- סרטון 3 (שמאל) -->
-          <div class="tiktok-card" data-tiktok-id="7698771155619990804">
-            <a href="https://www.tiktok.com/@clipsrevolution1/video/7698771155619990804" target="_blank" rel="noopener noreferrer" class="tiktok-views-pill" aria-label="צפה בסרטון בטיקטוק">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              <span class="tt-views">44.6K</span>
-            </a>
-            <button id="tiktok-btn-3" onclick="event.stopPropagation(); toggleMute('tiktok-vid-3', this)" class="tiktok-sound-btn" aria-label="הפעל או כבה סאונד">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-            </button>
-            <video
-              id="tiktok-vid-3"
-              data-lazy-src="tiktok-ai-3.mp4"
-              poster="tiktok-ai-3-poster.webp"
-              muted
-              loop
-              playsinline
-              preload="none"
-              onclick="toggleMute('tiktok-vid-3', document.getElementById('tiktok-btn-3'))"
-              aria-label="סרטון טיקטוק מצחיק ב-Ai - ראפ מהיר"
-            ></video>
-            <div class="tiktok-side-stats">
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7698771155619990804" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="לייקים בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="#ff2d55" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-                <span class="tt-likes">1.5K</span>
-              </a>
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7698771155619990804" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="תגובות בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="white" width="15" height="15"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-                <span class="tt-comments">55</span>
-              </a>
-              <a href="https://www.tiktok.com/@clipsrevolution1/video/7698771155619990804" target="_blank" rel="noopener noreferrer" class="tiktok-stat-item" aria-label="שיתופים בטיקטוק">
-                <span class="tiktok-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg></span>
-                <span class="tt-shares">237</span>
-              </a>
-            </div>
-            <div class="tiktok-bottom-info">
-              <div class="tiktok-handle">@clipsrevolution1</div>
-              <div class="tiktok-caption">נראלי אני הבחורה שעושה ראפ הכי מהיר בארץ</div>
-            </div>
-          </div>
-
         </div>
 
         <div style="margin-top: 1.75rem; text-align: center;">
