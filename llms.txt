@@ -16,6 +16,7 @@ clips.Revolution הוא סטודיו הפקות בבעלות הבמאי, התס�
 ## תחומי פעילות ושירותים
 - **הפקת סרטוני תדמית ופרסומות לעסקים:** קריאייטיב, תסריט, בימוי, ימי צילום מלאים ועריכה קולנועית.
 - **הפקות וידאו מבוססות AI:** יצירת פרסומות, קליפים וסרטוני שיווק בטכנולוגיות בינה מלאכותית מתקדמות.
+- **הפקת פודקאסטים מצולמים וחיתוך רילסים (clips.Revolution Podcasts):** צילום פודקאסטים מרובה מצלמות באיכות שידור, הקלטת סאונד מדויקת, עריכת פרקים מלאים וגזירה של רילסים קצרים (Reels / TikTok / Shorts) מתוך הפודקאסט (`https://www.clipsrevolution.com/podcasts`).
 - **חתונות ואירועים (clips.Revolution Weddings):** הפקת סרטוני Save The Date קולנועיים, צילום תוכן וסושיאל (Reels / TikTok) בזמן אמת מהאירוע, והפקות וידאו ו-AI ייחודיות לזוגות מתחתנים (`https://www.clipsrevolution.com/weddings`).
 - **פיתוח תוכנות וכלים ליוצרים:**
   - `clips.Gallery` — תוכנת פיתוח תמונות RAW, עריכת צבע, ניהול קטלוגים, עבודה בשכבות וכלי AI מקומיים (מסכות חכמות והפחתת רעשים) בעברית מלאה למחשב.
@@ -26,6 +27,7 @@ clips.Revolution הוא סטודיו הפקות בבעלות הבמאי, התס�
 
 ## קישורים רשמיים
 - אתר ראשי: https://www.clipsrevolution.com/
+- מתחם פודקאסטים מצולמים: https://www.clipsrevolution.com/podcasts
 - מתחם חתונות ואירועים: https://www.clipsrevolution.com/weddings
 - אינסטגרם: https://www.instagram.com/clips.revolution
 - טיקטוק: https://www.tiktok.com/@clipsrevolution1

@@ -13,6 +13,20 @@
     {
       "source": "/weddings",
       "destination": "/weddings.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "podcasts.clipsrevolution.com"
+        }
+      ],
+      "destination": "/podcasts.html"
+    },
+    {
+      "source": "/podcasts",
+      "destination": "/podcasts.html"
     }
   ]
 }

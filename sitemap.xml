@@ -55,6 +55,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.clipsrevolution.com/podcasts</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.clipsrevolution.com/weddings</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>monthly</changefreq>
