@@ -156,6 +156,11 @@
       }
     }
 
+    .floating-screen-wrap .sound-toggle-btn {
+      left: 15px;
+      right: auto;
+    }
+
     /* ── Sound Toggle inside 3D CoverFlow Card ── */
     .wedding-sound-pill {
       position: absolute;
@@ -377,7 +382,7 @@
               <button id="podcast-reel-2-btn" onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-2', this)" class="wedding-sound-pill" aria-label="הפעל או כבה סאונד">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
               </button>
-              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.62); text-shadow: 0 1px 4px rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 0.5rem; max-width: calc(100% - 56px); white-space: normal; line-height: 1.25; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק ע״י קליפס רבולושן וסער ארז עבור אלטשולר שחם.</div>
+              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.5); text-shadow: 0 1px 4px rgba(0,0,0,0.8); padding: 4px 8px; border-radius: 4px; font-size: 0.55rem; white-space: nowrap; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק עבור אלטשולר שחם ושייך להם.</div>
             </div>
 
             <div class="vcf-card" data-index="1">
@@ -385,7 +390,7 @@
               <button id="podcast-reel-1-btn" onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-1', this)" class="wedding-sound-pill" aria-label="הפעל או כבה סאונד">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
               </button>
-              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.62); text-shadow: 0 1px 4px rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 0.5rem; max-width: calc(100% - 56px); white-space: normal; line-height: 1.25; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק ע״י קליפס רבולושן וסער ארז עבור אלטשולר שחם.</div>
+              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.5); text-shadow: 0 1px 4px rgba(0,0,0,0.8); padding: 4px 8px; border-radius: 4px; font-size: 0.55rem; white-space: nowrap; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק עבור אלטשולר שחם ושייך להם.</div>
             </div>
 
             <div class="vcf-card" data-index="2">
@@ -407,7 +412,7 @@
               <button id="podcast-reel-5-btn" onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-5', this)" class="wedding-sound-pill" aria-label="הפעל או כבה סאונד">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
               </button>
-              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.62); text-shadow: 0 1px 4px rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 0.5rem; max-width: calc(100% - 56px); white-space: normal; line-height: 1.25; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק ע״י קליפס רבולושן וסער ארז עבור אלטשולר שחם.</div>
+              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.5); text-shadow: 0 1px 4px rgba(0,0,0,0.8); padding: 4px 8px; border-radius: 4px; font-size: 0.55rem; white-space: nowrap; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק עבור אלטשולר שחם ושייך להם.</div>
             </div>
 
           </div>
@@ -416,10 +421,10 @@
           <div class="vcf-fade-right" aria-hidden="true"></div>
 
           <button class="vcf-nav vcf-prev" aria-label="הקודם">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
           <button class="vcf-nav vcf-next" aria-label="הבא">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
 
           <div class="vcf-dots" role="group" aria-label="ניווט בין סרטונים">
@@ -430,11 +435,6 @@
             <button class="vcf-dot" data-goto="4" aria-label="רילס 5"></button>
           </div>
         </div>
-
-        <!-- ── MANDATORY OWNERSHIP / CREDIT NOTICE (REELS) ── -->
-        <p style="margin: 0.2rem auto 0; font-size: 0.78rem; color: rgba(255, 255, 255, 0.58); text-align: center; max-width: 680px; line-height: 1.5;">
-          * הופק ע״י <strong style="color: rgba(255,255,255,0.92);">קליפס רבולושן וסער ארז</strong> עבור <strong style="color: rgba(255,255,255,0.92);">״אלטשולר שחם״</strong> — הסרטונים שייכים לאלטשולר שחם וכל הזכויות שמורות להם.
-        </p>
 
         <!-- ── CTA BUTTONS ── -->
         <div class="video-hero-actions reveal d2 visible">
@@ -505,12 +505,8 @@
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
             </button>
+            <div id="podcast-full-credit" style="position: absolute; bottom: 10px; right: 12px; background: transparent; color: rgba(255,255,255,0.55); text-shadow: 0 1px 4px rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 0.62rem; white-space: nowrap; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק עבור אלטשולר שחם ושייך להם.</div>
           </div>
-
-          <!-- ── DYNAMIC MANDATORY OWNERSHIP / CREDIT NOTICE ── -->
-          <p id="podcast-full-credit" style="margin: 0.9rem auto 0; font-size: 0.82rem; color: rgba(255, 255, 255, 0.65); text-align: center; max-width: 680px; line-height: 1.5;">
-            * הופק ע״י <strong style="color: rgba(255,255,255,0.92);">קליפס רבולושן וסער ארז</strong> עבור <strong style="color: rgba(255,255,255,0.92);">״אלטשולר שחם״</strong> — הסרטונים שייכים לאלטשולר שחם וכל הזכויות שמורות להם.
-          </p>
 
           <div style="margin-top: 2rem; text-align: center;">
             <a href="https://wa.me/972549445274?text=%D7%94%D7%99%D7%99!%20%D7%A8%D7%90%D7%99%D7%A0%D7%95%20%D7%90%D7%AA%20%D7%A2%D7%9E%D7%95%D7%93%20%D7%94%D7%A4%D7%95%D7%93%D7%A7%D7%90%D7%A1%D7%98%D7%99%D7%9D%20%D7%A9%D7%9C%20clips.Revolution%20%D7%95%D7%A0%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D!" target="_blank" rel="noopener noreferrer" class="btn-primary">
@@ -550,19 +546,19 @@
         src: 'video-podcast-full-sample.mp4',
         poster: 'podcast-full-poster.jpg',
         aria: 'הצצה מתוך פודקאסט מצולם שהופק עבור אלטשולר שחם',
-        credit: '* הופק ע״י <strong style="color: rgba(255,255,255,0.92);">קליפס רבולושן וסער ארז</strong> עבור <strong style="color: rgba(255,255,255,0.92);">״אלטשולר שחם״</strong> — הסרטונים שייכים לאלטשולר שחם וכל הזכויות שמורות להם.'
+        credit: '* הופק עבור אלטשולר שחם ושייך להם.'
       },
       {
         src: 'video-podcast-full-gozali.mp4',
         poster: 'podcast-full-gozali-poster.jpg',
         aria: 'הצצה מתוך פודקאסטר פרק 29 — חיים גוזלי בצילום מרובה מצלמות',
-        credit: 'הפקת פודקאסט מצולם מרובה מצלמות · <strong style="color: rgba(255,255,255,0.92);">פודקאסטר פרק #29 — חיים גוזלי</strong>'
+        credit: ''
       },
       {
         src: 'video-podcast-full-ohad.mp4',
         poster: 'podcast-full-ohad-poster.jpg',
         aria: 'הצצה מתוך פודקאסט אוהד קושמרו מארח את זהבית גבאי',
-        credit: 'הפקת פודקאסט מצולם מרובה מצלמות · <strong style="color: rgba(255,255,255,0.92);">אוהד קושמרו מארח את זהבית גבאי</strong>'
+        credit: ''
       }
     ];
 
@@ -599,7 +595,8 @@
       video.play().catch(() => {});
 
       if (creditEl) {
-        creditEl.innerHTML = ep.credit;
+        creditEl.textContent = ep.credit;
+        creditEl.style.display = ep.credit ? 'block' : 'none';
       }
     }
 
