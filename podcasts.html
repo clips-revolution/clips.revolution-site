@@ -94,7 +94,7 @@
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
   </style>
 
-  <link rel="preload" as="image" href="podcast-full-poster.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="podcast-reel-1-poster.jpg" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
 
   <style>
@@ -152,15 +152,15 @@
 
     @media (min-width: 769px) {
       .floating-screen-wrap {
-        max-width: 680px;
+        max-width: 760px;
       }
     }
 
-    /* ── Sound Toggle inside Vertical Reel Card ── */
+    /* ── Sound Toggle inside 3D CoverFlow Card ── */
     .wedding-sound-pill {
       position: absolute;
       bottom: 12px;
-      right: 12px;
+      left: 12px;
       background: rgba(10, 10, 14, 0.72);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -183,40 +183,58 @@
       transform: scale(1.08);
     }
 
-    /* ── Vertical Reel Showcase Card ── */
-    .wedding-std-scene {
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.5rem 0 1rem;
+    .vcf-card:not(.vcf-active) .wedding-sound-pill {
+      opacity: 0;
+      pointer-events: none;
     }
 
-    .wedding-video-card {
-      position: relative;
-      width: 240px;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #0e0e12;
-      border: 1px solid rgba(168, 85, 247, 0.3);
-      box-shadow:
-        0 40px 90px rgba(0, 0, 0, 0.65),
-        0 0 0 1px rgba(168, 85, 247, 0.12),
-        0 0 90px rgba(168, 85, 247, 0.12);
-    }
-
-    .wedding-video-card video {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      object-fit: cover;
-      display: block;
+    .vcf-card.vcf-active video {
       cursor: pointer;
     }
 
-    @media (max-width: 768px) {
-      .wedding-video-card {
-        width: min(225px, 60vw);
+    /* ── Episode Switcher Pills (Wide Podcast Section) ── */
+    .podcast-ep-switcher {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin: 0 auto 1.6rem;
+      max-width: 760px;
+    }
+
+    .podcast-ep-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.78);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .podcast-ep-pill:hover {
+      background: rgba(168, 85, 247, 0.16);
+      border-color: rgba(168, 85, 247, 0.45);
+      color: #ffffff;
+    }
+
+    .podcast-ep-pill.active {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.32), rgba(236, 72, 153, 0.24));
+      border-color: rgba(192, 132, 252, 0.72);
+      color: #ffffff;
+      box-shadow: 0 4px 18px rgba(168, 85, 247, 0.28);
+    }
+
+    @media (max-width: 600px) {
+      .podcast-ep-pill {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.95rem;
       }
     }
   </style>
@@ -270,6 +288,14 @@
       לאתר הראשי
     </a>
     <a href="#video" onclick="closeMobileMenu()" class="mobile-menu-branded">
+      <span class="mobile-menu-svg-icon mobile-icon-tools">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+      </span>
+      רילסים מתוך פודקאסטים
+    </a>
+    <a href="#full-podcast" onclick="closeMobileMenu()" class="mobile-menu-branded">
       <span class="mobile-menu-svg-icon mobile-icon-about">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
@@ -279,14 +305,6 @@
         </svg>
       </span>
       הפודקאסט המלא
-    </a>
-    <a href="#podcast-reels" onclick="closeMobileMenu()" class="mobile-menu-branded">
-      <span class="mobile-menu-svg-icon mobile-icon-tools">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
-      </span>
-      חיתוך רילסים לסושיאל
     </a>
     <a href="https://www.instagram.com/clips.revolution" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()" class="mobile-menu-branded">
       <span class="mobile-menu-insta-icon">
@@ -335,50 +353,87 @@
   <!-- ═══ PAGE CONTENT ═══ -->
   <main class="page">
 
-    <!-- ── 1. PODCASTS HERO SECTION (EXACT SAME CLEAN LAYOUT AS WEDDINGS & MAIN SITE) ── -->
+    <!-- ── 1. PODCASTS HERO SECTION — 5-CARD 3D COVERFLOW REELS (MATCHING MAIN SITE) ── -->
     <section id="video" aria-labelledby="podcast-hero-title" class="video-hero-section">
       <div class="video-hero-inner">
 
         <div class="video-hero-text reveal visible">
           <div class="hero-brand-title">clips.<span>Revolution</span></div>
           <h1 class="video-hero-title" id="podcast-hero-title">
-            הפקת פודקאסטים מצולמים<br><span class="grad">ברמה קולנועית</span>
+            הפקת פודקאסטים מצולמים<br><span class="grad">ורילסים חדים לסושיאל</span>
           </h1>
           <p class="video-hero-sub" style="max-width: 680px; margin: 0.35rem auto 0; font-size: clamp(1rem, 2.1vw, 1.2rem); color: rgba(255, 255, 255, 0.88); line-height: 1.65;">
-            <strong style="color: #ffffff; font-weight: 800; font-size: clamp(1.15rem, 2.5vw, 1.36rem);">סטודיו מצולם, סאונד מדויק ומעטפת תוכן מלאה 🎙️</strong><br>
-            צילום פודקאסטים מרובה מצלמות באיכות שידור, תאורה מוקפדת ועריכת תוכן חכמה שהופכת כל פרק לנכס שיווקי חזק לעסק או לארגון.
+            <strong style="color: #ffffff; font-weight: 800; font-size: clamp(1.15rem, 2.5vw, 1.36rem);">מכל פרק מלא נולדים רגעים ויראליים לרשתות 🎙️</strong><br>
+            צילום פודקאסטים מרובה מצלמות, סאונד מדויק וחיתוך רילסים קצביים לטיקטוק, אינסטגרם ויוטיוב שורטס.
           </p>
         </div>
 
-        <!-- ── WIDE 16:9 FULL PODCAST SHOWCASE ── -->
-        <div class="floating-screen-wrap reveal d1 visible" style="position: relative; margin: 0 auto;">
-          <video
-            id="podcast-full-video"
-            class="floating-screen-video"
-            src="video-podcast-full-sample.mp4"
-            poster="podcast-full-poster.jpg"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            onclick="togglePodcastSound('podcast-full-video', document.getElementById('podcast-full-sound-btn'))"
-            aria-label="הצצה מתוך פודקאסט מצולם שהופק עבור אלטשולר שחם"
-            style="cursor: pointer;"
-          ></video>
-          <button
-            id="podcast-full-sound-btn"
-            onclick="event.stopPropagation(); togglePodcastSound('podcast-full-video', this)"
-            class="sound-toggle-btn"
-            aria-label="הפעל או כבה סאונד"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        <!-- ── 5-CARD 3D COVERFLOW OF PODCAST REELS ── -->
+        <div class="vcf-scene reveal d1 visible">
+          <div class="vcf-track">
+
+            <div class="vcf-card" data-index="0">
+              <video id="podcast-reel-2" data-src="video-podcast-reel-2.mp4" poster="podcast-reel-2-poster.jpg" muted loop playsinline preload="none" onclick="const card=this.closest('.vcf-card');if(card&&card.classList.contains('vcf-active')){event.stopPropagation();togglePodcastSound('podcast-reel-2',document.getElementById('podcast-reel-2-btn'));}" aria-label="רילס מתוך פודקאסט פיננסי שהופק עבור אלטשולר שחם"></video>
+              <button id="podcast-reel-2-btn" onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-2', this)" class="wedding-sound-pill" aria-label="הפעל או כבה סאונד">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.62); text-shadow: 0 1px 4px rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 0.55rem; white-space: nowrap; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק עבור אלטשולר שחם ושייך להם.</div>
+            </div>
+
+            <div class="vcf-card" data-index="1">
+              <video id="podcast-reel-1" src="video-podcast-reel-1.mp4" poster="podcast-reel-1-poster.jpg" autoplay muted loop playsinline preload="metadata" onclick="const card=this.closest('.vcf-card');if(card&&card.classList.contains('vcf-active')){event.stopPropagation();togglePodcastSound('podcast-reel-1',document.getElementById('podcast-reel-1-btn'));}" aria-label="רילס קצר מתוך פודקאסט פנסיה שהופק עבור אלטשולר שחם"></video>
+              <button id="podcast-reel-1-btn" onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-1', this)" class="wedding-sound-pill" aria-label="הפעל או כבה סאונד">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.62); text-shadow: 0 1px 4px rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 0.55rem; white-space: nowrap; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק עבור אלטשולר שחם ושייך להם.</div>
+            </div>
+
+            <div class="vcf-card" data-index="2">
+              <video id="podcast-reel-3" data-src="video-podcast-reel-3.mp4" poster="podcast-reel-3-poster.jpg" muted loop playsinline preload="none" onclick="const card=this.closest('.vcf-card');if(card&&card.classList.contains('vcf-active')){event.stopPropagation();togglePodcastSound('podcast-reel-3',document.getElementById('podcast-reel-3-btn'));}" aria-label="רילס מתוך פודקאסטר פרק 29 עם חיים גוזלי"></video>
+              <button id="podcast-reel-3-btn" onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-3', this)" class="wedding-sound-pill" aria-label="הפעל או כבה סאונד">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+            </div>
+
+            <div class="vcf-card" data-index="3">
+              <video id="podcast-reel-4" data-src="video-podcast-reel-4.mp4" poster="podcast-reel-4-poster.jpg" muted loop playsinline preload="none" onclick="const card=this.closest('.vcf-card');if(card&&card.classList.contains('vcf-active')){event.stopPropagation();togglePodcastSound('podcast-reel-4',document.getElementById('podcast-reel-4-btn'));}" aria-label="רילס מתוך פודקאסט אוהד קושמרו מארח את זהבית גבאי"></video>
+              <button id="podcast-reel-4-btn" onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-4', this)" class="wedding-sound-pill" aria-label="הפעל או כבה סאונד">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+            </div>
+
+            <div class="vcf-card" data-index="4">
+              <video id="podcast-reel-5" data-src="video-podcast-reel-5.mp4" poster="podcast-reel-5-poster.jpg" muted loop playsinline preload="none" onclick="const card=this.closest('.vcf-card');if(card&&card.classList.contains('vcf-active')){event.stopPropagation();togglePodcastSound('podcast-reel-5',document.getElementById('podcast-reel-5-btn'));}" aria-label="רילס מתוך פודקאסט יום האישה שהופק עבור אלטשולר שחם"></video>
+              <button id="podcast-reel-5-btn" onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-5', this)" class="wedding-sound-pill" aria-label="הפעל או כבה סאונד">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+              <div style="position: absolute; bottom: 10px; right: 10px; background: transparent; color: rgba(255,255,255,0.62); text-shadow: 0 1px 4px rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 0.55rem; white-space: nowrap; pointer-events: none; z-index: 10; text-align: right;" dir="rtl">* הופק עבור אלטשולר שחם ושייך להם.</div>
+            </div>
+
+          </div>
+
+          <div class="vcf-fade-left" aria-hidden="true"></div>
+          <div class="vcf-fade-right" aria-hidden="true"></div>
+
+          <button class="vcf-nav vcf-prev" aria-label="הקודם">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
+          <button class="vcf-nav vcf-next" aria-label="הבא">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="vcf-dots" role="group" aria-label="ניווט בין סרטונים">
+            <button class="vcf-dot" data-goto="0" aria-label="רילס 1"></button>
+            <button class="vcf-dot" data-goto="1" aria-label="רילס 2"></button>
+            <button class="vcf-dot" data-goto="2" aria-label="רילס 3"></button>
+            <button class="vcf-dot" data-goto="3" aria-label="רילס 4"></button>
+            <button class="vcf-dot" data-goto="4" aria-label="רילס 5"></button>
+          </div>
         </div>
 
-        <!-- ── MANDATORY OWNERSHIP / CREDIT NOTICE ── -->
-        <p style="margin: 0.35rem auto 0; font-size: 0.82rem; color: rgba(255, 255, 255, 0.65); text-align: center; max-width: 680px; line-height: 1.5;">
-          * הצצה מתוך פודקאסט שהופק על ידי clips.Revolution עבור <strong style="color: rgba(255,255,255,0.92);">״אלטשולר שחם״</strong> — הסרטון שייך לאלטשולר שחם וכל הזכויות שמורות להם.
+        <!-- ── MANDATORY OWNERSHIP / CREDIT NOTICE (REELS) ── -->
+        <p style="margin: 0.2rem auto 0; font-size: 0.78rem; color: rgba(255, 255, 255, 0.58); text-align: center; max-width: 680px; line-height: 1.5;">
+          * הרילסים של <strong style="color: rgba(255,255,255,0.88);">״אלטשולר שחם״</strong> הופקו על ידי clips.Revolution עבורם — הסרטונים שייכים לאלטשולר שחם וכל הזכויות שמורות להם.
         </p>
 
         <!-- ── CTA BUTTONS ── -->
@@ -387,9 +442,9 @@
             <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
             שריינו הפקת פודקאסט
           </a>
-          <a href="#podcast-reels" class="btn-white">
-            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            חיתוך רילסים לסושיאל
+          <a href="#full-podcast" class="btn-white">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            לצפייה בפודקאסט המלא
           </a>
         </div>
 
@@ -401,46 +456,60 @@
       </div>
     </section>
 
-    <!-- ── 2. REELS CUT FROM FULL PODCAST SECTION ── -->
-    <section id="podcast-reels" aria-labelledby="podcast-reels-title" style="padding: 2.5rem 0 4rem;">
+    <!-- ── 2. FULL WIDE 16:9 MULTI-CAM PODCAST SECTION (BELOW HERO) ── -->
+    <section id="full-podcast" aria-labelledby="full-podcast-title" style="padding: 3rem 0 4.5rem;">
       <div class="container">
         <div class="about-centered reveal" style="text-align: center;">
 
-          <p class="section-label" style="text-align:center;">מקסימום תוכן מכל פרק</p>
-          <h2 class="section-title" id="podcast-reels-title" style="text-align:center;">
-            חיתוך <span class="grad">רילסים מתוך הסרטון המלא</span>
+          <p class="section-label" style="text-align:center;">צילום מרובה מצלמות באיכות שידור</p>
+          <h2 class="section-title" id="full-podcast-title" style="text-align:center;">
+            הפקת <span class="grad">הפודקאסט המלא</span>
           </h2>
-          <p class="section-sub" style="text-align:center; margin: 0 auto 1.5rem; max-width: 660px;">
-            אנחנו לא עוצרים בפרק המלא — מתוך כל צילום פודקאסט אנחנו גוזרים, עורכים ומנגישים עבורכם רילסים קצרים, קצביים ומדויקים לטיקטוק, אינסטגרם ויוטיוב שורטס.
+          <p class="section-sub" style="text-align:center; margin: 0 auto 1.4rem; max-width: 660px;">
+            תאורת אולפן מוקפדת, סאונד צלול ומיתוג מלא בפורמט רוחב ליוטיוב, ספוטיפיי ולאתר הארגון — בחרו פרק לדוגמה מתוך ההפקות שלנו:
           </p>
 
-          <div class="wedding-std-scene reveal d1">
-            <div class="wedding-video-card">
-              <video
-                id="podcast-reel-video"
-                data-lazy-src="video-podcast-reel-1.mp4"
-                poster="podcast-reel-1-poster.jpg"
-                muted
-                loop
-                playsinline
-                preload="none"
-                onclick="togglePodcastSound('podcast-reel-video', document.getElementById('podcast-reel-sound-btn'))"
-                aria-label="רילס קצר שנחתך מתוך פודקאסט עבור אלטשולר שחם"
-              ></video>
-              <button
-                id="podcast-reel-sound-btn"
-                onclick="event.stopPropagation(); togglePodcastSound('podcast-reel-video', this)"
-                class="wedding-sound-pill"
-                aria-label="הפעל או כבה סאונד"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-              </button>
-            </div>
+          <!-- ── EPISODE SWITCHER PILLS ── -->
+          <div class="podcast-ep-switcher" role="tablist" aria-label="בחירת פרק פודקאסט לצפייה">
+            <button type="button" role="tab" aria-selected="true" class="podcast-ep-pill active" onclick="switchPodcastEpisode(0, this)">
+              🎙️ אלטשולר שחם — מדברות השקעות
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="podcast-ep-pill" onclick="switchPodcastEpisode(1, this)">
+              🥊 פודקאסטר — חיים גוזלי
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="podcast-ep-pill" onclick="switchPodcastEpisode(2, this)">
+              ✨ אוהד קושמרו מארח את זהבית גבאי
+            </button>
           </div>
 
-          <!-- ── MANDATORY OWNERSHIP / CREDIT NOTICE (REEL) ── -->
-          <p style="margin: 0.75rem auto 0; font-size: 0.8rem; color: rgba(255, 255, 255, 0.62); text-align: center; max-width: 620px; line-height: 1.5;">
-            * רילס מתוך פודקאסט שהופק עבור <strong style="color: rgba(255,255,255,0.88);">״אלטשולר שחם״</strong> — הסרטון שייך לאלטשולר שחם וכל הזכויות שמורות להם.
+          <!-- ── WIDE 16:9 FLOATING PLAYER ── -->
+          <div class="floating-screen-wrap reveal d1" style="position: relative; margin: 0 auto;">
+            <video
+              id="podcast-full-video"
+              class="floating-screen-video"
+              data-lazy-src="video-podcast-full-sample.mp4"
+              poster="podcast-full-poster.jpg"
+              muted
+              loop
+              playsinline
+              preload="none"
+              onclick="togglePodcastSound('podcast-full-video', document.getElementById('podcast-full-sound-btn'))"
+              aria-label="הצצה מתוך פודקאסט מצולם שהופק עבור אלטשולר שחם"
+              style="cursor: pointer;"
+            ></video>
+            <button
+              id="podcast-full-sound-btn"
+              onclick="event.stopPropagation(); togglePodcastSound('podcast-full-video', this)"
+              class="sound-toggle-btn"
+              aria-label="הפעל או כבה סאונד"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+          </div>
+
+          <!-- ── DYNAMIC MANDATORY OWNERSHIP / CREDIT NOTICE ── -->
+          <p id="podcast-full-credit" style="margin: 0.9rem auto 0; font-size: 0.82rem; color: rgba(255, 255, 255, 0.65); text-align: center; max-width: 680px; line-height: 1.5;">
+            * הצצה מתוך פודקאסט שהופק על ידי clips.Revolution עבור <strong style="color: rgba(255,255,255,0.92);">״אלטשולר שחם״</strong> — הסרטון שייך לאלטשולר שחם וכל הזכויות שמורות להם.
           </p>
 
           <div style="margin-top: 2rem; text-align: center;">
@@ -476,6 +545,27 @@
   <script src="app.js"></script>
   <script src="accessibility.js"></script>
   <script>
+    const PODCAST_EPISODES = [
+      {
+        src: 'video-podcast-full-sample.mp4',
+        poster: 'podcast-full-poster.jpg',
+        aria: 'הצצה מתוך פודקאסט מצולם שהופק עבור אלטשולר שחם',
+        credit: '* הצצה מתוך פודקאסט שהופק על ידי clips.Revolution עבור <strong style="color: rgba(255,255,255,0.92);">״אלטשולר שחם״</strong> — הסרטון שייך לאלטשולר שחם וכל הזכויות שמורות להם.'
+      },
+      {
+        src: 'video-podcast-full-gozali.mp4',
+        poster: 'podcast-full-gozali-poster.jpg',
+        aria: 'הצצה מתוך פודקאסטר פרק 29 — חיים גוזלי בצילום מרובה מצלמות',
+        credit: 'הפקת פודקאסט מצולם מרובה מצלמות · <strong style="color: rgba(255,255,255,0.92);">פודקאסטר פרק #29 — חיים גוזלי</strong>'
+      },
+      {
+        src: 'video-podcast-full-ohad.mp4',
+        poster: 'podcast-full-ohad-poster.jpg',
+        aria: 'הצצה מתוך פודקאסט אוהד קושמרו מארח את זהבית גבאי',
+        credit: 'הפקת פודקאסט מצולם מרובה מצלמות · <strong style="color: rgba(255,255,255,0.92);">אוהד קושמרו מארח את זהבית גבאי</strong>'
+      }
+    ];
+
     // הפעלת/כיבוי סאונד בסרטוני הפודקאסט — רק סרטון אחד משמיע סאונד בכל רגע נתון
     function togglePodcastSound(videoId, btn) {
       if (typeof toggleMute === 'function') {
@@ -483,12 +573,42 @@
       }
     }
 
+    // החלפת פרק בנגן הרחב מתחת להירו
+    function switchPodcastEpisode(index, btn) {
+      const ep = PODCAST_EPISODES[index];
+      const video = document.getElementById('podcast-full-video');
+      const creditEl = document.getElementById('podcast-full-credit');
+      if (!ep || !video) return;
+
+      document.querySelectorAll('.podcast-ep-pill').forEach(p => {
+        p.classList.remove('active');
+        p.setAttribute('aria-selected', 'false');
+      });
+      if (btn) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+      }
+
+      const wasUnmuted = !video.muted;
+      video.removeAttribute('data-lazy-src');
+      video.poster = ep.poster;
+      video.src = ep.src;
+      video.setAttribute('aria-label', ep.aria);
+      video.load();
+      video.muted = !wasUnmuted;
+      video.play().catch(() => {});
+
+      if (creditEl) {
+        creditEl.innerHTML = ep.credit;
+      }
+    }
+
     // מניעת מסך שחור בין לופים בסרטוני הפודקאסט
-    ['podcast-full-video', 'podcast-reel-video'].forEach(id => {
+    ['podcast-full-video', 'podcast-reel-1', 'podcast-reel-2', 'podcast-reel-3', 'podcast-reel-4', 'podcast-reel-5'].forEach(id => {
       const v = document.getElementById(id);
       if (!v) return;
       v.addEventListener('timeupdate', () => {
-        if (!isNaN(v.duration) && v.currentTime >= v.duration - 0.25) {
+        if (!isNaN(v.duration) && v.duration > 0.5 && v.currentTime >= v.duration - 0.25) {
           v.currentTime = 0;
         }
       });
