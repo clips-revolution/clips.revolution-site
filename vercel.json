@@ -28,5 +28,22 @@
       "source": "/podcasts",
       "destination": "/podcasts.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/download/clips-gallery-windows",
+      "destination": "https://github.com/clips-revolution/clips.revolution-site/releases/download/clips-gallery-0.70.0/clips.Gallery-0.70.0-windows-x64.zip",
+      "permanent": false
+    },
+    {
+      "source": "/download/clips-gallery-mac-arm64",
+      "destination": "https://github.com/clips-revolution/clips.revolution-site/releases/download/clips-gallery-0.70.0/clips.Gallery-0.70.0-mac-arm64.zip",
+      "permanent": false
+    },
+    {
+      "source": "/download/clips-gallery-mac-intel",
+      "destination": "https://github.com/clips-revolution/clips.revolution-site/releases/download/clips-gallery-0.70.0/clips.Gallery-0.70.0-mac-intel.zip",
+      "permanent": false
+    }
   ]
 }
