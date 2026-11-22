@@ -2187,71 +2187,95 @@ footer {
 }
 
 /* ════════════════════════════════════════
-   SERVICES SHOWCASE GRID (Homepage)
+   SERVICES 3D COVERFLOW SHOWCASE (Homepage)
 ════════════════════════════════════════ */
 .services-showcase-section {
-  padding: 3.5rem 0 2.5rem;
+  padding: 3.25rem 0 2.5rem;
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-top: 2rem;
+.services-vcf-scene {
+  margin-top: 1.5rem;
+  padding: 1rem 0 3.25rem;
 }
 
-@media (max-width: 1080px) {
-  .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.services-vcf-track {
+  height: 565px;
+  perspective: 1200px;
+  perspective-origin: 50% 42%;
 }
 
-@media (max-width: 600px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
-  }
-}
-
-.service-cinema-card {
-  position: relative;
+.services-vcf-scene .service-cinema-card {
+  width: 310px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, rgba(22, 20, 29, 0.92) 0%, rgba(12, 11, 16, 0.96) 100%);
+  background: linear-gradient(180deg, rgba(22, 20, 29, 0.94) 0%, rgba(12, 11, 16, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.48);
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  direction: rtl;
 }
 
-.service-cinema-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(168, 85, 247, 0.5);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65), 0 0 28px rgba(168, 85, 247, 0.16);
+.services-vcf-scene .service-cinema-card.vcf-active {
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: 0 32px 75px rgba(0, 0, 0, 0.72),
+              0 0 0 1px rgba(168, 85, 247, 0.16),
+              0 0 65px rgba(168, 85, 247, 0.2);
+}
+
+.services-vcf-scene .service-cinema-card.vcf-prev {
+  transform: translateX(-84%) rotateY(36deg) translateZ(-70px) scale(0.88);
+  opacity: 0.62;
+  z-index: 2;
+}
+
+.services-vcf-scene .service-cinema-card.vcf-next {
+  transform: translateX(84%) rotateY(-36deg) translateZ(-70px) scale(0.88);
+  opacity: 0.62;
+  z-index: 2;
+}
+
+.services-vcf-scene .service-cinema-card.vcf-prev:hover,
+.services-vcf-scene .service-cinema-card.vcf-next:hover {
+  opacity: 0.85;
+}
+
+.services-vcf-scene .service-cinema-card.vcf-far-left,
+.services-vcf-scene .service-cinema-card.vcf-far-right {
+  transform: translateX(0) rotateY(0deg) translateZ(-220px) scale(0.74);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.services-vcf-scene .vcf-prev {
+  left: max(1rem, calc(50% - 220px));
+}
+
+.services-vcf-scene .vcf-next {
+  right: max(1rem, calc(50% - 220px));
+}
+
+.services-vcf-scene .vcf-dots {
+  bottom: 0.5rem;
 }
 
 .service-media-wrap {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3.85;
   width: 100%;
   overflow: hidden;
   background: #0d0c12;
 }
 
+.services-vcf-scene .service-media-wrap video,
 .service-media-wrap video,
 .service-media-wrap img {
   width: 100%;
   height: 100%;
+  aspect-ratio: auto;
   object-fit: cover;
   object-position: center 12%;
   display: block;
-  transition: transform 0.45s ease;
-}
-
-.service-cinema-card:hover .service-media-wrap video,
-.service-cinema-card:hover .service-media-wrap img {
-  transform: scale(1.04);
 }
 
 .service-media-vignette {
@@ -2581,78 +2605,66 @@ footer {
   font-size: 0.92rem;
 }
 
-@keyframes service-card-3d {
-  0% {
-    transform: perspective(900px) rotateY(-28deg) scale(0.84);
-    opacity: 0.52;
+@media (min-width: 1024px) {
+  .services-vcf-scene .service-cinema-card {
+    width: 320px;
   }
-  44%, 56% {
-    transform: perspective(900px) rotateY(0deg) scale(1);
-    opacity: 1;
+  .services-vcf-scene .service-cinema-card.vcf-prev {
+    transform: translateX(-95%) rotateY(38deg) translateZ(-75px) scale(0.88);
   }
-  100% {
-    transform: perspective(900px) rotateY(28deg) scale(0.84);
-    opacity: 0.52;
+  .services-vcf-scene .service-cinema-card.vcf-next {
+    transform: translateX(95%) rotateY(-38deg) translateZ(-75px) scale(0.88);
+  }
+  .services-vcf-scene .service-cinema-card.vcf-far-left,
+  .services-vcf-scene .service-cinema-card.vcf-far-right {
+    transform: translateX(0) rotateY(0deg) translateZ(-240px) scale(0.72);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .services-vcf-scene .vcf-prev {
+    left: max(1rem, calc(50% - 235px));
+  }
+  .services-vcf-scene .vcf-next {
+    right: max(1rem, calc(50% - 235px));
   }
 }
 
 @media (max-width: 640px) {
   .services-showcase-section {
-    padding: 2.25rem 0 1.75rem;
+    padding: 2.25rem 0 1.5rem;
   }
   .services-showcase-section .section-sub {
     font-size: 0.86rem;
     line-height: 1.55;
   }
-  .services-grid {
-    display: flex;
-    flex-direction: row;
-    direction: ltr;
-    gap: 0.15rem;
-    margin-top: 1.35rem;
-    width: 100vw;
-    margin-inline: calc(50% - 50vw);
-    padding: 0.6rem calc(50vw - 128px) 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain;
-    touch-action: manipulation;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+  .services-vcf-scene {
+    margin-top: 1rem;
+    padding: 0.5rem 0 2.75rem;
   }
-  .services-grid::-webkit-scrollbar {
-    display: none;
+  .services-vcf-track {
+    height: 490px;
   }
-  @media (prefers-reduced-motion: no-preference) {
-    .services-grid {
-      scroll-behavior: smooth;
-    }
-    @supports ((animation-timeline: view()) and (animation-range: entry)) {
-      .services-grid > .service-cinema-card {
-        animation: service-card-3d auto linear both;
-        animation-timeline: view(inline);
-        will-change: transform, opacity;
-      }
-    }
-  }
-  .service-cinema-card {
-    direction: rtl;
-    flex: 0 0 256px;
-    max-width: 70vw;
-    min-inline-size: 0;
-    scroll-snap-align: center;
+  .services-vcf-scene .service-cinema-card {
+    width: 262px;
+    max-width: 72vw;
     border-radius: 16px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.58);
   }
-  .service-cinema-card.is-active {
-    border-color: rgba(168, 85, 247, 0.52);
-    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.68), 0 0 26px rgba(168, 85, 247, 0.22);
+  .services-vcf-scene .service-cinema-card.vcf-prev {
+    transform: translateX(-62%) rotateY(34deg) translateZ(-45px) scale(0.84);
+    opacity: 0.58;
   }
-  .service-cinema-card:hover {
-    transform: none;
+  .services-vcf-scene .service-cinema-card.vcf-next {
+    transform: translateX(62%) rotateY(-34deg) translateZ(-45px) scale(0.84);
+    opacity: 0.58;
+  }
+  .services-vcf-scene .vcf-prev {
+    left: 0.45rem;
+  }
+  .services-vcf-scene .vcf-next {
+    right: 0.45rem;
   }
   .service-media-wrap {
-    aspect-ratio: 4 / 4.1;
+    aspect-ratio: 4 / 3.7;
   }
   .service-badge {
     top: 10px;
@@ -2698,46 +2710,6 @@ footer {
   }
   .service-card-sublink {
     font-size: 0.73rem;
-  }
-
-  .services-dots {
-    display: flex;
-    direction: ltr;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-    margin-top: 0.55rem;
-  }
-  .services-dots button {
-    appearance: none;
-    background: transparent;
-    border: 0;
-    padding: 10px 6px;
-    min-width: 26px;
-    min-height: 28px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    touch-action: manipulation;
-  }
-  .services-dots button:focus-visible {
-    outline: 2px solid var(--primary-hover);
-    outline-offset: 2px;
-    border-radius: 999px;
-  }
-  .services-dots button span {
-    display: block;
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.28);
-    transition: width 0.24s ease, background-color 0.24s ease, box-shadow 0.24s ease;
-  }
-  .services-dots button[aria-current="true"] span {
-    width: 24px;
-    background: var(--primary-hover);
-    box-shadow: 0 0 12px rgba(192, 132, 252, 0.7);
   }
 
   .answer-first-box {
