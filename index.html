@@ -444,6 +444,7 @@
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -482,6 +483,7 @@
             <a href="clips-gallery.html" style="color: #c084fc; font-size: 0.9rem; text-decoration: none; border-bottom: 1px dashed rgba(192, 132, 252, 0.5); padding-bottom: 2px; transition: all 0.2s;" onmouseover="this.style.color='#fff'; this.style.borderColor='#fff';" onmouseout="this.style.color='#c084fc'; this.style.borderColor='rgba(192, 132, 252, 0.5)';">קראו עוד על התוכנה בכתבה המלאה &larr;</a>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -643,6 +645,7 @@
             <span>לכל הסרטונים בעמוד הטיקטוק שלנו</span>
           </a>
         </div>
+
       </div>
     </section>
 
@@ -721,10 +724,10 @@
           </p>
         </div>
 
-        <div class="services-grid reveal d1">
+        <div class="services-grid reveal d1" id="services-track" tabindex="0" role="group" aria-label="שירותי הפקת וידאו לעסקים">
 
           <!-- Service 1: AI Video & Commercials -->
-          <article class="service-cinema-card">
+          <article class="service-cinema-card" role="group" aria-roledescription="slide" aria-label="1 מתוך 4">
             <div class="service-media-wrap">
               <span class="service-badge">AI PRODUCTION</span>
               <video data-hover-src="video-restaurant.mp4" poster="restaurant-poster.webp" muted loop playsinline preload="none" aria-label="דוגמה להפקת פרסומת AI למסעדה ומותג"></video>
@@ -746,7 +749,7 @@
           </article>
 
           <!-- Service 2: Corporate Shooting Days & Brand Videos -->
-          <article class="service-cinema-card">
+          <article class="service-cinema-card" role="group" aria-roledescription="slide" aria-label="2 מתוך 4">
             <div class="service-media-wrap">
               <span class="service-badge">LIVE PRODUCTION</span>
               <video data-hover-src="video-asaf.mp4" poster="asaf-poster.webp" muted loop playsinline preload="none" style="object-position: center 4%;" aria-label="דוגמה ליום צילום תדמית וראיון עסקי"></video>
@@ -769,7 +772,7 @@
           </article>
 
           <!-- Service 3: Viral Reels & TikTok -->
-          <article class="service-cinema-card">
+          <article class="service-cinema-card" role="group" aria-roledescription="slide" aria-label="3 מתוך 4">
             <div class="service-media-wrap">
               <span class="service-badge">401.6K צפיות</span>
               <video data-hover-src="tiktok-ai-2.mp4" poster="tiktok-ai-2-poster.webp" muted loop playsinline preload="none" aria-label="דוגמה לסרטון רילס וטיקטוק ויראלי"></video>
@@ -791,7 +794,7 @@
           </article>
 
           <!-- Service 4: Filmed Podcasts & Events -->
-          <article class="service-cinema-card">
+          <article class="service-cinema-card" role="group" aria-roledescription="slide" aria-label="4 מתוך 4">
             <div class="service-media-wrap">
               <span class="service-badge">MULTI-CAM 4K</span>
               <video data-hover-src="video-podcast-reel-1.mp4" poster="podcast-reel-1-poster.jpg" muted loop playsinline preload="none" aria-label="דוגמה לצילום פודקאסט ורילסים מתוך פרק"></video>
@@ -813,6 +816,15 @@
           </article>
 
         </div>
+
+
+        <nav class="services-dots" aria-label="בחירת שירות">
+          <button type="button" data-slide="0" aria-current="true" aria-label="שירות 1 מתוך 4: סרטוני AI ופרסומות"><span></span></button>
+          <button type="button" data-slide="1" aria-label="שירות 2 מתוך 4: סרטוני תדמית וימי צילום"><span></span></button>
+          <button type="button" data-slide="2" aria-label="שירות 3 מתוך 4: סרטוני רילס וטיקטוק"><span></span></button>
+          <button type="button" data-slide="3" aria-label="שירות 4 מתוך 4: פודקאסטים מצולמים ואירועים"><span></span></button>
+        </nav>
+        <p class="sr-only" id="services-status" role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -880,6 +892,7 @@
             <a href="https://maps.app.goo.gl/p71rsNQb7av6wZqCA" target="_blank" rel="noopener noreferrer" class="btn-white">הסטודיו שלנו בגוגל מפות</a>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -930,16 +943,142 @@
   <script src="accessibility.js"></script>
   <script>
     (function () {
-      if (!window.matchMedia('(hover: hover)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      document.querySelectorAll('.service-cinema-card').forEach(function (card) {
-        var vid = card.querySelector('video[data-hover-src]');
-        if (!vid) return;
-        card.addEventListener('mouseenter', function () {
-          if (!vid.src) vid.src = vid.getAttribute('data-hover-src');
-          vid.play().catch(function () {});
+      var track = document.getElementById('services-track');
+      if (!track) return;
+      var cards = Array.prototype.slice.call(track.querySelectorAll('.service-cinema-card'));
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.services-dots button'));
+      var statusEl = document.getElementById('services-status');
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mobileMq = window.matchMedia('(max-width: 640px)');
+      var activeIdx = 0;
+      var sectionVisible = false;
+      var pendingIdx = null;
+      var rafPending = false;
+      var settleTimer = null;
+
+      function ensureSrc(vid) {
+        if (vid && !vid.src) {
+          var s = vid.getAttribute('data-hover-src');
+          if (s) vid.src = s;
+        }
+      }
+
+      function playOnly(idx) {
+        if (reducedMotion) return;
+        cards.forEach(function (card, i) {
+          var vid = card.querySelector('video[data-hover-src]');
+          if (!vid) return;
+          if (i === idx && sectionVisible) {
+            ensureSrc(vid);
+            vid.muted = true;
+            vid.play().catch(function () {});
+          } else {
+            vid.pause();
+          }
         });
-        card.addEventListener('mouseleave', function () {
-          vid.pause();
+      }
+
+      function setActiveDot(idx) {
+        dots.forEach(function (btn, i) {
+          if (i === idx) btn.setAttribute('aria-current', 'true');
+          else btn.removeAttribute('aria-current');
+        });
+      }
+
+      function getNearestIndex() {
+        var trackRect = track.getBoundingClientRect();
+        var center = trackRect.left + trackRect.width / 2;
+        var best = 0;
+        var bestDist = Infinity;
+        cards.forEach(function (card, i) {
+          var r = card.getBoundingClientRect();
+          var c = r.left + r.width / 2;
+          var d = Math.abs(c - center);
+          if (d < bestDist) { bestDist = d; best = i; }
+        });
+        return best;
+      }
+
+      function onSettled(announce) {
+        pendingIdx = null;
+        var idx = getNearestIndex();
+        var changed = idx !== activeIdx;
+        activeIdx = idx;
+        setActiveDot(idx);
+        if (mobileMq.matches) playOnly(idx);
+        if (announce && changed && statusEl) {
+          statusEl.textContent = 'שירות ' + (idx + 1) + ' מתוך ' + cards.length;
+        }
+      }
+
+      // Desktop hover-to-play
+      if (window.matchMedia('(hover: hover)').matches && !reducedMotion) {
+        cards.forEach(function (card) {
+          var vid = card.querySelector('video[data-hover-src]');
+          if (!vid) return;
+          card.addEventListener('mouseenter', function () {
+            if (mobileMq.matches) return;
+            ensureSrc(vid);
+            vid.play().catch(function () {});
+          });
+          card.addEventListener('mouseleave', function () {
+            if (mobileMq.matches) return;
+            vid.pause();
+          });
+        });
+      }
+
+      // Mobile / touch active-card autoplay when section enters viewport
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          sectionVisible = entries.some(function (e) { return e.isIntersecting; });
+          if (mobileMq.matches) {
+            if (sectionVisible) playOnly(activeIdx);
+            else playOnly(-1);
+          }
+        }, { threshold: 0.25 });
+        io.observe(track);
+      }
+
+      // Scroll marker sync (rAF-throttled) + settle handler
+      track.addEventListener('scroll', function () {
+        if (!mobileMq.matches) return;
+        if (pendingIdx === null && !rafPending) {
+          rafPending = true;
+          requestAnimationFrame(function () {
+            rafPending = false;
+            var nearest = getNearestIndex();
+            if (nearest !== activeIdx) {
+              activeIdx = nearest;
+              setActiveDot(nearest);
+            }
+          });
+        }
+        if (!('onscrollend' in window)) {
+          clearTimeout(settleTimer);
+          settleTimer = setTimeout(function () { onSettled(true); }, 140);
+        }
+      }, { passive: true });
+
+      if ('onscrollend' in window) {
+        track.addEventListener('scrollend', function () {
+          if (mobileMq.matches) onSettled(true);
+        });
+      }
+
+      // Marker dots click navigation
+      dots.forEach(function (btn, idx) {
+        btn.addEventListener('click', function () {
+          var card = cards[idx];
+          if (!card) return;
+          pendingIdx = idx;
+          activeIdx = idx;
+          setActiveDot(idx);
+          var trackRect = track.getBoundingClientRect();
+          var cardRect = card.getBoundingClientRect();
+          var delta = (cardRect.left + cardRect.width / 2) - (trackRect.left + trackRect.width / 2);
+          track.scrollBy({ left: delta, behavior: reducedMotion ? 'instant' : 'smooth' });
+          if (mobileMq.matches) playOnly(idx);
         });
       });
     })();
