@@ -950,11 +950,12 @@
       var statusEl = document.getElementById('services-status');
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var mobileMq = window.matchMedia('(max-width: 640px)');
-      var activeIdx = 0;
+      var activeIdx = 1;
       var sectionVisible = false;
       var pendingIdx = null;
       var rafPending = false;
       var settleTimer = null;
+      var initializedMobile = false;
 
       function ensureSrc(vid) {
         if (vid && !vid.src) {
@@ -983,6 +984,76 @@
           if (i === idx) btn.setAttribute('aria-current', 'true');
           else btn.removeAttribute('aria-current');
         });
+        cards.forEach(function (card, i) {
+          card.classList.toggle('is-active', i === idx);
+        });
+      }
+
+      function centerCard(idx, instant) {
+        var card = cards[idx];
+        if (!card) return;
+        var trackRect = track.getBoundingClientRect();
+        var cardRect = card.getBoundingClientRect();
+        var delta = (cardRect.left + cardRect.width / 2) - (trackRect.left + trackRect.width / 2);
+        if (instant || reducedMotion) {
+          var prevBehavior = track.style.scrollBehavior;
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft += delta;
+          track.style.scrollBehavior = prevBehavior;
+        } else {
+          track.scrollBy({ left: delta, behavior: 'smooth' });
+        }
+      }
+
+      // WAAPI fallback for browsers without CSS scroll-driven view-timeline (per carousel-slide-effects)
+      var waapiAnims = null;
+      var supportsViewTimeline = window.CSS && CSS.supports && CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
+      function updateWaapi3D() {
+        if (!waapiAnims || !mobileMq.matches) return;
+        var sr = track.getBoundingClientRect();
+        if (!sr.width) return;
+        cards.forEach(function (card) {
+          var anim = waapiAnims.get(card);
+          if (!anim) return;
+          var cr = card.getBoundingClientRect();
+          var progress = (cr.left + cr.width / 2 - sr.left) / sr.width;
+          anim.currentTime = Math.max(0, Math.min(1, progress));
+        });
+      }
+      if (!supportsViewTimeline && !reducedMotion && typeof Element.prototype.animate === 'function') {
+        waapiAnims = new Map();
+        cards.forEach(function (card) {
+          var anim = card.animate([
+            { transform: 'perspective(900px) rotateY(-30deg) scale(0.82)', opacity: 0.48, offset: 0 },
+            { transform: 'perspective(900px) rotateY(0deg) scale(1)', opacity: 1, offset: 0.44 },
+            { transform: 'perspective(900px) rotateY(0deg) scale(1)', opacity: 1, offset: 0.56 },
+            { transform: 'perspective(900px) rotateY(30deg) scale(0.82)', opacity: 0.48, offset: 1 }
+          ], { duration: 1, fill: 'both' });
+          anim.pause();
+          waapiAnims.set(card, anim);
+        });
+      }
+
+      function initMobileCenter() {
+        if (!mobileMq.matches) {
+          if (waapiAnims) {
+            cards.forEach(function (c) {
+              var a = waapiAnims.get(c);
+              if (a) a.cancel();
+            });
+          }
+          return;
+        }
+        if (!initializedMobile) {
+          initializedMobile = true;
+          activeIdx = 1;
+          setActiveDot(1);
+          requestAnimationFrame(function () {
+            centerCard(1, true);
+            updateWaapi3D();
+            if (sectionVisible) playOnly(1);
+          });
+        }
       }
 
       function getNearestIndex() {
@@ -1005,6 +1076,7 @@
         var changed = idx !== activeIdx;
         activeIdx = idx;
         setActiveDot(idx);
+        updateWaapi3D();
         if (mobileMq.matches) playOnly(idx);
         if (announce && changed && statusEl) {
           statusEl.textContent = 'שירות ' + (idx + 1) + ' מתוך ' + cards.length;
@@ -1028,6 +1100,20 @@
         });
       }
 
+      // Tapping a side 3D card on mobile glides it to center instead of triggering link immediately
+      cards.forEach(function (card, idx) {
+        card.addEventListener('click', function (e) {
+          if (mobileMq.matches && idx !== activeIdx) {
+            e.preventDefault();
+            pendingIdx = idx;
+            activeIdx = idx;
+            setActiveDot(idx);
+            centerCard(idx, false);
+            playOnly(idx);
+          }
+        });
+      });
+
       // Mobile / touch active-card autoplay when section enters viewport
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries) {
@@ -1040,9 +1126,10 @@
         io.observe(track);
       }
 
-      // Scroll marker sync (rAF-throttled) + settle handler
+      // Scroll marker sync (rAF-throttled) + 3D WAAPI fallback + settle handler
       track.addEventListener('scroll', function () {
         if (!mobileMq.matches) return;
+        updateWaapi3D();
         if (pendingIdx === null && !rafPending) {
           rafPending = true;
           requestAnimationFrame(function () {
@@ -1069,18 +1156,16 @@
       // Marker dots click navigation
       dots.forEach(function (btn, idx) {
         btn.addEventListener('click', function () {
-          var card = cards[idx];
-          if (!card) return;
           pendingIdx = idx;
           activeIdx = idx;
           setActiveDot(idx);
-          var trackRect = track.getBoundingClientRect();
-          var cardRect = card.getBoundingClientRect();
-          var delta = (cardRect.left + cardRect.width / 2) - (trackRect.left + trackRect.width / 2);
-          track.scrollBy({ left: delta, behavior: reducedMotion ? 'instant' : 'smooth' });
+          centerCard(idx, false);
           if (mobileMq.matches) playOnly(idx);
         });
       });
+
+      initMobileCenter();
+      if (mobileMq.addEventListener) mobileMq.addEventListener('change', initMobileCenter);
     })();
   </script>
   <!-- MAC DOWNLOAD MODAL -->
