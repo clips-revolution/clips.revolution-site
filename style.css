@@ -1102,10 +1102,15 @@ section { padding: 3rem 0; }
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
   }
-  .vcf-track { height: 420px; }
-  .vcf-card { width: 50vw; }
-  .vcf-card.vcf-prev { transform: translateX(-57%) rotateY(36deg) translateZ(-30px); opacity: 0.75; }
-  .vcf-card.vcf-next { transform: translateX(57%) rotateY(-36deg) translateZ(-30px); opacity: 0.75; }
+  .vcf-track {
+    height: 445px;
+    perspective: 1400px;
+    perspective-origin: 50% 40%;
+  }
+  .vcf-dots { bottom: 0.65rem; }
+  .vcf-card { width: 57vw; max-width: 228px; }
+  .vcf-card.vcf-prev { transform: translateX(-46%) rotateY(30deg) translateZ(-28px); opacity: 0.78; }
+  .vcf-card.vcf-next { transform: translateX(46%) rotateY(-30deg) translateZ(-28px); opacity: 0.78; }
   .vcf-fade-left, .vcf-fade-right { display: none; }
   .vcf-prev { left: 0.5rem; }
   .vcf-next { right: 0.5rem; }
@@ -2065,21 +2070,21 @@ footer {
     bottom: 0.85rem;
   }
   .tiktok-vcf-scene .vcf-card {
-    width: 56vw;
-    max-width: 224px;
+    width: 57vw;
+    max-width: 228px;
   }
   .tiktok-vcf-scene .vcf-card.vcf-prev {
-    transform: translateX(-52%) rotateY(36deg) translateZ(-35px);
-    opacity: 0.68;
+    transform: translateX(-46%) rotateY(30deg) translateZ(-28px);
+    opacity: 0.74;
   }
   .tiktok-vcf-scene .vcf-card.vcf-next {
-    transform: translateX(52%) rotateY(-36deg) translateZ(-35px);
-    opacity: 0.68;
+    transform: translateX(46%) rotateY(-30deg) translateZ(-28px);
+    opacity: 0.74;
   }
   .tiktok-vcf-scene .vcf-fade-left,
   .tiktok-vcf-scene .vcf-fade-right {
     display: block;
-    width: 5%;
+    width: 4%;
   }
 }
 
