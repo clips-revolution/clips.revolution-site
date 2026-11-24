@@ -1098,8 +1098,9 @@ section { padding: 3rem 0; }
 @media (max-width: 640px) {
   .vcf-scene {
     overflow: hidden;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
   .vcf-track { height: 420px; }
   .vcf-card { width: 50vw; }
@@ -2038,6 +2039,10 @@ footer {
 }
 
 /* ── TikTok Funny AI Showcase Section (3D CoverFlow) ── */
+.tiktok-vcf-scene .vcf-track {
+  perspective: 1500px;
+  perspective-origin: 50% 38%;
+}
 @media (min-width: 769px) {
   .tiktok-vcf-scene .vcf-card.vcf-prev {
     transform: translateX(-48%) rotateY(40deg) translateZ(-50px);
@@ -2050,6 +2055,31 @@ footer {
   }
   .tiktok-vcf-scene .vcf-next {
     right: max(1rem, calc(50% - 195px));
+  }
+}
+@media (max-width: 680px) {
+  .tiktok-vcf-scene {
+    padding-bottom: 3rem;
+  }
+  .tiktok-vcf-scene .vcf-dots {
+    bottom: 0.85rem;
+  }
+  .tiktok-vcf-scene .vcf-card {
+    width: 56vw;
+    max-width: 224px;
+  }
+  .tiktok-vcf-scene .vcf-card.vcf-prev {
+    transform: translateX(-52%) rotateY(36deg) translateZ(-35px);
+    opacity: 0.68;
+  }
+  .tiktok-vcf-scene .vcf-card.vcf-next {
+    transform: translateX(52%) rotateY(-36deg) translateZ(-35px);
+    opacity: 0.68;
+  }
+  .tiktok-vcf-scene .vcf-fade-left,
+  .tiktok-vcf-scene .vcf-fade-right {
+    display: block;
+    width: 5%;
   }
 }
 
@@ -2200,8 +2230,8 @@ footer {
 
 .services-vcf-track {
   height: 565px;
-  perspective: 1200px;
-  perspective-origin: 50% 42%;
+  perspective: 1500px;
+  perspective-origin: 50% 38%;
 }
 
 .services-vcf-scene .service-cinema-card {
@@ -2209,34 +2239,38 @@ footer {
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, rgba(22, 20, 29, 0.94) 0%, rgba(12, 11, 16, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
   overflow: hidden;
   direction: rtl;
 }
 
 .services-vcf-scene .service-cinema-card.vcf-active {
-  border-color: rgba(168, 85, 247, 0.45);
-  box-shadow: 0 32px 75px rgba(0, 0, 0, 0.72),
-              0 0 0 1px rgba(168, 85, 247, 0.16),
-              0 0 65px rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.65),
+              0 0 0 1px rgba(168, 85, 247, 0.12),
+              0 0 90px rgba(168, 85, 247, 0.12);
 }
 
 .services-vcf-scene .service-cinema-card.vcf-prev {
-  transform: translateX(-84%) rotateY(36deg) translateZ(-70px) scale(0.88);
+  transform: translateX(-65%) rotateY(44deg) translateZ(-60px) scale(1);
   opacity: 0.62;
   z-index: 2;
+  border-color: rgba(255, 255, 255, 0.04);
+  box-shadow: none;
 }
 
 .services-vcf-scene .service-cinema-card.vcf-next {
-  transform: translateX(84%) rotateY(-36deg) translateZ(-70px) scale(0.88);
+  transform: translateX(65%) rotateY(-44deg) translateZ(-60px) scale(1);
   opacity: 0.62;
   z-index: 2;
+  border-color: rgba(255, 255, 255, 0.04);
+  box-shadow: none;
 }
 
 .services-vcf-scene .service-cinema-card.vcf-prev:hover,
 .services-vcf-scene .service-cinema-card.vcf-next:hover {
-  opacity: 0.85;
+  opacity: 0.82;
 }
 
 .services-vcf-scene .service-cinema-card.vcf-far-left,
@@ -2610,10 +2644,10 @@ footer {
     width: 320px;
   }
   .services-vcf-scene .service-cinema-card.vcf-prev {
-    transform: translateX(-95%) rotateY(38deg) translateZ(-75px) scale(0.88);
+    transform: translateX(-78%) rotateY(44deg) translateZ(-60px) scale(1);
   }
   .services-vcf-scene .service-cinema-card.vcf-next {
-    transform: translateX(95%) rotateY(-38deg) translateZ(-75px) scale(0.88);
+    transform: translateX(78%) rotateY(-44deg) translateZ(-60px) scale(1);
   }
   .services-vcf-scene .service-cinema-card.vcf-far-left,
   .services-vcf-scene .service-cinema-card.vcf-far-right {
@@ -2629,7 +2663,7 @@ footer {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 680px) {
   .services-showcase-section {
     padding: 2.25rem 0 1.5rem;
   }
@@ -2642,26 +2676,31 @@ footer {
     padding: 0.5rem 0 2.75rem;
   }
   .services-vcf-track {
-    height: 490px;
+    height: 495px;
   }
   .services-vcf-scene .service-cinema-card {
-    width: 262px;
-    max-width: 72vw;
+    width: 68vw;
+    max-width: 266px;
     border-radius: 16px;
   }
   .services-vcf-scene .service-cinema-card.vcf-prev {
-    transform: translateX(-62%) rotateY(34deg) translateZ(-45px) scale(0.84);
-    opacity: 0.58;
+    transform: translateX(-52%) rotateY(36deg) translateZ(-35px);
+    opacity: 0.68;
   }
   .services-vcf-scene .service-cinema-card.vcf-next {
-    transform: translateX(62%) rotateY(-34deg) translateZ(-45px) scale(0.84);
-    opacity: 0.58;
+    transform: translateX(52%) rotateY(-36deg) translateZ(-35px);
+    opacity: 0.68;
+  }
+  .services-vcf-scene .vcf-fade-left,
+  .services-vcf-scene .vcf-fade-right {
+    display: block;
+    width: 5%;
   }
   .services-vcf-scene .vcf-prev {
-    left: 0.45rem;
+    left: 0.5rem;
   }
   .services-vcf-scene .vcf-next {
-    right: 0.45rem;
+    right: 0.5rem;
   }
   .service-media-wrap {
     aspect-ratio: 4 / 3.7;
