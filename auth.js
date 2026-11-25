@@ -25,6 +25,9 @@
   var pendingDownload = null;
   var dialogEl = null;
   var navBtnEl = null;
+  var navClusterEl = null;
+  var mobileLogoEl = null;
+  var originalMobileLogoHtml = '';
   var toastEl = null;
   var toastTimer = null;
   var handledResume = false;
@@ -63,6 +66,33 @@
   function getAvatarUrl(user) {
     if (!user || !user.user_metadata) return '';
     return user.user_metadata.avatar_url || user.user_metadata.picture || '';
+  }
+
+  function renderRingedAvatar(user, sizeClass) {
+    var name = getDisplayName(user);
+    var initial = escapeHtml((name || 'U').charAt(0).toUpperCase());
+    var avatar = getAvatarUrl(user);
+    var inner = avatar
+      ? '<img src="' + escapeHtml(avatar) + '" alt="" class="cr-avatar-ring-img" referrerpolicy="no-referrer" data-fallback-initial="' + initial + '">'
+      : '<span class="cr-avatar-ring-initial">' + initial + '</span>';
+    return (
+      '<span class="cr-avatar-ring ' + sizeClass + '">' +
+        '<span class="cr-avatar-ring-inner">' + inner + '</span>' +
+      '</span>'
+    );
+  }
+
+  function bindAvatarFallbacks(root) {
+    if (!root) return;
+    root.querySelectorAll('img.cr-avatar-ring-img').forEach(function (img) {
+      img.addEventListener('error', function () {
+        var init = img.getAttribute('data-fallback-initial') || 'U';
+        var span = document.createElement('span');
+        span.className = 'cr-avatar-ring-initial';
+        span.textContent = init;
+        if (img.parentNode) img.parentNode.replaceChild(span, img);
+      });
+    });
   }
 
   function showToast(msg, isError) {
@@ -194,10 +224,7 @@
 
     if (mode === 'account' && currentUser) {
       var name = getDisplayName(currentUser);
-      var avatar = getAvatarUrl(currentUser);
-      var avatarHtml = avatar
-        ? '<img src="' + escapeHtml(avatar) + '" alt="" class="cr-auth-avatar-lg" referrerpolicy="no-referrer">'
-        : '<span class="cr-auth-avatar-fallback-lg">' + escapeHtml(name.charAt(0).toUpperCase()) + '</span>';
+      var avatarHtml = renderRingedAvatar(currentUser, 'cr-avatar-ring--lg');
 
       dlg.innerHTML =
         closeBtn +
@@ -214,6 +241,7 @@
           '</div>' +
         '</div>' +
         '<button type="button" class="cr-auth-logout-btn" id="cr-auth-logout">התנתקות מהחשבון</button>';
+      bindAvatarFallbacks(dlg);
 
       dlg.querySelectorAll('.cr-auth-quick-dl').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -345,41 +373,105 @@
     if (!dialogEl.open) dialogEl.showModal();
   }
 
-  function updateNavButton() {
-    if (!navBtnEl) return;
+  function updateMobileProfile() {
+    if (!mobileLogoEl) return;
     if (currentUser) {
       var name = getDisplayName(currentUser);
-      var avatar = getAvatarUrl(currentUser);
-      navBtnEl.classList.add('is-signed-in');
-      navBtnEl.setAttribute('aria-label', 'החשבון שלי: ' + name);
-      navBtnEl.innerHTML =
-        (avatar
-          ? '<img src="' + escapeHtml(avatar) + '" alt="" class="nav-auth-avatar" referrerpolicy="no-referrer">'
-          : '<span class="nav-auth-initial">' + escapeHtml(name.charAt(0).toUpperCase()) + '</span>') +
-        '<span class="nav-auth-label">' + escapeHtml(name) + '</span>';
+      var email = currentUser.email || '';
+      mobileLogoEl.classList.add('is-user-profile');
+      mobileLogoEl.innerHTML =
+        '<button type="button" class="mobile-auth-profile" aria-label="החשבון שלי: ' + escapeHtml(name) + '">' +
+          renderRingedAvatar(currentUser, 'cr-avatar-ring--menu') +
+          '<span class="mobile-auth-name">' + escapeHtml(name) + '</span>' +
+          (email ? '<span class="mobile-auth-email" dir="ltr">' + escapeHtml(email) + '</span>' : '') +
+        '</button>';
+      bindAvatarFallbacks(mobileLogoEl);
+      var profileBtn = mobileLogoEl.querySelector('.mobile-auth-profile');
+      if (profileBtn) {
+        profileBtn.addEventListener('click', function () {
+          if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
+          openAuthDialog('account');
+        });
+      }
     } else {
-      navBtnEl.classList.remove('is-signed-in');
-      navBtnEl.setAttribute('aria-label', 'התחברות לאתר');
-      navBtnEl.innerHTML =
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true">' +
-          '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>' +
-          '<circle cx="12" cy="7" r="4"></circle>' +
-        '</svg>' +
-        '<span class="nav-auth-label">התחברות</span>';
+      mobileLogoEl.classList.remove('is-user-profile');
+      mobileLogoEl.innerHTML =
+        originalMobileLogoHtml +
+        '<button type="button" class="mobile-auth-login-btn">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true">' +
+            '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>' +
+            '<circle cx="12" cy="7" r="4"></circle>' +
+          '</svg>' +
+          '<span>התחברות</span>' +
+        '</button>';
+      var loginBtn = mobileLogoEl.querySelector('.mobile-auth-login-btn');
+      if (loginBtn) {
+        loginBtn.addEventListener('click', function () {
+          if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
+          openAuthDialog('login', null);
+        });
+      }
     }
   }
 
+  function updateNavButton() {
+    if (navClusterEl) {
+      navClusterEl.classList.toggle('is-signed-in', !!currentUser);
+    }
+    if (navBtnEl) {
+      if (currentUser) {
+        var name = getDisplayName(currentUser);
+        navBtnEl.classList.add('is-signed-in');
+        navBtnEl.setAttribute('aria-label', 'החשבון שלי: ' + name);
+        navBtnEl.setAttribute('title', name);
+        navBtnEl.innerHTML = renderRingedAvatar(currentUser, 'cr-avatar-ring--nav');
+        bindAvatarFallbacks(navBtnEl);
+      } else {
+        navBtnEl.classList.remove('is-signed-in');
+        navBtnEl.setAttribute('aria-label', 'התחברות לאתר');
+        navBtnEl.removeAttribute('title');
+        navBtnEl.innerHTML =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true">' +
+            '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>' +
+            '<circle cx="12" cy="7" r="4"></circle>' +
+          '</svg>' +
+          '<span class="nav-auth-label">התחברות</span>';
+      }
+    }
+    updateMobileProfile();
+  }
+
   function mountNavButton() {
-    var navActions = document.querySelector('#site-header .nav-actions');
-    if (!navActions || navBtnEl) return;
-    navBtnEl = document.createElement('button');
-    navBtnEl.type = 'button';
-    navBtnEl.className = 'nav-auth-btn';
-    navBtnEl.addEventListener('click', function () {
-      if (currentUser) openAuthDialog('account');
-      else openAuthDialog('login', null);
-    });
-    navActions.appendChild(navBtnEl);
+    var header = document.querySelector('#site-header');
+    if (header && !navBtnEl) {
+      var brandLink = header.querySelector('.brand');
+      navBtnEl = document.createElement('button');
+      navBtnEl.type = 'button';
+      navBtnEl.className = 'nav-auth-btn';
+      navBtnEl.addEventListener('click', function () {
+        if (currentUser) openAuthDialog('account');
+        else openAuthDialog('login', null);
+      });
+
+      if (brandLink && brandLink.parentNode) {
+        navClusterEl = document.createElement('div');
+        navClusterEl.className = 'nav-brand-cluster';
+        brandLink.parentNode.insertBefore(navClusterEl, brandLink);
+        navClusterEl.appendChild(navBtnEl);
+        navClusterEl.appendChild(brandLink);
+      } else {
+        var navActions = header.querySelector('.nav-actions');
+        if (navActions) navActions.appendChild(navBtnEl);
+      }
+    }
+
+    if (!mobileLogoEl) {
+      mobileLogoEl = document.querySelector('#mobile-menu .mobile-menu-logo');
+      if (mobileLogoEl) {
+        originalMobileLogoHtml = mobileLogoEl.innerHTML;
+      }
+    }
+
     updateNavButton();
   }
 
