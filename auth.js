@@ -1,10 +1,10 @@
 /* ─────────────────────────────────────────────────────────────
    clips.Revolution — Unified Site Authentication & Download Gate
-   Supabase Project: clips-revolution (eu-central-1)
+   Supabase Project: clips-revolution's Project
 ───────────────────────────────────────────────────────────── */
 (function () {
-  var SUPABASE_URL = 'https://dgumrxecjqiafpfrwtpe.supabase.co';
-  var SUPABASE_KEY = 'sb_publishable_pTcq0KJnslH48eDIQb3z1Q_SkSWuGFj';
+  var SUPABASE_URL = 'https://qkektomkkoyhhiymfwaz.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_lrdTNG07cLrN3sWwCXliBA_hORExTbw';
   var GALLERY_VERSION = '0.70.0';
   var PENDING_KEY = 'cr_pending_gallery_dl';
 
