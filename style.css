@@ -435,11 +435,29 @@ header {
 .video-hero-text { text-align: center; }
 
 .hero-brand-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 700;
   color: var(--foreground);
   margin-bottom: 0.6rem;
-  opacity: 0.9;
+  opacity: 0.94;
+}
+
+.hero-brand-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.55);
+}
+
+.hero-brand-wordmark {
+  line-height: 1;
 }
 
 .hero-brand-title span { color: var(--primary-hover); }
