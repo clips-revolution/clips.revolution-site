@@ -5,22 +5,78 @@
 (function () {
   var SUPABASE_URL = 'https://qkektomkkoyhhiymfwaz.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_lrdTNG07cLrN3sWwCXliBA_hORExTbw';
-  var GALLERY_VERSION = '0.70.0';
   var PENDING_KEY = 'cr_pending_gallery_dl';
   var CONSUMED_KEY = 'cr_consumed_gallery_dl';
   var PENDING_MAX_AGE_MS = 5 * 60 * 1000;
 
-  var PLATFORM_MAP = {
-    '/download/clips-gallery-windows': { platform: 'windows', label: 'Windows' },
-    '/download/clips-gallery-mac-arm64': { platform: 'mac-arm64', label: 'Mac (Apple Silicon)' },
-    '/download/clips-gallery-mac-intel': { platform: 'mac-intel', label: 'Mac (Intel)' }
+  var DOWNLOAD_CATALOG = {
+    'gallery-windows': {
+      key: 'gallery-windows',
+      product: 'clips.Gallery',
+      version: '0.70.0',
+      platform: 'windows',
+      label: 'Windows',
+      url: '/download/clips-gallery-windows',
+      modal: null
+    },
+    'gallery-mac-arm64': {
+      key: 'gallery-mac-arm64',
+      product: 'clips.Gallery',
+      version: '0.70.0',
+      platform: 'mac-arm64',
+      label: 'Mac (Apple Silicon)',
+      url: '/download/clips-gallery-mac-arm64',
+      modal: null
+    },
+    'gallery-mac-intel': {
+      key: 'gallery-mac-intel',
+      product: 'clips.Gallery',
+      version: '0.70.0',
+      platform: 'mac-intel',
+      label: 'Mac (Intel)',
+      url: '/download/clips-gallery-mac-intel',
+      modal: null
+    },
+    'draft-windows': {
+      key: 'draft-windows',
+      product: 'clips.Draft',
+      version: '1.0.6',
+      platform: 'windows',
+      label: 'Windows',
+      url: 'https://pub-6a9d4dd7cdb644789e0c86bf9251835f.r2.dev/clips.Draft%20Setup%201.0.6.exe',
+      modal: 'win'
+    },
+    'draft-mac-arm64': {
+      key: 'draft-mac-arm64',
+      product: 'clips.Draft',
+      version: '1.0.6',
+      platform: 'mac-arm64',
+      label: 'Mac (Apple Silicon)',
+      url: 'https://pub-6a9d4dd7cdb644789e0c86bf9251835f.r2.dev/clips.Draft-1.0.6-arm64.dmg',
+      modal: 'mac'
+    }
   };
 
-  var PLATFORM_TO_URL = {
-    'windows': '/download/clips-gallery-windows',
-    'mac-arm64': '/download/clips-gallery-mac-arm64',
-    'mac-intel': '/download/clips-gallery-mac-intel'
+  var URL_TO_KEY = {
+    '/download/clips-gallery-windows': 'gallery-windows',
+    '/download/clips-gallery-mac-arm64': 'gallery-mac-arm64',
+    '/download/clips-gallery-mac-intel': 'gallery-mac-intel'
   };
+
+  var LEGACY_KEY_MAP = {
+    'windows': 'gallery-windows',
+    'mac-arm64': 'gallery-mac-arm64',
+    'mac-intel': 'gallery-mac-intel'
+  };
+
+  function resolveCatalogItem(key) {
+    if (!key) return null;
+    var normalized = DOWNLOAD_CATALOG[key] ? key : LEGACY_KEY_MAP[key];
+    return normalized ? DOWNLOAD_CATALOG[normalized] : null;
+  }
+
+  var origOpenWinModal = null;
+  var origOpenMacModal = null;
 
   var sb = null;
   var currentUser = null;
@@ -120,9 +176,13 @@
     try {
       if (info) {
         var payload = {
+          key: info.key,
+          product: info.product || 'clips.Gallery',
+          version: info.version || '0.70.0',
           url: info.url,
           platform: info.platform,
           label: info.label,
+          modal: info.modal || null,
           id: info.id || (Date.now() + '-' + Math.random().toString(36).slice(2, 8)),
           ts: Date.now()
         };
@@ -175,12 +235,12 @@
     savePending(null);
     cleanDlParam();
 
-    if (dlParam && PLATFORM_TO_URL[dlParam]) {
-      var token = dlIdParam || ('param:' + dlParam);
+    var paramItem = resolveCatalogItem(dlParam);
+    if (paramItem) {
+      var token = dlIdParam || ('param:' + paramItem.key);
       if (isConsumed(token)) return null;
       markConsumed(token);
-      var url = PLATFORM_TO_URL[dlParam];
-      return { url: url, platform: dlParam, label: PLATFORM_MAP[url].label };
+      return paramItem;
     }
 
     if (stored && stored.url && stored.platform) {
@@ -213,8 +273,8 @@
     u.searchParams.delete('error_description');
     u.searchParams.delete('cr_dl');
     u.searchParams.delete('cr_dl_id');
-    if (info && info.platform) {
-      u.searchParams.set('cr_dl', info.platform);
+    if (info && (info.key || info.platform)) {
+      u.searchParams.set('cr_dl', info.key || info.platform);
       var dlId = (pendingDownload && pendingDownload.id) || (Date.now() + '-' + Math.random().toString(36).slice(2, 8));
       u.searchParams.set('cr_dl_id', dlId);
     }
@@ -239,6 +299,9 @@
     savePending(null);
     cleanDlParam();
 
+    var product = info.product || 'clips.Gallery';
+    var version = info.version || '0.70.0';
+
     var client = initClient();
     if (client && user) {
       var meta = user.user_metadata || {};
@@ -246,14 +309,20 @@
         user_id: user.id,
         email: user.email || '',
         full_name: meta.full_name || meta.name || null,
-        product: 'clips.Gallery',
+        product: product,
         platform: info.platform,
-        version: GALLERY_VERSION
+        version: version
       }).then(function () {}, function () {});
     }
 
-    showToast('ההורדה של clips.Gallery (' + info.label + ') החלה!');
-    triggerFileDownload(info.url);
+    showToast('ההורדה של ' + product + ' (' + info.label + ') החלה!');
+    if (info.modal === 'win' && typeof origOpenWinModal === 'function') {
+      origOpenWinModal(info.url);
+    } else if (info.modal === 'mac' && typeof origOpenMacModal === 'function') {
+      origOpenMacModal(info.url);
+    } else {
+      triggerFileDownload(info.url);
+    }
   }
 
   function ensureDialog() {
@@ -313,24 +382,8 @@
           '<h1 id="cr-auth-title" class="cr-auth-title">היי, ' + escapeHtml(name) + '</h1>' +
           '<p class="cr-auth-sub" dir="ltr">' + escapeHtml(currentUser.email || '') + '</p>' +
         '</div>' +
-        '<div class="cr-auth-account-box">' +
-          '<p class="cr-auth-account-label">הורדה מהירה של <bdi>clips.Gallery ' + GALLERY_VERSION + '</bdi></p>' +
-          '<div class="cr-auth-dl-row">' +
-            '<button type="button" class="btn-primary cr-auth-quick-dl" data-platform="windows" autofocus>הורדה ל־Windows</button>' +
-            '<button type="button" class="btn-white cr-auth-quick-dl" data-platform="mac-arm64">הורדה ל־Mac</button>' +
-          '</div>' +
-        '</div>' +
-        '<button type="button" class="cr-auth-logout-btn" id="cr-auth-logout">התנתקות מהחשבון</button>';
+        '<button type="button" class="cr-auth-logout-btn" id="cr-auth-logout" autofocus>התנתקות מהחשבון</button>';
       bindAvatarFallbacks(dlg);
-
-      dlg.querySelectorAll('.cr-auth-quick-dl').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var pf = btn.getAttribute('data-platform');
-          var url = PLATFORM_TO_URL[pf];
-          dlg.close();
-          logAndStartDownload(currentUser, { url: url, platform: pf, label: PLATFORM_MAP[url].label });
-        });
-      });
 
       var logoutBtn = dlg.querySelector('#cr-auth-logout');
       if (logoutBtn) {
@@ -350,11 +403,12 @@
     }
 
     var isDownloadGate = !!downloadInfo;
+    var productName = isDownloadGate ? (downloadInfo.product || 'clips.Gallery') : '';
     var titleText = isDownloadGate
-      ? 'התחברו בחינם להורדת <bdi>clips.Gallery</bdi>'
+      ? 'התחברו בחינם להורדת <bdi>' + escapeHtml(productName) + '</bdi>'
       : 'התחברות ל־<bdi>clips.Revolution</bdi>';
     var subText = isDownloadGate
-      ? 'הורדה ל־<strong><bdi>' + escapeHtml(downloadInfo.label) + '</bdi></strong> · התחברות קצרה בחינם מאפשרת להוריד את הגרסה המלאה ולקבל עדכונים ופריסטים חדשים.'
+      ? 'הורדה ל־<strong><bdi>' + escapeHtml(downloadInfo.label) + '</bdi></strong> · התחברות קצרה בחינם מאפשרת להוריד את הגרסה המלאה ולקבל עדכונים חדשים.'
       : 'התחברו בשנייה עם חשבון Google או אימייל כדי להוריד את הכלים החינמיים של הסטודיו.';
 
     dlg.innerHTML =
@@ -555,22 +609,62 @@
     updateNavButton();
   }
 
+  function requestGatedDownload(info) {
+    if (!info) return;
+    if (currentUser) {
+      logAndStartDownload(currentUser, info);
+    } else {
+      openAuthDialog('login', info);
+    }
+  }
+
   function bindDownloadLinks() {
     document.addEventListener('click', function (e) {
       var link = e.target.closest('a[href^="/download/clips-gallery-"]');
       if (!link || link.hasAttribute('data-cr-direct')) return;
       var href = link.getAttribute('href');
-      var meta = PLATFORM_MAP[href];
-      if (!meta) return;
+      var key = URL_TO_KEY[href];
+      var item = resolveCatalogItem(key);
+      if (!item) return;
 
       e.preventDefault();
-      var info = { url: href, platform: meta.platform, label: meta.label };
-      if (currentUser) {
-        logAndStartDownload(currentUser, info);
-      } else {
-        openAuthDialog('login', info);
-      }
+      requestGatedDownload(item);
     });
+
+    // Gate clips.Draft download modal helpers (defined in app.js)
+    if (typeof window.openWinDownloadModal === 'function' && !origOpenWinModal) {
+      origOpenWinModal = window.openWinDownloadModal;
+      window.openWinDownloadModal = function (downloadUrl) {
+        var base = DOWNLOAD_CATALOG['draft-windows'];
+        var item = {
+          key: base.key,
+          product: base.product,
+          version: base.version,
+          platform: base.platform,
+          label: base.label,
+          url: downloadUrl || base.url,
+          modal: 'win'
+        };
+        requestGatedDownload(item);
+      };
+    }
+
+    if (typeof window.openMacDownloadModal === 'function' && !origOpenMacModal) {
+      origOpenMacModal = window.openMacDownloadModal;
+      window.openMacDownloadModal = function (downloadUrl) {
+        var base = DOWNLOAD_CATALOG['draft-mac-arm64'];
+        var item = {
+          key: base.key,
+          product: base.product,
+          version: base.version,
+          platform: base.platform,
+          label: base.label,
+          url: downloadUrl || base.url,
+          modal: 'mac'
+        };
+        requestGatedDownload(item);
+      };
+    }
   }
 
   function handleSignedIn(user) {
