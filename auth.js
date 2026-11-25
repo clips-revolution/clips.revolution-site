@@ -7,6 +7,8 @@
   var SUPABASE_KEY = 'sb_publishable_lrdTNG07cLrN3sWwCXliBA_hORExTbw';
   var GALLERY_VERSION = '0.70.0';
   var PENDING_KEY = 'cr_pending_gallery_dl';
+  var CONSUMED_KEY = 'cr_consumed_gallery_dl';
+  var PENDING_MAX_AGE_MS = 5 * 60 * 1000;
 
   var PLATFORM_MAP = {
     '/download/clips-gallery-windows': { platform: 'windows', label: 'Windows' },
@@ -31,6 +33,7 @@
   var toastEl = null;
   var toastTimer = null;
   var handledResume = false;
+  var hadAuthCallbackOnLoad = false;
 
   function initClient() {
     if (sb) return sb;
@@ -115,30 +118,88 @@
   function savePending(info) {
     pendingDownload = info;
     try {
-      if (info) sessionStorage.setItem(PENDING_KEY, JSON.stringify(info));
-      else sessionStorage.removeItem(PENDING_KEY);
+      if (info) {
+        var payload = {
+          url: info.url,
+          platform: info.platform,
+          label: info.label,
+          id: info.id || (Date.now() + '-' + Math.random().toString(36).slice(2, 8)),
+          ts: Date.now()
+        };
+        pendingDownload = payload;
+        sessionStorage.setItem(PENDING_KEY, JSON.stringify(payload));
+      } else {
+        sessionStorage.removeItem(PENDING_KEY);
+      }
     } catch (e) {}
   }
 
-  function readPending() {
+  function isConsumed(id) {
+    if (!id) return false;
+    try {
+      return sessionStorage.getItem(CONSUMED_KEY) === String(id);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function markConsumed(id) {
+    if (!id) return;
+    try {
+      sessionStorage.setItem(CONSUMED_KEY, String(id));
+    } catch (e) {}
+  }
+
+  function hasAuthCallbackInUrl() {
+    var search = window.location.search || '';
+    var hash = window.location.hash || '';
+    return (
+      search.indexOf('code=') !== -1 ||
+      hash.indexOf('access_token=') !== -1 ||
+      hash.indexOf('refresh_token=') !== -1
+    );
+  }
+
+  function consumePending() {
     var params = new URLSearchParams(window.location.search);
     var dlParam = params.get('cr_dl');
+    var dlIdParam = params.get('cr_dl_id');
+    var stored = null;
+
+    try {
+      var raw = sessionStorage.getItem(PENDING_KEY);
+      if (raw) stored = JSON.parse(raw);
+    } catch (e) {}
+
+    // Always clear storage & URL params synchronously first so a refresh can NEVER re-trigger
+    savePending(null);
+    cleanDlParam();
+
     if (dlParam && PLATFORM_TO_URL[dlParam]) {
+      var token = dlIdParam || ('param:' + dlParam);
+      if (isConsumed(token)) return null;
+      markConsumed(token);
       var url = PLATFORM_TO_URL[dlParam];
       return { url: url, platform: dlParam, label: PLATFORM_MAP[url].label };
     }
-    try {
-      var raw = sessionStorage.getItem(PENDING_KEY);
-      if (raw) return JSON.parse(raw);
-    } catch (e) {}
+
+    if (stored && stored.url && stored.platform) {
+      if (stored.ts && Date.now() - stored.ts > PENDING_MAX_AGE_MS) return null;
+      if (stored.id && isConsumed(stored.id)) return null;
+      if (stored.id) markConsumed(stored.id);
+      return stored;
+    }
+
     return null;
   }
 
   function cleanDlParam() {
     try {
       var u = new URL(window.location.href);
-      if (u.searchParams.has('cr_dl')) {
-        u.searchParams.delete('cr_dl');
+      var changed = false;
+      if (u.searchParams.has('cr_dl')) { u.searchParams.delete('cr_dl'); changed = true; }
+      if (u.searchParams.has('cr_dl_id')) { u.searchParams.delete('cr_dl_id'); changed = true; }
+      if (changed) {
         window.history.replaceState({}, document.title, u.pathname + u.search + u.hash);
       }
     } catch (e) {}
@@ -150,8 +211,27 @@
     u.searchParams.delete('code');
     u.searchParams.delete('error');
     u.searchParams.delete('error_description');
-    if (info && info.platform) u.searchParams.set('cr_dl', info.platform);
+    u.searchParams.delete('cr_dl');
+    u.searchParams.delete('cr_dl_id');
+    if (info && info.platform) {
+      u.searchParams.set('cr_dl', info.platform);
+      var dlId = (pendingDownload && pendingDownload.id) || (Date.now() + '-' + Math.random().toString(36).slice(2, 8));
+      u.searchParams.set('cr_dl_id', dlId);
+    }
     return u.toString();
+  }
+
+  function triggerFileDownload(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.setAttribute('data-cr-direct', '1');
+    a.rel = 'noopener';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      if (a.parentNode) a.parentNode.removeChild(a);
+    }, 1000);
   }
 
   function logAndStartDownload(user, info) {
@@ -173,7 +253,7 @@
     }
 
     showToast('ההורדה של clips.Gallery (' + info.label + ') החלה!');
-    window.location.assign(info.url);
+    triggerFileDownload(info.url);
   }
 
   function ensureDialog() {
@@ -478,7 +558,7 @@
   function bindDownloadLinks() {
     document.addEventListener('click', function (e) {
       var link = e.target.closest('a[href^="/download/clips-gallery-"]');
-      if (!link) return;
+      if (!link || link.hasAttribute('data-cr-direct')) return;
       var href = link.getAttribute('href');
       var meta = PLATFORM_MAP[href];
       if (!meta) return;
@@ -496,19 +576,28 @@
   function handleSignedIn(user) {
     currentUser = user;
     updateNavButton();
-    if (user && !handledResume) {
-      var pending = readPending();
+    if (!user) {
+      // If user is not signed in and this load wasn't an OAuth callback, clear any abandoned pending download
+      if (!hadAuthCallbackOnLoad) {
+        savePending(null);
+        cleanDlParam();
+      }
+      return;
+    }
+    if (!handledResume) {
+      handledResume = true;
+      var pending = consumePending();
       if (pending) {
-        handledResume = true;
         if (dialogEl && dialogEl.open) dialogEl.close();
         setTimeout(function () {
           logAndStartDownload(user, pending);
-        }, 250);
+        }, 150);
       }
     }
   }
 
   function bootstrap() {
+    hadAuthCallbackOnLoad = hasAuthCallbackInUrl();
     mountNavButton();
     bindDownloadLinks();
     var client = initClient();
