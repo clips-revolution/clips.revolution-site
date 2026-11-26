@@ -605,3 +605,92 @@ function closeWinDownloadModal() {
     window.addEventListener('load', () => setTimeout(syncTikTokStats, 1500), { once: true });
   }
 })();
+
+/* ── Private Lessons Email Dialog ── */
+(function () {
+  function initPrivateLessonsDialog() {
+    const openBtn = document.getElementById('open-private-lessons-btn');
+    const dlg = document.getElementById('private-lessons-dialog');
+    if (!openBtn || !dlg) return;
+
+    const TO_EMAIL = '1clipsrevolution1@gmail.com';
+    const SUBJECT = 'פנייה לשיעורים פרטיים - clips.Revolution';
+    const form = document.getElementById('cr-lessons-form');
+    const mailtoBtn = document.getElementById('cr-lessons-mailto');
+    const copyBtn = document.getElementById('cr-lessons-copy');
+
+    function buildBody() {
+      const name = (form?.querySelector('input[name="name"]')?.value || '').trim();
+      const phone = (form?.querySelector('input[name="phone"]')?.value || '').trim();
+      const msg = (form?.querySelector('textarea[name="message"]')?.value || '').trim();
+      const lines = ['היי צוות clips.Revolution,', ''];
+      lines.push(msg || 'אשמח לקבל פרטים על שיעורים פרטיים 1 על 1 ביצירת סרטוני AI.');
+      if (name || phone) lines.push('');
+      if (name) lines.push('שם: ' + name);
+      if (phone) lines.push('טלפון: ' + phone);
+      return lines.join('\n');
+    }
+
+    openBtn.addEventListener('click', () => {
+      if (!dlg.open) dlg.showModal();
+    });
+
+    // Safari fallback for closedby="any"
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      let pressedOutside = false;
+      const isOutside = (e) => {
+        const r = dlg.getBoundingClientRect();
+        return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+      };
+      dlg.addEventListener('pointerdown', (e) => { pressedOutside = isOutside(e); });
+      dlg.addEventListener('pointerup', (e) => { if (pressedOutside && isOutside(e)) dlg.close(); });
+    }
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const body = buildBody();
+        const gmailUrl =
+          'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(TO_EMAIL) +
+          '&su=' + encodeURIComponent(SUBJECT) +
+          '&body=' + encodeURIComponent(body);
+        window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+        dlg.close();
+      });
+    }
+
+    if (mailtoBtn) {
+      mailtoBtn.addEventListener('click', () => {
+        const body = buildBody();
+        const mailtoUrl =
+          'mailto:' + TO_EMAIL +
+          '?subject=' + encodeURIComponent(SUBJECT) +
+          '&body=' + encodeURIComponent(body);
+        window.location.href = mailtoUrl;
+        dlg.close();
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const markCopied = () => {
+          copyBtn.textContent = 'הועתק ✓';
+          copyBtn.classList.add('is-copied');
+          setTimeout(() => {
+            copyBtn.textContent = 'העתק';
+            copyBtn.classList.remove('is-copied');
+          }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(TO_EMAIL).then(markCopied).catch(() => {});
+        }
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPrivateLessonsDialog);
+  } else {
+    initPrivateLessonsDialog();
+  }
+})();

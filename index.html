@@ -442,13 +442,10 @@
           </div>
 
           <div style="margin-top: 1.5rem; text-align: center;">
-            <a href="mailto:1clipsrevolution1@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%9C%D7%A9%D7%99%D7%A2%D7%95%D7%A8%D7%99%D7%9D%20%D7%A4%D7%A8%D7%98%D7%99%D7%99%D7%9D%20-%20clips.Revolution&body=%D7%94%D7%99%D7%99%20%D7%A6%D7%95%D7%95%D7%AA%20clips.Revolution%2C%0A%0A%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%D7%99%D7%9D%20%D7%A4%D7%A8%D7%98%D7%99%D7%99%D7%9D%20%D7%91%D7%99%D7%A6%D7%99%D7%A8%D7%AA%20%D7%A1%D7%A8%D7%98%D7%95%D7%A0%D7%99%20AI.%0A%0A%D7%A9%D7%9D%3A%20%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%20" class="btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px; font-size: 1.12rem; font-weight: 800; border-radius: 14px; text-decoration: none; box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);">
+            <button type="button" id="open-private-lessons-btn" class="btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px; font-size: 1.12rem; font-weight: 800; border-radius: 14px; border: 0; cursor: pointer; box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);">
               <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
               <span>לתיאום שיעורים פרטיים במייל</span>
-            </a>
-            <p style="margin: 0.7rem auto 0; font-size: 0.82rem; color: rgba(255,255,255,0.52);">
-              <bdi dir="ltr">1clipsrevolution1@gmail.com</bdi>
-            </p>
+            </button>
           </div>
 
         </div>
@@ -945,6 +942,34 @@
   </main><!-- /page -->
 
   <script src="app.js"></script>
+  <!-- ═══ PRIVATE LESSONS EMAIL DIALOG ═══ -->
+  <dialog id="private-lessons-dialog" class="cr-auth-dialog cr-lessons-dialog" closedby="any" aria-labelledby="cr-lessons-title">
+    <form method="dialog" class="cr-auth-close-form">
+      <button type="submit" value="cancel" class="cr-auth-close" aria-label="סגור חלון">✕</button>
+    </form>
+    <div class="cr-auth-head">
+      <img src="clips-revolution-logo.webp" alt="clips.Revolution" class="cr-auth-brand-logo" width="46" height="46">
+      <h1 id="cr-lessons-title" class="cr-auth-title">שיעורים פרטיים 1 על 1</h1>
+      <p class="cr-auth-sub">כתבו לנו בקצרה מה תרצו ללמוד ונשלח את ההודעה ישירות למייל של הסטודיו.</p>
+    </div>
+    <form id="cr-lessons-form" class="cr-lessons-form">
+      <input type="text" name="name" autocomplete="name" placeholder="השם שלך" class="cr-auth-input cr-lessons-input" aria-label="שם מלא" autofocus>
+      <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="טלפון לחזרה (אופציונלי)" class="cr-auth-input cr-lessons-input" aria-label="טלפון לחזרה">
+      <textarea name="message" rows="3" placeholder="מה מעניין אותך ללמוד? (פרסומות AI, עקביות דמויות, סאונד קולנועי...)" class="cr-auth-input cr-lessons-input cr-lessons-textarea" aria-label="הודעה"></textarea>
+      <div class="cr-lessons-actions">
+        <button type="submit" data-channel="gmail" class="btn-primary cr-lessons-submit">
+          <svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
+          שליחה דרך Gmail
+        </button>
+        <button type="button" id="cr-lessons-mailto" class="cr-lessons-alt-btn">פתיחה באפליקציית המייל</button>
+      </div>
+    </form>
+    <div class="cr-lessons-email-row">
+      <span class="cr-lessons-email-addr" dir="ltr">1clipsrevolution1@gmail.com</span>
+      <button type="button" id="cr-lessons-copy" class="cr-lessons-copy-btn">העתק</button>
+    </div>
+  </dialog>
+
   <script src="accessibility.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js" defer></script>
   <script src="auth.js" defer></script>
