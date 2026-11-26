@@ -3420,6 +3420,15 @@ dialog.cr-auth-dialog::backdrop {
 }
 
 @media (max-width: 640px) {
+  .hero-sub-lead,
+  .hero-sub-rest {
+    display: block;
+  }
+  .hero-sub-rest {
+    margin-top: 0.15rem;
+    font-size: 0.82rem;
+    text-wrap: balance;
+  }
   .nav-inner {
     padding: 0.75rem 0.85rem;
   }
